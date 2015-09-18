@@ -10,11 +10,9 @@ import scene.SceneMenu;
 public class Application {
 	public RenderWindow window = new RenderWindow();
 
-	SceneGame sceneGame = new SceneGame();
-	SceneMenu sceneMenu = new SceneMenu();
-	SceneGameover sceneGameover = new SceneGameover();
-
-	private String stateOfApp = "Menu";
+	SceneGame sceneGame = new SceneGame(window);
+	SceneMenu sceneMenu = new SceneMenu(window);
+	SceneGameover sceneGameover = new SceneGameover(window);
 
 	public Application() {
 		window.create(new VideoMode(640, 800), "Donjon");
@@ -36,7 +34,7 @@ public class Application {
 			if (event.type == Event.Type.CLOSED) {
 				window.close();
 			}
-			switch (stateOfApp) {
+			switch (sceneGame.getStateOfGame()) {
 			case "Menu":
 				sceneMenu.processEvents(event);
 				break;
@@ -52,7 +50,7 @@ public class Application {
 
 	// Fonction qui permet de gérer les actions.
 	public void update() {
-		switch (stateOfApp) {
+		switch (sceneGame.getStateOfGame()) {
 		case "Menu":
 			sceneMenu.update();
 			break;
@@ -68,32 +66,18 @@ public class Application {
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	public void render() {
 		window.clear(Color.BLACK);
-		switch (stateOfApp) {
+		switch (sceneGame.getStateOfGame()) {
 		case "Menu":
-			sceneMenu.render(window);
+			sceneMenu.render();
 			break;
 		case "Game":
-			sceneGame.render(window);
+			sceneGame.render();
 			break;
 		case "GameOver":
-			sceneGameover.render(window);
+			sceneGameover.render();
 			break;
 		}
 		window.display();
 	}
-
-	// Fonction qui change l'état de la partie en Menu.
-	public void changedStateInMenu(){
-		stateOfApp = "Menu";
-	}
 	
-	// Fonction qui change l'état de la partie en Game.
-	public void changedStateInGame(){
-		stateOfApp = "Game";
-	}
-	
-	// Fonction qui change l'état de la partie en GameOver.
-	public void changedStateInGameover(){
-		stateOfApp = "GameOver";
-	}
 }

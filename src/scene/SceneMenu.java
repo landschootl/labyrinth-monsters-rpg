@@ -5,11 +5,12 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
 public class SceneMenu {
-	
-	public SceneMenu(){
-		
+	private RenderWindow window;
+
+	public SceneMenu(RenderWindow window) {
+		this.window=window;
 	}
-	
+
 	// Fonction qui permet de gérer les événements.
 	public void processEvents(Event event) {
 
@@ -21,10 +22,10 @@ public class SceneMenu {
 	}
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	public void render(RenderWindow window) {
+	public void render() {
 		window.clear(Color.BLACK);
 
 		window.display();
 	}
-	
+
 }

@@ -5,9 +5,10 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
 public class SceneGameover {
+	private RenderWindow window;
 
-	public SceneGameover(){
-		
+	public SceneGameover(RenderWindow window){
+		this.window=window;
 	}
 	
 	// Fonction qui permet de gérer les événements.
@@ -21,7 +22,7 @@ public class SceneGameover {
 	}
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	public void render(RenderWindow window) {
+	public void render() {
 		window.clear(Color.BLACK);
 
 		window.display();
