@@ -1,16 +1,14 @@
-package scene;
+package console;
 
-import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
-public class SceneMenu {
-	private RenderWindow window;
-
-	public SceneMenu(RenderWindow window) {
-		this.window=window;
+public class Console {
+	
+	public Console(){
+		
 	}
-
+	
 	// Fonction qui permet de gérer les événements.
 	public void processEvents(Event event) {
 
@@ -22,8 +20,7 @@ public class SceneMenu {
 	}
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	public void render() {
+	public void render(RenderWindow window) {
 		
 	}
-
 }
