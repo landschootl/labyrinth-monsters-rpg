@@ -15,11 +15,11 @@ public class Console {
 	
 	// Fonction qui initialise le background de la console.
 	private void initBackground() {
-		background = new RectangleShape(new Vector2f(272,120));
-		background.setFillColor(new Color(Color.BLACK, 0));
-		background.setOutlineThickness(8);
-		background.setOutlineColor(new Color(Color.WHITE, 0));
-		background.setPosition(new Vector2f(0,680));
+		background = new RectangleShape(new Vector2f(262,150));
+		background.setFillColor(new Color(Color.WHITE, 100));
+		background.setOutlineThickness(10);
+		background.setOutlineColor(new Color(Color.WHITE, 50));
+		background.setPosition(new Vector2f(10,640));
 	}
 	
 	// Fonction qui permet de gérer les événements.

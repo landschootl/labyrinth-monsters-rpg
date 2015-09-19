@@ -4,10 +4,13 @@ import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
+import console.Console;
+
 public class SceneGame {
 	private RenderWindow window;
+	private Console console = new Console();
 	
-	private String stateOfGame = "Menu";
+	private String stateOfGame = "Game";
 	
 	public SceneGame(RenderWindow window){
 		this.window=window;
@@ -25,7 +28,7 @@ public class SceneGame {
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	public void render() {
-		
+		console.render(window);
 	}
 
 	public String getStateOfGame() {
