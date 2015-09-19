@@ -18,7 +18,7 @@ public class Texte {
 	
 	public Texte(String message, int size, Vector2f pos, Color color, int style) {
 		try {
-			font.loadFromFile(Paths.get("sgsdg"));
+			font.loadFromFile(Paths.get("resource/font/calibri.ttf"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,6 +42,16 @@ public class Texte {
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	public void render(RenderWindow window) {
 		window.draw(text);
+	}
+	
+	// Fonction qui permet de modifier la position du texte.
+	public void setPosition(Vector2f pos){
+		text.setPosition(pos);
+	}
+	
+	// Fonction qui retourne la position du texte.
+	public Vector2f getPosition(){
+		return text.getPosition();
 	}
 	
 }
