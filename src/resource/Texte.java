@@ -1,10 +1,8 @@
 package resource;
 
-import java.io.IOException;
-import java.nio.file.Paths;
+import management.ResourceManager;
 
 import org.jsfml.graphics.Color;
-import org.jsfml.graphics.Font;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
 import org.jsfml.system.Vector2f;
@@ -13,17 +11,10 @@ import org.jsfml.window.event.Event;
 
 
 public class Texte {
-	private Font font = new Font();
 	private Text text;
 	
 	public Texte(String message, int size, Vector2f pos, Color color, int style) {
-		try {
-			font.loadFromFile(Paths.get("resource/font/calibri.ttf"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		text = new Text(message, font, size);
+		text = new Text(message, ResourceManager.getFont("resource/font/calibri.ttf"), size);
 		text.setPosition(pos);
 		text.setColor(color);
 		text.setStyle(style);

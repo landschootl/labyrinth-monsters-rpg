@@ -7,8 +7,7 @@ import console.Console;
 
 public class SceneGame {
 	private RenderWindow window;
-	
-	private String stateOfGame = "Game";
+	private String stateOfGame = "Game"; // Propriété indiquant l'état de la partie.
 	
 	public SceneGame(RenderWindow window){
 		Console.getInstance().addText("Bienvenue dans le jeu Donjon.");
