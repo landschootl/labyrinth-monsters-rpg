@@ -12,28 +12,28 @@ import org.jsfml.window.event.Event;
 import resource.Texte;
 
 public class Console {
+	// Design pattern Singleton, assure qu'il n'y est qu'une seule instance de la classe Console.
+	private static Console instance = null;
+	
 	private RectangleShape background;
 	private ArrayList<Texte> texts;
 	
-	public Console(){
+	// Constructeur en private pour éviter qu'on déclare une nouvelle instance de la classe.
+	private Console(){
 		initBackground();
 		initTexts();
+	}
+	
+	// Fonction qui permet de créer la seule instance de Console si elle n'existe pas, et de la renvoyer si elle existe.
+	public static Console getInstance(){
+		if(instance==null)
+			instance = new Console();
+		return instance;
 	}
 	
 	// Fonction qui initialise les textes.
 	public void initTexts() {
 		texts = new ArrayList<>();
-		addText("Bienvenue dans le jeu Donjon.1");
-		addText("Bienvenue dans le jeu Donjon.2");
-		addText("Bienvenue dans le jeu Donjon.3");
-		addText("Bienvenue dans le jeu Donjon.4");
-		addText("Bienvenue dans le jeu Donjon.5");
-		addText("Bienvenue dans le jeu Donjon.6");
-		addText("Bienvenue dans le jeu Donjon.7");
-		addText("Bienvenue dans le jeu Donjon.8");
-		addText("Bienvenue dans le jeu Donjon.9");
-		addText("Bienvenue dans le jeu Donjon.10");
-		addText("Bienvenue dans le jeu Donjon.10");
 	}
 
 	// Fonction qui initialise le background de la console.

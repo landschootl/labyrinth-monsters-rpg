@@ -1,6 +1,5 @@
 package scene;
 
-import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
@@ -8,11 +7,11 @@ import console.Console;
 
 public class SceneGame {
 	private RenderWindow window;
-	private Console console = new Console();
 	
 	private String stateOfGame = "Game";
 	
 	public SceneGame(RenderWindow window){
+		Console.getInstance().addText("Bienvenue dans le jeu Donjon.");
 		this.window=window;
 	}
 	
@@ -28,7 +27,7 @@ public class SceneGame {
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	public void render() {
-		console.render(window);
+		Console.getInstance().render(window);
 	}
 
 	public String getStateOfGame() {
