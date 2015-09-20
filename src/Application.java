@@ -7,6 +7,11 @@ import scene.SceneGame;
 import scene.SceneGameover;
 import scene.SceneMenu;
 
+/**
+ * Classe permettant de gérer les différentes scènes du jeu.
+ * @author Ludov_000
+ *
+ */
 public class Application {
 	public RenderWindow window = new RenderWindow();
 
@@ -18,8 +23,10 @@ public class Application {
 		window.create(new VideoMode(640, 800), "Donjon");
 	}
 
-	// Fonction principale qui éxécute une boucle déclenchant des événements
-	// tant que la fenêtre est ouverte.
+	/**
+	 * Fonction principale qui éxécute une boucle déclenchant des événements
+	 * tant que la fenêtre est ouverte.
+	 */
 	public void run() {
 		while (window.isOpen()) {
 			processEvents();
@@ -28,7 +35,9 @@ public class Application {
 		}
 	}
 
-	// Fonction qui permet de gérer les événements.
+	/**
+	 * Fonction qui permet de gérer les événements.
+	 */
 	public void processEvents() {
 		for (Event event : window.pollEvents()) {
 			if (event.type == Event.Type.CLOSED) {
@@ -48,7 +57,9 @@ public class Application {
 		}
 	}
 
-	// Fonction qui permet de gérer les actions.
+	/**
+	 * Fonction qui permet de gérer les actions.
+	 */
 	public void update() {
 		switch (sceneGame.getStateOfGame()) {
 		case "Menu":
@@ -63,7 +74,9 @@ public class Application {
 		}
 	}
 
-	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	/**
+	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 */
 	public void render() {
 		window.clear(Color.BLACK);
 		switch (sceneGame.getStateOfGame()) {

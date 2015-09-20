@@ -11,32 +11,48 @@ import org.jsfml.window.event.Event;
 
 import resource.Texte;
 
+/**
+ * Classe qui simule une console pour l'intérieur du jeu.
+ * @author Ludov_000
+ *
+ */
 public class Console {
-	// Design pattern Singleton, assure qu'il n'y est qu'une seule instance de la classe Console.
+	/**
+	 * Design pattern Singleton, assure qu'il n'y est qu'une seule instance de la classe Console.
+	 */
 	private static Console instance = null;
 	
 	private RectangleShape background;
 	private ArrayList<Texte> texts;
 	
-	// Constructeur en private pour éviter qu'on déclare une nouvelle instance de la classe.
+	/**
+	 * Constructeur en private pour éviter qu'on déclare une nouvelle instance de la classe.
+	 */
 	private Console(){
 		initBackground();
 		initTexts();
 	}
 	
-	// Fonction qui permet de créer la seule instance de Console si elle n'existe pas, et de la renvoyer si elle existe.
+	/**
+	 * Fonction qui permet de créer la seule instance de Console si elle n'existe pas.
+	 * @return la seule instance de la classe Console.
+	 */
 	public static Console getInstance(){
 		if(instance==null)
 			instance = new Console();
 		return instance;
 	}
 	
-	// Fonction qui initialise les textes.
+	/**
+	 * Fonction qui initialise les textes.
+	 */
 	public void initTexts() {
 		texts = new ArrayList<>();
 	}
 
-	// Fonction qui initialise le background de la console.
+	/**
+	 * Fonction qui initialise le background de la console.
+	 */
 	public void initBackground() {
 		background = new RectangleShape(new Vector2f(262,150));
 		background.setFillColor(new Color(Color.WHITE, 100));
@@ -45,31 +61,45 @@ public class Console {
 		background.setPosition(new Vector2f(10,640));
 	}
 	
-	// Fonction qui permet d'ajouter un message dans la console.
+	/**
+	 * Fonction qui permet d'ajouter un message dans la console.
+	 * @param message : le message qu'on souhaite ajouter à la console.
+	 */
 	public void addText(String message){
 		if(texts.size()>7)
 			removeText(0);
 		texts.add(new Texte("> "+message, 15, new Vector2f(15,645+texts.size()*17), Color.BLUE, Text.REGULAR));
 	}
 	
-	// Fonction qui permet de supprimer le message correspondant à l'id donné en paramètre.
+	/**
+	 * Fonction qui permet de supprimer le message correspondant à l'id donné en paramètre.
+	 * @param id : l'idée du message à supprimer.
+	 */
 	public void removeText(int id){
 		texts.remove(id);
 		for(int i=id; i<texts.size(); i++)
 			texts.get(i).setPosition(new Vector2f(texts.get(i).getPosition().x,texts.get(i).getPosition().y-17));
 	}
 	
-	// Fonction qui permet de gérer les événements.
+	/**
+	 * Fonction qui permet de gérer les événements.
+	 * @param event : l'événement sur lequel on écoute.
+	 */
 	public void processEvents(Event event) {
 
 	}
 
-	// Fonction qui permet de gérer les actions.
+	/**
+	 * Fonction qui permet de gérer les actions.
+	 */
 	public void update() {
 
 	}
 
-	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	/**
+	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 */
 	public void render(RenderWindow window) {
 		window.draw(background);
 		for(Texte text : texts)

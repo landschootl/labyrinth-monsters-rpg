@@ -9,7 +9,11 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 
-
+/**
+ * Classe permettant de générer un texte.
+ * @author Ludov_000
+ *
+ */
 public class Texte {
 	private Text text;
 	
@@ -20,27 +24,33 @@ public class Texte {
 		text.setStyle(style);
 	}
 	
-	// Fonction qui permet de gérer les événements.
+	/**
+	 * Fonction qui permet de gérer les événements.
+	 * @param event : l'event sur lequel on écoute.
+	 */
 	public void processEvents(Event event) {
 
 	}
 
-	// Fonction qui permet de gérer les actions.
+	/**
+	 * Fonction qui permet de gérer les actions.
+	 */
 	public void update() {
 
 	}
 
-	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	/**
+	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * @param window : la fenêtre sur lequel on souhaite afficher les éléments.
+	 */
 	public void render(RenderWindow window) {
 		window.draw(text);
 	}
 	
-	// Fonction qui permet de modifier la position du texte.
 	public void setPosition(Vector2f pos){
 		text.setPosition(pos);
 	}
 	
-	// Fonction qui retourne la position du texte.
 	public Vector2f getPosition(){
 		return text.getPosition();
 	}
