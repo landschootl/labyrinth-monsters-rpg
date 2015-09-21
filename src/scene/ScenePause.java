@@ -3,18 +3,15 @@ package scene;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
-import console.Console;
-
 /**
- * Classe qui représente la scène du jeu en cours.
+ * Classe qui représente la scène lorsque la partie est en pause.
  * @author Ludov_000
  *
  */
-public class SceneGame {
+public class ScenePause {
 	private RenderWindow window;
-	
-	public SceneGame(RenderWindow window){
-		Console.getInstance().addText("Bienvenue dans le jeu Donjon.");
+
+	public ScenePause(RenderWindow window){
 		this.window=window;
 	}
 	
@@ -37,7 +34,7 @@ public class SceneGame {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
 	public void render() {
-		Console.getInstance().render(window);
+		
 	}
 	
 }

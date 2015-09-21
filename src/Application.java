@@ -6,6 +6,7 @@ import org.jsfml.window.event.Event;
 import scene.SceneGame;
 import scene.SceneGameover;
 import scene.SceneMenu;
+import scene.ScenePause;
 
 /**
  * Classe permettant de gérer les différentes scènes du jeu.
@@ -14,10 +15,13 @@ import scene.SceneMenu;
  */
 public class Application {
 	public RenderWindow window = new RenderWindow();
+	
+	private static String stateOfApp = "Game"; // Propriété indiquant l'état de l'application.
 
 	SceneGame sceneGame = new SceneGame(window);
 	SceneMenu sceneMenu = new SceneMenu(window);
 	SceneGameover sceneGameover = new SceneGameover(window);
+	ScenePause scenePause = new ScenePause(window);
 
 	public Application() {
 		window.create(new VideoMode(640, 800), "Donjon");
@@ -43,7 +47,7 @@ public class Application {
 			if (event.type == Event.Type.CLOSED) {
 				window.close();
 			}
-			switch (sceneGame.getStateOfGame()) {
+			switch (stateOfApp) {
 			case "Menu":
 				sceneMenu.processEvents(event);
 				break;
@@ -53,6 +57,9 @@ public class Application {
 			case "GameOver":
 				sceneGameover.processEvents(event);
 				break;
+			case "Pause":
+				scenePause.processEvents(event);
+				break;
 			}
 		}
 	}
@@ -61,7 +68,7 @@ public class Application {
 	 * Fonction qui permet de gérer les actions.
 	 */
 	public void update() {
-		switch (sceneGame.getStateOfGame()) {
+		switch (stateOfApp) {
 		case "Menu":
 			sceneMenu.update();
 			break;
@@ -71,6 +78,9 @@ public class Application {
 		case "GameOver":
 			sceneGameover.update();
 			break;
+		case "Pause":
+			scenePause.update();
+			break;
 		}
 	}
 
@@ -79,7 +89,7 @@ public class Application {
 	 */
 	public void render() {
 		window.clear(Color.BLACK);
-		switch (sceneGame.getStateOfGame()) {
+		switch (stateOfApp) {
 		case "Menu":
 			sceneMenu.render();
 			break;
@@ -89,8 +99,16 @@ public class Application {
 		case "GameOver":
 			sceneGameover.render();
 			break;
+		case "Pause":
+			sceneGame.render();
+			scenePause.render();
+			break;
 		}
 		window.display();
+	}
+	
+	public static void setStateOfApp(String stateOfApp) {
+		Application.stateOfApp = stateOfApp;
 	}
 	
 }
