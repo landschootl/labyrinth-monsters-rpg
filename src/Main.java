@@ -1,3 +1,5 @@
+import application.Application;
+
 
 /**
  * La classe éxécuter lors du lancement du jeu.

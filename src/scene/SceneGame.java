@@ -3,6 +3,7 @@ package scene;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
+import application.Application;
 import console.Console;
 
 /**

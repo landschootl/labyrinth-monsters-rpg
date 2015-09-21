@@ -1,3 +1,4 @@
+package application;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.VideoMode;
@@ -107,6 +108,10 @@ public class Application {
 		window.display();
 	}
 	
+	/**
+	 * Fonction qui permet de changer l'état de l'application.
+	 * @param stateOfApp : L'état de l'application.
+	 */
 	public static void setStateOfApp(String stateOfApp) {
 		Application.stateOfApp = stateOfApp;
 	}
