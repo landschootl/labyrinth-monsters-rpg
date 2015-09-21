@@ -34,10 +34,10 @@ public class TilesetManager {
 		posTile.put("coffreOpen", new Vector2f(1,2));
 		posTile.put("sol", new Vector2f(2,2));
 		
-		lockedTile.put("porte", false);
+		lockedTile.put("porteVerrouille1", false);
 		lockedTile.put("levier", false);
 		lockedTile.put("toit", false);
-		lockedTile.put("porte2", false);
+		lockedTile.put("porteVerrouille2", false);
 		lockedTile.put("depart", true);
 		lockedTile.put("mur", false);
 		lockedTile.put("coffreClose", false);
