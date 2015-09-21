@@ -24,10 +24,10 @@ public class TilesetManager {
 	private Map lockedTile = new HashMap<>();
 	
 	public TilesetManager(){
-		posTile.put("porte", new Vector2f(0,0));
+		posTile.put("porteVerrouille1", new Vector2f(0,0));
 		posTile.put("levier", new Vector2f(1,0));
 		posTile.put("toit", new Vector2f(2,0));
-		posTile.put("porte2", new Vector2f(0,1));
+		posTile.put("porteVerrouille2", new Vector2f(0,1));
 		posTile.put("depart", new Vector2f(1,1));
 		posTile.put("mur", new Vector2f(2,1));
 		posTile.put("coffreClose", new Vector2f(0,2));
