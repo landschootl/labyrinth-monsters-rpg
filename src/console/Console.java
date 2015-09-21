@@ -65,10 +65,10 @@ public class Console {
 	 * Fonction qui permet d'ajouter un message dans la console.
 	 * @param message : le message qu'on souhaite ajouter à la console.
 	 */
-	public void addText(String message, int type){
+	public void addText(String message, int type, Color color){
 		if(texts.size()>7)
 			removeText(0);
-		texts.add(new Texte("> "+message, 15, new Vector2f(15,655+texts.size()*17), Color.BLUE, type));
+		texts.add(new Texte("> "+message, 15, new Vector2f(15,655+texts.size()*17), color, type));
 	}
 	
 	/**

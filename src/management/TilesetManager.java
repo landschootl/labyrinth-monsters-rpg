@@ -3,6 +3,8 @@ package management;
 import java.util.HashMap;
 import java.util.Map;
 
+import map.Tile;
+
 import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
@@ -56,12 +58,12 @@ public class TilesetManager {
 	}
 	
 	/**
-	 * Retourne un Tile défini par son nom, en définissant la position du sprite.
+	 * Retourne un Tile identifié par son nom, en définissant la position du sprite.
 	 * @param name : le nom du Tile souhaité.
 	 * @param positionSprite : la position du Sprite.
 	 * @return le Tile correspond au nom défini.
 	 */
-	public Tile getCelluleTest(String name, Vector2f positionSprite){
+	public Tile getTile(String name, Vector2f positionSprite){
 		Sprite sprite = new Sprite();
 		int posX = (int) ((Vector2f) posTile.get(name)).x*SIZE_SPRITE;
 		int posY = (int) ((Vector2f) posTile.get(name)).y*SIZE_SPRITE;
@@ -69,6 +71,22 @@ public class TilesetManager {
 		sprite.setTextureRect(new IntRect(posX,posY,SIZE_SPRITE,SIZE_SPRITE));
 		sprite.setPosition(positionSprite);
 		return new Tile(((boolean) lockedTile.get(name)), sprite);
+	}
+	
+	/**
+	 * Retourne le sprite correspondant au nom passé en argument.
+	 * @param name : le nom du Tile souhaité.
+	 * @param positionSprite : la position du Sprite.
+	 * @return le Sprite correspond au nom défini.
+	 */
+	public Sprite getSprite(String name, Vector2f positionSprite){
+		Sprite sprite = new Sprite();
+		int posX = (int) ((Vector2f) posTile.get(name)).x*SIZE_SPRITE;
+		int posY = (int) ((Vector2f) posTile.get(name)).y*SIZE_SPRITE;
+		sprite.setTexture(ResourceManager.getTexture("resource/tileset/tileset.png"));
+		sprite.setTextureRect(new IntRect(posX,posY,SIZE_SPRITE,SIZE_SPRITE));
+		sprite.setPosition(positionSprite);
+		return sprite;
 	}
 	
 }

@@ -1,6 +1,5 @@
 package map;
 
-import management.Tile;
 import management.TilesetManager;
 
 import org.jsfml.graphics.RenderWindow;
@@ -37,7 +36,7 @@ public class Map {
 		map = new Tile[SIZE_MAP][SIZE_MAP];
 		for(int i=0;i<SIZE_MAP;i++)
 			for(int j=0; j<SIZE_MAP;j++){
-				map[i][j]=TilesetManager.getInstance().getCelluleTest(modeleMap[i][j], new Vector2f(j*32,i*32));
+				map[i][j]=TilesetManager.getInstance().getTile(modeleMap[i][j], new Vector2f(j*32,i*32));
 			}
 	}
 	

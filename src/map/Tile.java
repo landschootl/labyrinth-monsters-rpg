@@ -1,4 +1,4 @@
-package management;
+package map;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
