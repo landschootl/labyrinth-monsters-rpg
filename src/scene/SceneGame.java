@@ -1,6 +1,9 @@
 package scene;
 
+import map.Map;
+
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Text;
 import org.jsfml.window.event.Event;
 
 import console.Console;
@@ -13,8 +16,12 @@ import console.Console;
 public class SceneGame {
 	private RenderWindow window;
 	
+	private Map map = new Map(Map.modeleIntersection);
+	
 	public SceneGame(RenderWindow window){
-		Console.getInstance().addText("Bienvenue dans le jeu Donjon.");
+		Console.getInstance().addText("Bienvenue dans le jeu Donjon.", Text.BOLD);
+		Console.getInstance().addText("Youpi la console marche parfaitement !", Text.REGULAR);
+		Console.getInstance().addText("Thibault est qu'un gland !", Text.REGULAR);
 		this.window=window;
 	}
 	
@@ -38,6 +45,7 @@ public class SceneGame {
 	 */
 	public void render() {
 		Console.getInstance().render(window);
+		map.render(window);
 	}
 	
 }

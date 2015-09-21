@@ -25,7 +25,7 @@ public class Application {
 	ScenePause scenePause = new ScenePause(window);
 
 	public Application() {
-		window.create(new VideoMode(640, 800), "Donjon");
+		window.create(new VideoMode(640, 820), "Donjon");
 	}
 
 	/**

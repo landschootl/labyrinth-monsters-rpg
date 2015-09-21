@@ -8,9 +8,9 @@ import org.jsfml.system.Vector2f;
 
 public class Map {
 	private Tile[][] map;
-	private final int SIZE_MAP = 10;
+	private final int SIZE_MAP = 20;
 	
-	private static String[][] modeleIntersection = {
+	public static String[][] modeleIntersection = {
 		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
 		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},

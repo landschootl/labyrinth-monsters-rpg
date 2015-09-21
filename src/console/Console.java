@@ -54,21 +54,21 @@ public class Console {
 	 * Fonction qui initialise le background de la console.
 	 */
 	public void initBackground() {
-		background = new RectangleShape(new Vector2f(262,150));
-		background.setFillColor(new Color(Color.WHITE, 100));
+		background = new RectangleShape(new Vector2f(290,160));
+		background.setFillColor(new Color(Color.WHITE, 300));
 		background.setOutlineThickness(10);
 		background.setOutlineColor(new Color(Color.WHITE, 50));
-		background.setPosition(new Vector2f(10,640));
+		background.setPosition(new Vector2f(10,650));
 	}
 	
 	/**
 	 * Fonction qui permet d'ajouter un message dans la console.
 	 * @param message : le message qu'on souhaite ajouter à la console.
 	 */
-	public void addText(String message){
+	public void addText(String message, int type){
 		if(texts.size()>7)
 			removeText(0);
-		texts.add(new Texte("> "+message, 15, new Vector2f(15,645+texts.size()*17), Color.BLUE, Text.REGULAR));
+		texts.add(new Texte("> "+message, 15, new Vector2f(15,655+texts.size()*17), Color.BLUE, type));
 	}
 	
 	/**
