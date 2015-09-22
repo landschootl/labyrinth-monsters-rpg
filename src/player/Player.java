@@ -4,6 +4,7 @@ import management.ResourceManager;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
 import org.jsfml.window.Mouse;
@@ -36,8 +37,9 @@ public class Player {
 
 	/**
 	 * Fonction qui permet de gérer les actions.
+	 * @param time : le temps pour la gestion des frames.
 	 */
-	public void update() {
+	public void update(Time time) {
 		
 	}
 
