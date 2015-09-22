@@ -26,6 +26,7 @@ public class Application {
 
 	public Application() {
 		window.create(new VideoMode(640, 820), "Donjon");
+		window.setMouseCursorVisible(false);
 	}
 
 	/**

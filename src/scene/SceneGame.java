@@ -7,6 +7,7 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
 import org.jsfml.window.event.Event;
 
+import player.Player;
 import console.Console;
 
 /**
@@ -16,6 +17,7 @@ import console.Console;
  */
 public class SceneGame {
 	private RenderWindow window;
+	private Player player = new Player();
 	
 	public SceneGame(RenderWindow window){
 		Console.getInstance().addText("Bienvenue dans le jeu Donjon.", Text.BOLD, Color.RED);
@@ -29,14 +31,14 @@ public class SceneGame {
 	 * @param event : l'event sur lequel on écoute.
 	 */
 	public void processEvents(Event event) {
-
+		player.processEvents(event);
 	}
 
 	/**
 	 * Fonction qui permet de gérer les actions.
 	 */
 	public void update() {
-
+		player.update();
 	}
 
 	/**
@@ -44,6 +46,7 @@ public class SceneGame {
 	 */
 	public void render() {
 		Console.getInstance().render(window);
+		player.render(window);
 	}
 	
 }
