@@ -1,10 +1,10 @@
 package scene;
 
-import map.Map;
-
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
+import org.jsfml.system.Clock;
+import org.jsfml.system.Time;
 import org.jsfml.window.event.Event;
 
 import player.Player;
@@ -17,6 +17,7 @@ import console.Console;
  */
 public class SceneGame {
 	private RenderWindow window;
+	private Clock timerFrame; // Permet la gestion des frames.
 	private Player player = new Player();
 	
 	public SceneGame(RenderWindow window){
@@ -38,7 +39,12 @@ public class SceneGame {
 	 * Fonction qui permet de gérer les actions.
 	 */
 	public void update() {
-		player.update();
+		// Gestion des frames.
+	    Time time;
+	    time=timerFrame.getElapsedTime();
+	    timerFrame.restart();
+		
+		player.update(time);
 	}
 
 	/**
