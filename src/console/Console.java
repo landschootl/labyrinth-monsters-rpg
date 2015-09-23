@@ -85,8 +85,8 @@ public class Console {
 	 * Fonction qui permet de gérer les événements.
 	 * @param event : l'événement sur lequel on écoute.
 	 */
-	public void processEvents(Event event) {
-
+	public void handleEvents(Event event) {
+		
 	}
 
 	/**
@@ -100,9 +100,9 @@ public class Console {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void render(RenderWindow window) {
+	public void show(RenderWindow window) {
 		window.draw(background);
 		for(Texte text : texts)
-			text.render(window);
+			text.show(window);
 	}
 }

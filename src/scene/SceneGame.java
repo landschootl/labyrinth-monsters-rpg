@@ -34,8 +34,8 @@ public class SceneGame {
 	 * Fonction qui permet de gérer les événements.
 	 * @param event : l'event sur lequel on écoute.
 	 */
-	public void processEvents(Event event) {
-		player.processEvents(event);
+	public void handleEvents(Event event) {
+		player.handleEvents(event);
 	}
 
 	/**
@@ -53,9 +53,9 @@ public class SceneGame {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void render() {
-		Console.getInstance().render(window);
-		player.render(window);
+	public void show() {
+		Console.getInstance().show(window);
+		player.show(window);
 	}
 	
 }

@@ -19,7 +19,7 @@ public class ScenePause {
 	 * Fonction qui permet de gérer les événements.
 	 * @param event : l'event sur lequel on écoute.
 	 */
-	public void processEvents(Event event) {
+	public void handleEvents(Event event) {
 
 	}
 
@@ -33,7 +33,7 @@ public class ScenePause {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void render() {
+	public void show() {
 		
 	}
 	

@@ -28,7 +28,7 @@ public class Texte {
 	 * Fonction qui permet de gérer les événements.
 	 * @param event : l'event sur lequel on écoute.
 	 */
-	public void processEvents(Event event) {
+	public void handleEvents(Event event) {
 
 	}
 
@@ -43,7 +43,7 @@ public class Texte {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : la fenêtre sur lequel on souhaite afficher les éléments.
 	 */
-	public void render(RenderWindow window) {
+	public void show(RenderWindow window) {
 		window.draw(text);
 	}
 	

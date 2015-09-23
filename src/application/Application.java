@@ -51,16 +51,16 @@ public class Application {
 			}
 			switch (stateOfApp) {
 			case "Menu":
-				sceneMenu.processEvents(event);
+				sceneMenu.handleEvents(event);
 				break;
 			case "Game":
-				sceneGame.processEvents(event);
+				sceneGame.handleEvents(event);
 				break;
 			case "GameOver":
-				sceneGameover.processEvents(event);
+				sceneGameover.handleEvents(event);
 				break;
 			case "Pause":
-				scenePause.processEvents(event);
+				scenePause.handleEvents(event);
 				break;
 			}
 		}
@@ -93,17 +93,17 @@ public class Application {
 		window.clear(Color.BLACK);
 		switch (stateOfApp) {
 		case "Menu":
-			sceneMenu.render();
+			sceneMenu.show();
 			break;
 		case "Game":
-			sceneGame.render();
+			sceneGame.show();
 			break;
 		case "GameOver":
-			sceneGameover.render();
+			sceneGameover.show();
 			break;
 		case "Pause":
-			sceneGame.render();
-			scenePause.render();
+			sceneGame.show();
+			scenePause.show();
 			break;
 		}
 		window.display();

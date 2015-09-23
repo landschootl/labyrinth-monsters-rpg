@@ -29,7 +29,7 @@ public class Player {
 	 * Fonction qui permet de gérer les événements.
 	 * @param event : l'événement sur lequel on écoute.
 	 */
-	public void processEvents(Event event) {
+	public void handleEvents(Event event) {
 		if (event.type == Event.Type.MOUSE_MOVED) {
 			viseur.setPosition(new Vector2f(event.asMouseEvent().position.x-16, event.asMouseEvent().position.y-16));
 		}
@@ -47,7 +47,7 @@ public class Player {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void render(RenderWindow window) {
+	public void show(RenderWindow window) {
 		window.draw(viseur);
 	}
 }

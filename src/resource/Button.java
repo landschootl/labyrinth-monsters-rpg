@@ -10,7 +10,7 @@ public class Button {
 	}
 	
 	// Fonction qui permet de gérer les événements.
-	public void processEvents(Event event) {
+	public void handleEvents(Event event) {
 
 	}
 
@@ -20,7 +20,7 @@ public class Button {
 	}
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	public void render(RenderWindow window) {
+	public void show(RenderWindow window) {
 		
 	}
 
