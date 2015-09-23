@@ -1,5 +1,5 @@
 package donjon;
 
-public class RoomExit {
+public class RoomExit extends Room {
 
 }

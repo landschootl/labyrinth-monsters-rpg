@@ -1,6 +1,6 @@
 package donjon;
 
-public class RoomTrap {
+public class RoomTrap extends Room {
 	
 	
 	

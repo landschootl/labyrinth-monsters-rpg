@@ -1,5 +1,7 @@
 package donjon;
 
+import map.Map;
+
 import org.jsfml.window.event.Event;
 
 /**
@@ -8,6 +10,7 @@ import org.jsfml.window.event.Event;
  *
  */
 public abstract class Room {
+	protected Map map;
 	
 	public Room(){
 		

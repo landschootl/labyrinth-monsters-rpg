@@ -1,5 +1,5 @@
 package donjon;
 
-public class RoomBegin {
+public class RoomBegin extends Room {
 
 }
