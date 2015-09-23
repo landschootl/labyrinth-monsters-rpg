@@ -1,5 +1,8 @@
 package scene;
 
+import javafx.scene.Scene;
+import map.Map;
+
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
@@ -17,7 +20,7 @@ import console.Console;
  */
 public class SceneGame {
 	private RenderWindow window;
-	private Clock timerFrame; // Permet la gestion des frames.
+	private Clock timerFrame = new Clock(); // Permet la gestion des frames.
 	private Player player = new Player();
 	
 	public SceneGame(RenderWindow window){
