@@ -10,11 +10,11 @@ public class Map {
 	private final int SIZE_MAP = 20;
 	
 	public static String[][] modeleIntersection = {
-		{"toit", "toit", "toit", "porteVerrouille1", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
 		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
-		{"toit", "mur", "sol", "levier", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
@@ -29,6 +29,75 @@ public class Map {
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
 		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"}
+	};
+	
+	public static String[][] modeleExit = {
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
+		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "mur", "levier", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "porteVerrouille1", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "porteVerrouille1", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"}
+	};
+	
+	public static String[][] modeleBegin = {
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
+		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "porteVerrouille1", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "porteVerrouille1", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "levier", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"}
+	};
+	
+	public static String[][] modeleTrap = {
+		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"},
+		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "porteVerrouille1", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "porteVerrouille1", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "sol", "mur", "toit"},
+		{"toit", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "porteVerrouille1", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "mur", "levier", "toit"},
 		{"toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit","toit", "toit", "toit", "toit", "toit"}
 	};
 	
