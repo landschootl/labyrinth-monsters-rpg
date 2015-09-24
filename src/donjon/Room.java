@@ -2,6 +2,7 @@ package donjon;
 
 import map.Map;
 
+import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
 /**
@@ -34,8 +35,8 @@ public abstract class Room {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show() {
-		
+	public void show(RenderWindow window) {
+		map.show(window);
 	}
 
 }

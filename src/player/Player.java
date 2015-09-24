@@ -1,6 +1,7 @@
 package player;
 
 import management.ResourceManager;
+import management.SpriteManager;
 
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RectangleShape;
@@ -21,14 +22,18 @@ import console.Console;
  */
 public class Player {
 	private float nbMaxLife = 3;
-	private int nbLife = 3;
+	private int nbLife = 1;
+	
+	private Sprite[][] sprites;
 	
 	private RectangleShape backgroundLife;
 	private RectangleShape blood;
 	private Texte textLife;
+	
 	private Sprite viseur = new Sprite();
 	
 	public Player(){
+		sprites = SpriteManager.getArraySprite("resource/sprite/soldier.png");
 		initDesignLife();
 		viseur.setTexture(ResourceManager.getTexture("resource/sprite/viseur.png"));
 	}
@@ -70,12 +75,12 @@ public class Player {
 		backgroundLife = new RectangleShape(new Vector2f(60,160));
 		backgroundLife.setFillColor(new Color(Color.WHITE, 300));
 		backgroundLife.setOutlineThickness(10);
-		backgroundLife.setOutlineColor(new Color(10,50,50));
+		backgroundLife.setOutlineColor(Color.BLACK);
 		backgroundLife.setPosition(new Vector2f(290,650));
 		
 		float sizeBlood = (float) (160.0 * (nbLife/nbMaxLife));
 		blood = new RectangleShape(new Vector2f(60,sizeBlood));
-		blood.setFillColor(new Color(Color.RED, 300));
+		blood.setFillColor(new Color(232,12,50));
 		blood.setPosition(new Vector2f(290,650+160-sizeBlood));
 		
 		textLife = new Texte("Life\n"+nbLife+"/"+(int)nbMaxLife,30,new Vector2f(295,690),Color.BLACK,Text.BOLD);

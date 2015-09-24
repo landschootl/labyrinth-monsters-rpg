@@ -3,6 +3,7 @@ package donjon;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
 
 /**
@@ -13,9 +14,10 @@ import org.jsfml.window.event.Event;
 public class Donjon {
 
 	private Map rooms = new HashMap();
+	private Room room;
 	
 	public Donjon(){
-		
+		room = new RoomIntersect();
 	}
 	
 	/**
@@ -36,8 +38,8 @@ public class Donjon {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show() {
-		
+	public void show(RenderWindow window) {
+		room.show(window);
 	}
 	
 }

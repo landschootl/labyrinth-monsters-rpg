@@ -12,6 +12,7 @@ import org.jsfml.window.event.Event;
 
 import player.Player;
 import console.Console;
+import donjon.Donjon;
 
 /**
  * Classe qui représente la scène du jeu en cours.
@@ -21,6 +22,7 @@ import console.Console;
 public class SceneGame {
 	private RenderWindow window;
 	private Clock timerFrame = new Clock(); // Permet la gestion des frames.
+	private Donjon donjon = new Donjon();
 	private Player player = new Player();
 	
 	public SceneGame(RenderWindow window){
@@ -55,6 +57,7 @@ public class SceneGame {
 	 */
 	public void show() {
 		Console.getInstance().show(window);
+		donjon.show(window);
 		player.show(window);
 	}
 	

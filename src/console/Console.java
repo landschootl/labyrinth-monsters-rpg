@@ -57,7 +57,7 @@ public class Console {
 		background = new RectangleShape(new Vector2f(270,160));
 		background.setFillColor(new Color(Color.WHITE, 300));
 		background.setOutlineThickness(10);
-		background.setOutlineColor(new Color(Color.YELLOW, 300));
+		background.setOutlineColor(Color.BLACK);
 		background.setPosition(new Vector2f(10,650));
 	}
 	
