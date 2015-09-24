@@ -54,10 +54,10 @@ public class Console {
 	 * Fonction qui initialise le background de la console.
 	 */
 	public void initBackground() {
-		background = new RectangleShape(new Vector2f(290,160));
+		background = new RectangleShape(new Vector2f(270,160));
 		background.setFillColor(new Color(Color.WHITE, 300));
 		background.setOutlineThickness(10);
-		background.setOutlineColor(new Color(Color.WHITE, 50));
+		background.setOutlineColor(new Color(Color.YELLOW, 300));
 		background.setPosition(new Vector2f(10,650));
 	}
 	

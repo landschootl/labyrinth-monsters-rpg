@@ -2,13 +2,17 @@ package player;
 
 import management.ResourceManager;
 
+import org.jsfml.graphics.Color;
+import org.jsfml.graphics.RectangleShape;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
-import org.jsfml.system.Vector2i;
-import org.jsfml.window.Mouse;
 import org.jsfml.window.event.Event;
+
+import resource.Texte;
+import console.Console;
 
 /**
  * Cette classe représente le joueur dans  le jeu.
@@ -16,12 +20,16 @@ import org.jsfml.window.event.Event;
  *
  */
 public class Player {
-	private int nbMaxLife = 3;
+	private float nbMaxLife = 3;
 	private int nbLife = 3;
 	
+	private RectangleShape backgroundLife;
+	private RectangleShape blood;
+	private Texte textLife;
 	private Sprite viseur = new Sprite();
 	
 	public Player(){
+		initDesignLife();
 		viseur.setTexture(ResourceManager.getTexture("resource/sprite/viseur.png"));
 	}
 	
@@ -48,6 +56,29 @@ public class Player {
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
 	public void show(RenderWindow window) {
+		window.draw(backgroundLife);
+		window.draw(blood);
+		textLife.show(window);
 		window.draw(viseur);
 	}
+	
+	/**
+	 * Fonction qui initialise le design de la vie du joueur.
+	 */
+	private void initDesignLife() {
+		// TODO Auto-generated method stub
+		backgroundLife = new RectangleShape(new Vector2f(60,160));
+		backgroundLife.setFillColor(new Color(Color.WHITE, 300));
+		backgroundLife.setOutlineThickness(10);
+		backgroundLife.setOutlineColor(new Color(10,50,50));
+		backgroundLife.setPosition(new Vector2f(290,650));
+		
+		float sizeBlood = (float) (160.0 * (nbLife/nbMaxLife));
+		blood = new RectangleShape(new Vector2f(60,sizeBlood));
+		blood.setFillColor(new Color(Color.RED, 300));
+		blood.setPosition(new Vector2f(290,650+160-sizeBlood));
+		
+		textLife = new Texte("Life\n"+nbLife+"/"+(int)nbMaxLife,30,new Vector2f(295,690),Color.BLACK,Text.BOLD);
+	}
+
 }
