@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RectangleShape;
 import org.jsfml.graphics.RenderWindow;
-import org.jsfml.graphics.Text;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
@@ -100,9 +99,9 @@ public class Console {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void show(RenderWindow window) {
+	public void draw(RenderWindow window) {
 		window.draw(background);
 		for(Texte text : texts)
-			text.show(window);
+			text.draw(window);
 	}
 }

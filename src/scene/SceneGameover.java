@@ -33,7 +33,7 @@ public class SceneGameover {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show() {
+	public void draw() {
 		
 	}
 	

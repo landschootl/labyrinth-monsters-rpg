@@ -21,7 +21,7 @@ public class Tile {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void show(RenderWindow window){
+	public void draw(RenderWindow window){
 		window.draw(sprite);
 	}
 }

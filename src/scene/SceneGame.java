@@ -1,8 +1,5 @@
 package scene;
 
-import javafx.scene.Scene;
-import map.Map;
-
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
@@ -55,10 +52,10 @@ public class SceneGame {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show() {
-		Console.getInstance().show(window);
-		donjon.show(window);
-		player.show(window);
+	public void draw() {
+		Console.getInstance().draw(window);
+		donjon.draw(window);
+		player.draw(window);
 	}
 	
 }

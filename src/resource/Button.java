@@ -20,7 +20,7 @@ public class Button {
 	}
 
 	// Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	public void show(RenderWindow window) {
+	public void draw(RenderWindow window) {
 		
 	}
 

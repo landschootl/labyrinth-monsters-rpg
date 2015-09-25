@@ -13,7 +13,6 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 import resource.Texte;
-import console.Console;
 
 /**
  * Cette classe représente le joueur dans  le jeu.
@@ -21,10 +20,12 @@ import console.Console;
  *
  */
 public class Player {
-	private float nbMaxLife = 3;
-	private int nbLife = 1;
+	private float nbMaxLife = 8;
+	private int nbLife = 3;
 	
 	private Sprite[][] sprites;
+	private Vector2f direction = new Vector2f(0,2);
+	
 	
 	private RectangleShape backgroundLife;
 	private RectangleShape blood;
@@ -60,10 +61,11 @@ public class Player {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void show(RenderWindow window) {
+	public void draw(RenderWindow window) {
+		window.draw(sprites[(int) direction.x][(int) direction.y]);
 		window.draw(backgroundLife);
 		window.draw(blood);
-		textLife.show(window);
+		textLife.draw(window);
 		window.draw(viseur);
 	}
 	

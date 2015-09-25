@@ -38,8 +38,8 @@ public class Donjon {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show(RenderWindow window) {
-		room.show(window);
+	public void draw(RenderWindow window) {
+		room.draw(window);
 	}
 	
 }

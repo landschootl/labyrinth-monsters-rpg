@@ -113,9 +113,9 @@ public class Map {
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
 	 */
-	public void show(RenderWindow window){
+	public void draw(RenderWindow window){
 		for(int i=0;i<SIZE_MAP;i++)
 			for(int j=0; j<SIZE_MAP;j++)
-				map[j][i].show(window);
+				map[j][i].draw(window);
 	}
 }

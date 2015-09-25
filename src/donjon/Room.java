@@ -35,8 +35,8 @@ public abstract class Room {
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */
-	public void show(RenderWindow window) {
-		map.show(window);
+	public void draw(RenderWindow window) {
+		map.draw(window);
 	}
 
 }

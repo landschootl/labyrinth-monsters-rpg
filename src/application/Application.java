@@ -93,17 +93,17 @@ public class Application {
 		window.clear(Color.BLACK);
 		switch (stateOfApp) {
 		case "Menu":
-			sceneMenu.show();
+			sceneMenu.draw();
 			break;
 		case "Game":
-			sceneGame.show();
+			sceneGame.draw();
 			break;
 		case "GameOver":
-			sceneGameover.show();
+			sceneGameover.draw();
 			break;
 		case "Pause":
-			sceneGame.show();
-			scenePause.show();
+			sceneGame.draw();
+			scenePause.draw();
 			break;
 		}
 		window.display();

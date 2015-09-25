@@ -22,7 +22,7 @@ public class SpriteManager {
 		for(int i=0; i<4; i++){
 			for(int j=0; j<3; j++){
 				Sprite sprite = new Sprite();
-				sprite.setTextureRect(new IntRect(i*32,j*32,32,32));
+				sprite.setTextureRect(new IntRect(j*32,i*32,32,32));
 				sprite.setTexture(texture);
 				sprites[i][j]=sprite;
 			}
