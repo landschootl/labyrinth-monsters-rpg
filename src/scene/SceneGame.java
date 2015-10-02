@@ -7,7 +7,6 @@ import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
 import org.jsfml.window.event.Event;
 
-import player.Player;
 import console.Console;
 import donjon.Donjon;
 
@@ -20,7 +19,6 @@ public class SceneGame {
 	private RenderWindow window;
 	private Clock timerFrame = new Clock(); // Permet la gestion des frames.
 	private Donjon donjon = new Donjon();
-	private Player player = new Player();
 	
 	public SceneGame(RenderWindow window){
 		Console.getInstance().addText("Bienvenue dans le jeu Donjon.", Text.BOLD, Color.RED);
@@ -34,7 +32,7 @@ public class SceneGame {
 	 * @param event : l'event sur lequel on écoute.
 	 */
 	public void handleEvents(Event event) {
-		player.handleEvents(event);
+		donjon.handleEvents(event);
 	}
 
 	/**
@@ -46,7 +44,7 @@ public class SceneGame {
 	    time=timerFrame.getElapsedTime();
 	    timerFrame.restart();
 		
-		player.update(time);
+	    donjon.update(time);
 	}
 
 	/**
@@ -55,7 +53,6 @@ public class SceneGame {
 	public void draw() {
 		Console.getInstance().draw(window);
 		donjon.draw(window);
-		player.draw(window);
 	}
 	
 }

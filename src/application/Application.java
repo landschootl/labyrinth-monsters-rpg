@@ -65,7 +65,7 @@ public class Application {
 			}
 		}
 	}
-
+	
 	/**
 	 * Fonction qui permet de gérer les actions.
 	 */
