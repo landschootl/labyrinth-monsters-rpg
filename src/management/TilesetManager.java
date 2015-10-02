@@ -22,29 +22,67 @@ public class TilesetManager {
 	
 	private final int SIZE_SPRITE = 32;
 	
-	private Map posTile = new HashMap<>();
-	private Map lockedTile = new HashMap<>();
+	private Map<String, Vector2f> posTile = new HashMap<>();
+	private Map<String, Boolean> lockedTile = new HashMap<>();
 	
 	public TilesetManager(){
-		posTile.put("porteVerrouille1", new Vector2f(0,0));
-		posTile.put("levier", new Vector2f(1,0));
-		posTile.put("toit", new Vector2f(2,0));
-		posTile.put("porteVerrouille2", new Vector2f(0,1));
-		posTile.put("depart", new Vector2f(1,1));
-		posTile.put("mur", new Vector2f(2,1));
-		posTile.put("coffreClose", new Vector2f(0,2));
-		posTile.put("coffreOpen", new Vector2f(1,2));
-		posTile.put("sol", new Vector2f(2,2));
+		posTile.put("doorClose", new Vector2f(0,0));
+		posTile.put("lever", new Vector2f(1,0));
+		posTile.put("roof", new Vector2f(2,0));
+		posTile.put("doorOpen", new Vector2f(0,1));
+		posTile.put("lava", new Vector2f(1,1));
+		posTile.put("wall", new Vector2f(2,1));
+		posTile.put("safeClose", new Vector2f(0,2));
+		posTile.put("safeOpen", new Vector2f(1,2));
+		posTile.put("grass", new Vector2f(2,2));
+		posTile.put("waterLeft", new Vector2f(0,3));
+		posTile.put("waterCenter", new Vector2f(1,3));
+		posTile.put("waterRight", new Vector2f(2,3));
+		posTile.put("timber", new Vector2f(3,3));
 		
-		lockedTile.put("porteVerrouille1", false);
-		lockedTile.put("levier", false);
-		lockedTile.put("toit", false);
-		lockedTile.put("porteVerrouille2", false);
-		lockedTile.put("depart", true);
-		lockedTile.put("mur", false);
-		lockedTile.put("coffreClose", false);
-		lockedTile.put("coffreOpen", false);
-		lockedTile.put("sol", true);
+		posTile.put("beginnerBow", new Vector2f(3,0));
+		posTile.put("slingShot", new Vector2f(4,0));
+		posTile.put("gun", new Vector2f(5,0));
+		posTile.put("bow", new Vector2f(6,0));
+		posTile.put("shield", new Vector2f(3,1));
+		posTile.put("helmet", new Vector2f(4,1));
+		posTile.put("clothes", new Vector2f(5,1));
+		posTile.put("boot", new Vector2f(6,1));
+		posTile.put("map", new Vector2f(3,2));
+		posTile.put("potionLife", new Vector2f(4,2));
+		posTile.put("lamp", new Vector2f(5,2));
+		posTile.put("key", new Vector2f(6,2));
+		posTile.put("crossbow", new Vector2f(4,3));
+		posTile.put("glove", new Vector2f(5,3));
+		
+		lockedTile.put("doorClose", true);
+		lockedTile.put("lever", true);
+		lockedTile.put("roof", true);
+		lockedTile.put("doorOpen", false);
+		lockedTile.put("lava", true);
+		lockedTile.put("wall", true);
+		lockedTile.put("safeClose", true);
+		lockedTile.put("safeOpen", true);
+		lockedTile.put("grass", false);
+		lockedTile.put("waterLeft", true);
+		lockedTile.put("waterCenter", true);
+		lockedTile.put("waterRight", true);
+		lockedTile.put("timber", true);
+		
+		lockedTile.put("beginnerBow", false);
+		lockedTile.put("slingShot", false);
+		lockedTile.put("gun", false);
+		lockedTile.put("bow", false);
+		lockedTile.put("shield", false);
+		lockedTile.put("helmet", false);
+		lockedTile.put("clothes", false);
+		lockedTile.put("boot", false);
+		lockedTile.put("map", false);
+		lockedTile.put("potionLife", false);
+		lockedTile.put("lamp", false);
+		lockedTile.put("key", false);
+		lockedTile.put("crossbow", false);
+		lockedTile.put("glove", false);
 	}
 	
 	/**

@@ -1,8 +1,5 @@
 package donjon;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
 import org.jsfml.window.event.Event;
@@ -17,7 +14,7 @@ import player.Player;
 public class Donjon {
 
 	//private Map rooms = new HashMap();
-	private Room room = new RoomIntersect();
+	private Room room = new RoomBegin();
 	private Player player = new Player();
 	
 	public Donjon(){
