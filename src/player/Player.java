@@ -172,6 +172,11 @@ public class Player {
 		this.vitesseY = vitesseY;
 	}
 	
+	public Vector2f getPosition(){
+		return sprite.getPosition();
+	}
 	
-
+	public void setPosition(Vector2f position){
+		sprite.setPosition(position);
+	}
 }

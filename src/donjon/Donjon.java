@@ -1,10 +1,19 @@
 package donjon;
 
+import management.CollisionManager;
+
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
+import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 import player.Player;
+import donjon.door.DoorEast;
+import donjon.door.DoorNorth;
+import donjon.door.DoorSouth;
+import donjon.door.DoorWest;
+import donjon.room.RoomExit;
+import donjon.room.RoomIntersect;
 
 /**
  * Classe qui représente le donjon
@@ -12,13 +21,15 @@ import player.Player;
  *
  */
 public class Donjon {
-
 	//private Map rooms = new HashMap();
-	private Room room = new RoomBegin();
+	private RoomIntersect room = new RoomIntersect();
 	private Player player = new Player();
 	
 	public Donjon(){
-		
+		room.addDoor(new DoorWest(new RoomExit(), false));
+		room.addDoor(new DoorNorth(new RoomExit(), true));
+		room.addDoor(new DoorEast(new RoomExit(), true));
+		room.addDoor(new DoorSouth(new RoomExit(), true));
 	}
 	
 	/**
@@ -34,7 +45,10 @@ public class Donjon {
 	 */
 	public void update(Time time) {
 		player.update();
+		Vector2f lastPosition = player.getPosition();
 		player.move(time);
+		if(CollisionManager.collisionPlayerWall(player.getPosition()))
+			player.setPosition(lastPosition);
 	}
 
 	/**

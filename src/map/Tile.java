@@ -2,6 +2,7 @@ package map;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Vector2f;
 
 /**
  * Classe définissant un tile présent dans les tileset.
@@ -23,5 +24,17 @@ public class Tile {
 	 */
 	public void draw(RenderWindow window){
 		window.draw(sprite);
+	}
+	
+	public Vector2f getPosition(){
+		return sprite.getPosition();
+	}
+
+	public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
 	}
 }

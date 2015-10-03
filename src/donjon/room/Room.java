@@ -1,9 +1,11 @@
-package donjon;
+package donjon.room;
 
 import map.Map;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.event.Event;
+
+import donjon.door.Door;
 
 /**
  * Classe qui représente une salle du donjon.
@@ -37,6 +39,14 @@ public abstract class Room {
 	 */
 	public void draw(RenderWindow window) {
 		map.draw(window);
+	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
 	}
 
 }

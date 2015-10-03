@@ -11,7 +11,7 @@ public class Map {
 	
 	public static String[][] modeleIntersection = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "doorOpen", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -19,8 +19,6 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "doorOpen", "roof"},
-		{"roof", "doorOpen", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -28,13 +26,15 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "doorOpen", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
 	
 	public static String[][] modeleExit = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "doorOpen", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -42,8 +42,6 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "doorOpen", "roof"},
-		{"roof", "doorOpen", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -51,13 +49,15 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "doorOpen", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
 	
 	public static String[][] modeleBegin = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "doorOpen", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -65,8 +65,8 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "doorOpen", "roof"},
-		{"roof", "doorOpen", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -118,4 +118,14 @@ public class Map {
 			for(int j=0; j<SIZE_MAP;j++)
 				map[j][i].draw(window);
 	}
+
+	public Tile[][] getMap() {
+		return map;
+	}
+
+	public void setMap(Tile[][] map) {
+		this.map = map;
+	}
+	
+	
 }

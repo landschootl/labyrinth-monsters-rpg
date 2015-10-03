@@ -39,6 +39,7 @@ public class TilesetManager {
 		posTile.put("waterCenter", new Vector2f(1,3));
 		posTile.put("waterRight", new Vector2f(2,3));
 		posTile.put("timber", new Vector2f(3,3));
+		posTile.put("checkpoint", new Vector2f(4,3));
 		
 		posTile.put("beginnerBow", new Vector2f(3,0));
 		posTile.put("slingShot", new Vector2f(4,0));
@@ -52,8 +53,8 @@ public class TilesetManager {
 		posTile.put("potionLife", new Vector2f(4,2));
 		posTile.put("lamp", new Vector2f(5,2));
 		posTile.put("key", new Vector2f(6,2));
-		posTile.put("crossbow", new Vector2f(4,3));
-		posTile.put("glove", new Vector2f(5,3));
+		posTile.put("crossbow", new Vector2f(5,3));
+		posTile.put("glove", new Vector2f(6,3));
 		
 		lockedTile.put("doorClose", true);
 		lockedTile.put("lever", true);
@@ -68,6 +69,7 @@ public class TilesetManager {
 		lockedTile.put("waterCenter", true);
 		lockedTile.put("waterRight", true);
 		lockedTile.put("timber", true);
+		lockedTile.put("checkpoint", false);
 		
 		lockedTile.put("beginnerBow", false);
 		lockedTile.put("slingShot", false);
@@ -114,15 +116,25 @@ public class TilesetManager {
 	/**
 	 * Retourne le sprite correspondant au nom passé en argument.
 	 * @param name : le nom du Tile souhaité.
-	 * @param positionSprite : la position du Sprite.
 	 * @return le Sprite correspond au nom défini.
 	 */
-	public Sprite getSprite(String name, Vector2f positionSprite){
+	public Sprite getSprite(String name){
 		Sprite sprite = new Sprite();
 		int posX = (int) ((Vector2f) posTile.get(name)).x*SIZE_SPRITE;
 		int posY = (int) ((Vector2f) posTile.get(name)).y*SIZE_SPRITE;
 		sprite.setTexture(ResourceManager.getTexture("resource/tileset/tileset.png"));
 		sprite.setTextureRect(new IntRect(posX,posY,SIZE_SPRITE,SIZE_SPRITE));
+		return sprite;
+	}
+	
+	/**
+	 * Retourne le sprite correspondant au nom passé en argument avec une position attribué.
+	 * @param name : le nom du Tile souhaité.
+	 * @param positionSprite : la position du Sprite.
+	 * @return le Sprite correspond au nom défini.
+	 */
+	public Sprite getSpriteWhithPosition(String name, Vector2f positionSprite){
+		Sprite sprite = getSprite(name);
 		sprite.setPosition(positionSprite);
 		return sprite;
 	}

@@ -1,4 +1,4 @@
-package donjon;
+package donjon.room;
 
 import map.Map;
 
