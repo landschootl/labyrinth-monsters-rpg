@@ -40,4 +40,20 @@ public abstract class Door {
 	public Vector2f getPosition(){
 		return checkpoint.getPosition();
 	}
+
+	public Room getNextRoom() {
+		return nextRoom;
+	}
+
+	public void setNextRoom(Room nextRoom) {
+		this.nextRoom = nextRoom;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
 }
