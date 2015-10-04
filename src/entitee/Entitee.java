@@ -126,4 +126,12 @@ public abstract class Entitee {
 	public void setPosition(Vector2f position){
 		sprite.setPosition(position);
 	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int life) {
+		this.life = life;
+	}
 }

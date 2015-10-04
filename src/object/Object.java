@@ -8,13 +8,11 @@ import org.jsfml.graphics.Sprite;
  *
  */
 public abstract class Object {
-	private Sprite sprite;
+	protected Sprite sprite;
 	
-	public Object(){
-		
+	public Object(Sprite sprite){
+		this.sprite = sprite;
 	}
-	
-	public abstract void action();
 	
 	public abstract void pickUp();
 }

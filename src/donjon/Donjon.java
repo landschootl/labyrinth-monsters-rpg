@@ -18,6 +18,7 @@ import donjon.door.DoorWest;
 import donjon.room.Room;
 import donjon.room.RoomExit;
 import donjon.room.RoomIntersect;
+import donjon.room.RoomTrap;
 import entitee.monster.Zombie;
 import entitee.player.Player;
 
@@ -34,7 +35,7 @@ public class Donjon {
 		RoomIntersect roomTmp = new RoomIntersect();
 		roomTmp.addMonster(new Zombie(new Vector2f(100,100)));
 		roomTmp.addDoor(new DoorWest(new RoomExit(), false));
-		roomTmp.addDoor(new DoorNorth(new RoomExit(), true));
+		roomTmp.addDoor(new DoorNorth(new RoomTrap(), true));
 		roomTmp.addDoor(new DoorEast(new RoomExit(), true));
 		roomTmp.addDoor(new DoorSouth(new RoomExit(), true));
 		room = roomTmp;

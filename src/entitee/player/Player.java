@@ -1,6 +1,8 @@
 package entitee.player;
 
+import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
@@ -86,7 +88,7 @@ public class Player extends Entitee {
 	public void update() {
 		super.update(viseur.getPosition());
 		//Si On perd une vie ! 
-		lifeBar.update(life, MAX_LIFE);
+		lifeBar.update(life, MAX_LIFE+inventory.getLifeBonusEquipment());
 	}
 	
 	/**
@@ -106,5 +108,35 @@ public class Player extends Entitee {
 		super.draw(window);
 		lifeBar.draw(window);
 		viseur.draw(window);
+	}
+	
+	public boolean addLife(int nbLife){
+		int maxLife = MAX_LIFE+inventory.getLifeBonusEquipment();
+		if(life==maxLife){
+			Console.getInstance().getInstance().addText("La jauge de vie est pleine !", Text.REGULAR, Color.RED);
+			return false;
+		}
+		int lifeGain=0;
+		if((life+nbLife)>maxLife){
+			life=MAX_LIFE;		
+			lifeGain=maxLife-(life+nbLife);
+		} else {
+			life+=nbLife;
+			lifeGain=nbLife;
+		}
+		Console.getInstance().getInstance().addText("Vous avez gagné "+lifeGain+" vies !", Text.REGULAR, Color.BLACK);
+		return true;
+	}
+
+	public int getMAX_LIFE() {
+		return MAX_LIFE;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 }
