@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import map.Map;
 
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.system.Time;
 import org.jsfml.window.event.Event;
 
 import donjon.door.Door;
+import entitee.monster.Monster;
+import entitee.player.Player;
 
 /**
  * Classe qui représente une salle du donjon.
@@ -40,8 +43,10 @@ public abstract class Room {
 
 	/**
 	 * Fonction qui permet de gérer les actions.
+	 * @param time 
+	 * @param player 
 	 */
-	public void update() {
+	public void update(Player player, Time time) {
 
 	}
 

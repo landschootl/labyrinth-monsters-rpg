@@ -1,4 +1,4 @@
-package player;
+package entitee.player;
 
 import management.ResourceManager;
 

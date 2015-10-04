@@ -9,7 +9,6 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
-import player.Player;
 import console.Console;
 import donjon.door.Door;
 import donjon.door.DoorEast;
@@ -19,6 +18,8 @@ import donjon.door.DoorWest;
 import donjon.room.Room;
 import donjon.room.RoomExit;
 import donjon.room.RoomIntersect;
+import entitee.monster.Zombie;
+import entitee.player.Player;
 
 /**
  * Classe qui représente le donjon
@@ -32,6 +33,7 @@ public class Donjon {
 	
 	public Donjon(){
 		RoomIntersect roomTmp = new RoomIntersect();
+		roomTmp.addMonster(new Zombie(new Vector2f(100,100)));
 		roomTmp.addDoor(new DoorWest(new RoomExit(), false));
 		roomTmp.addDoor(new DoorNorth(new RoomExit(), true));
 		roomTmp.addDoor(new DoorEast(new RoomExit(), true));
@@ -52,6 +54,7 @@ public class Donjon {
 	 */
 	public void update(Time time){
 		player.update();
+		room.update(player, time);
 		
 		Vector2f lastPosition = player.getPosition();
 		player.move(time);
