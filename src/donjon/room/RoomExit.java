@@ -6,7 +6,7 @@ import map.Map;
 public class RoomExit extends Room {
 	
 	public RoomExit(){
-		super.map = new Map(Map.modeleExit);
+		super(Map.modeleExit);
 	}
 	
 	public void update(){

@@ -54,5 +54,13 @@ public class Texte {
 	public Vector2f getPosition(){
 		return text.getPosition();
 	}
+
+	public Text getText() {
+		return text;
+	}
+
+	public void setText(Text text) {
+		this.text = text;
+	}
 	
 }

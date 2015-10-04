@@ -29,7 +29,6 @@ import entitee.player.Player;
 public class Donjon {
 	//private Map rooms = new HashMap();
 	private Room room;
-	private Player player = new Player();
 	
 	public Donjon(){
 		RoomIntersect roomTmp = new RoomIntersect();
@@ -46,26 +45,28 @@ public class Donjon {
 	 * @param event : l'event sur lequel on écoute.
 	 */
 	public void handleEvents(Event event) {
-		player.handleEvents(event);
+		Player.getInstance().handleEvents(event);
 	}
 
 	/**
 	 * Fonction qui permet de gérer les actions.
 	 */
 	public void update(Time time){
-		player.update();
-		room.update(player, time);
+		Player.getInstance().update();
+		room.update(time);
 		
-		Vector2f lastPosition = player.getPosition();
-		player.move(time);
+		Vector2f lastPosition = Player.getInstance().getPosition();
+		Player.getInstance().move(time);
 		// Collision playerMur
-		if(CollisionManager.collisionPlayerWall(player.getPosition()))
-			player.setPosition(lastPosition);
+		if(CollisionManager.collisionPlayerWall(Player.getInstance().getPosition()))
+			Player.getInstance().setPosition(lastPosition);
 		// Collision playerDoor
-		Door doorTmp = CollisionManager.collisionPlayerDoors(player.getPosition(), room.getDoors());
+		Door doorTmp = CollisionManager.collisionPlayerDoors(Player.getInstance().getPosition(), room.getDoors());
 		if(doorTmp!=null)
 			if(!doorTmp.isLocked()){
-				Console.getInstance().addText("La porte est verrouillé !", Text.REGULAR, Color.RED);
+				System.out.println(time.asSeconds());
+				if(time.asMicroseconds()%500==0)
+					Console.getInstance().addText("La porte est verrouillé !", Text.REGULAR, Color.RED);
 			} else {
 				room=doorTmp.getNextRoom();
 			}
@@ -77,6 +78,6 @@ public class Donjon {
 	 */
 	public void draw(RenderWindow window) {
 		room.draw(window);
-		player.draw(window);
+		Player.getInstance().draw(window);
 	}
 }

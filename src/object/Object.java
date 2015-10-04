@@ -1,4 +1,4 @@
-package Object;
+package object;
 
 import org.jsfml.graphics.Sprite;
 
@@ -10,4 +10,11 @@ import org.jsfml.graphics.Sprite;
 public abstract class Object {
 	private Sprite sprite;
 	
+	public Object(){
+		
+	}
+	
+	public abstract void action();
+	
+	public abstract void pickUp();
 }

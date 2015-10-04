@@ -14,7 +14,7 @@ import donjon.door.Door;
 public class CollisionManager {
 	
 	public static boolean collisionPlayerWall(Vector2f posPlayer){
-		return posPlayer.x<64 || posPlayer.x+32>576 || posPlayer.y<44 || posPlayer.y+32>576;
+		return posPlayer.x<64 || posPlayer.x+32>576 || posPlayer.y<54 || posPlayer.y+32>576;
 	}
 
 	public static Door collisionPlayerDoors(Vector2f position, ArrayList<Door> doors) {
@@ -27,9 +27,5 @@ public class CollisionManager {
 		return null;
 	}
 
-	private static boolean collisionRectangleRectangle(Vector2f position, Vector2f position2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 }

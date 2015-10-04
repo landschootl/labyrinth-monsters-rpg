@@ -14,16 +14,16 @@ public class RoomIntersect extends Room {
 	private ArrayList<Monster> monsters = new ArrayList<>();
 	
 	public RoomIntersect(){
-		super.map = new Map(Map.modeleIntersection);
+		super(Map.modeleIntersection);
 	}
 	
 	public void addMonster(Monster monster){
 		monsters.add(monster);
 	}
 	
-	public void update(Player player, Time time){
+	public void update(Time time){
 		for(Monster monster : monsters)
-			monster.update(player.getPosition(), time);
+			monster.update(Player.getInstance().getPosition(), time);
 	}
 	
 	/**

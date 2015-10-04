@@ -21,8 +21,8 @@ public abstract class Room {
 	protected Map map;
 	private ArrayList<Door> doors = new ArrayList<>();
 	
-	public Room(){
-		
+	public Room(String[][] modeleMap){
+		this.map = new Map(modeleMap);
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public abstract class Room {
 	 * @param time 
 	 * @param player 
 	 */
-	public void update(Player player, Time time) {
+	public void update(Time time) {
 
 	}
 

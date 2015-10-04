@@ -5,6 +5,7 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
+import console.Console;
 import entitee.Entitee;
 
 /**
@@ -15,11 +16,24 @@ import entitee.Entitee;
 public class Player extends Entitee {
 	private final int MAX_LIFE = 3;
 	
+	private static Player instance = null;
+	
+	private Inventory inventory = new Inventory();
 	private LifeBar lifeBar = new LifeBar();
 	private Viseur viseur = new Viseur();
 	
-	public Player(){
+	private Player(){
 		super(32, 32, 3, "resource/sprite/soldier.png", 100, new Vector2f(500, 500));
+	}
+	
+	/**
+	 * Fonction qui permet de créer la seule instance de Player si elle n'existe pas.
+	 * @return la seule instance de la classe Player.
+	 */
+	public static Player getInstance(){
+		if(instance==null)
+			instance = new Player();
+		return instance;
 	}
 	
 	/**
