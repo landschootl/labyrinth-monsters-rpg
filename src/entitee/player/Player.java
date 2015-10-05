@@ -1,12 +1,18 @@
 package entitee.player;
 
+import java.util.ArrayList;
+
+import object.weapon.Munition;
+
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
+import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
+import application.Application;
 import console.Console;
 import entitee.Entitee;
 
@@ -16,11 +22,13 @@ import entitee.Entitee;
  *
  */
 public class Player extends Entitee {
-	private final int MAX_LIFE = 3;
+	private final float MAX_LIFE = 3;
+	private Clock intervalShoot = new Clock();
 	
 	private static Player instance = null;
 	
 	private Inventory inventory = new Inventory();
+	private ArrayList<Munition> munitions = new ArrayList<>();
 	private LifeBar lifeBar = new LifeBar();
 	private Viseur viseur = new Viseur();
 	
@@ -47,16 +55,25 @@ public class Player extends Entitee {
 		if(event.type==Event.Type.KEY_PRESSED){
 	        switch(event.asKeyEvent().key){
 	            case D :
-	                this.vitesseY=speed;
+	                this.speedY=speed+inventory.getSpeedBonusEquipment();
 	            break;
 	            case Q :
-	            	this.vitesseY=-speed;
+	            	this.speedY=-speed-inventory.getSpeedBonusEquipment();
 	            break;
 	            case Z :
-	            	this.vitesseX=-speed;
+	            	this.speedX=-speed-inventory.getSpeedBonusEquipment();
 	            break;
 	            case S :
-	            	this.vitesseX=speed;
+	            	this.speedX=speed+inventory.getSpeedBonusEquipment();
+	            break;
+	            case NUM1 :
+	            	inventory.useSmallPotion();
+	            break;
+	            case NUM2 :
+	            	inventory.useMediumPotion();
+	            break;
+	            case NUM3 :
+	            	inventory.useLargePotion();
 	            break;
 	            default:
 	            break;
@@ -65,21 +82,27 @@ public class Player extends Entitee {
 		if(event.type==Event.Type.KEY_RELEASED){
 	        switch(event.asKeyEvent().key){
 	            case D :
-	            	this.vitesseY=0;
+	            	this.speedY=0;
 	            break;
 	            case Q :
-	            	this.vitesseY=0;
+	            	this.speedY=0;
 	            break;
 	            case Z :
-	            	this.vitesseX=0;
+	            	this.speedX=0;
 	            break;
 	            case S :
-	            	this.vitesseX=0;;
+	            	this.speedX=0;;
 	            break;
 	            default:
 	            break;
 	        }
 	    }
+		if(event.type==Event.Type.MOUSE_BUTTON_PRESSED){
+			if(intervalShoot.getElapsedTime().asSeconds()>inventory.getIntervalShootWeapon()){
+				shoot();
+				intervalShoot.restart();
+			}
+		}
 	}
 
 	/**
@@ -97,7 +120,9 @@ public class Player extends Entitee {
 	 */
 	public void move(Time time){
 		super.move(time);
-		sprite.setPosition(new Vector2f(sprite.getPosition().x+vitesseY*time.asSeconds(),sprite.getPosition().y+vitesseX*time.asSeconds()));
+		for(Munition munition : munitions)
+			munition.move(time);
+		sprite.setPosition(new Vector2f(sprite.getPosition().x+speedY*time.asSeconds(),sprite.getPosition().y+speedX*time.asSeconds()));
 	}
 
 	/**
@@ -108,15 +133,21 @@ public class Player extends Entitee {
 		super.draw(window);
 		lifeBar.draw(window);
 		viseur.draw(window);
+		for(Munition munition : munitions)
+			munition.draw(window);
 	}
 	
-	public boolean addLife(int nbLife){
-		int maxLife = MAX_LIFE+inventory.getLifeBonusEquipment();
+	public void shoot(){
+		munitions.add(new Munition(getPosition(),viseur.getPosition(),inventory.getSpeedShootWeapon()));
+	}
+	
+	public boolean addLife(float nbLife){
+		float maxLife = MAX_LIFE+inventory.getLifeBonusEquipment();
 		if(life==maxLife){
 			Console.getInstance().getInstance().addText("La jauge de vie est pleine !", Text.REGULAR, Color.RED);
 			return false;
 		}
-		int lifeGain=0;
+		float lifeGain=0;
 		if((life+nbLife)>maxLife){
 			life=MAX_LIFE;		
 			lifeGain=maxLife-(life+nbLife);
@@ -124,11 +155,31 @@ public class Player extends Entitee {
 			life+=nbLife;
 			lifeGain=nbLife;
 		}
-		Console.getInstance().getInstance().addText("Vous avez gagné "+lifeGain+" vies !", Text.REGULAR, Color.BLACK);
+		Console.getInstance().getInstance().addText("+ "+(int)lifeGain+" point de vies !", Text.REGULAR, Color.BLACK);
 		return true;
 	}
+	
+	public void loseLife(int degat) {
+		// TODO Auto-generated method stub
+		float loseLife = 0;
+		if((life-degat)<0){
+			life=0;
+			loseLife=(life-degat);
+		} else {
+			life-=degat;
+			loseLife=degat;
+		}
+		Console.getInstance().getInstance().addText("- "+(int)loseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
+		if(life==0)
+			isDead();
+	}
+	
+	public void isDead(){
+		Console.getInstance().getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
+		Application.setStateOfApp("gameOver");
+	}
 
-	public int getMAX_LIFE() {
+	public float getMAX_LIFE() {
 		return MAX_LIFE;
 	}
 
@@ -139,4 +190,5 @@ public class Player extends Entitee {
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
+	
 }

@@ -6,7 +6,7 @@ import entitee.player.Player;
 public class Glove extends Equipment{
 	
 	public Glove() {
-		super(TilesetManager.getInstance().getSprite("Glove"), 1);
+		super(TilesetManager.getInstance().getSprite("glove"), "glove", 1);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -5,12 +5,12 @@ import org.jsfml.graphics.Sprite;
 public abstract class Equipment extends object.Object{
 	private int bonus;
 	
-	public Equipment(Sprite sprite, int bonus){
-		super(sprite);
+	public Equipment(Sprite sprite, String name, int bonus){
+		super(sprite, name);
 		this.bonus=bonus;
 	}
 
-	public int getBonusLife() {
+	public int getBonus() {
 		return bonus;
 	}
 

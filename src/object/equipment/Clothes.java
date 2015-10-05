@@ -6,7 +6,7 @@ import entitee.player.Player;
 public class Clothes extends Equipment{
 	
 	public Clothes() {
-		super(TilesetManager.getInstance().getSprite("Clothes"), 1);
+		super(TilesetManager.getInstance().getSprite("clothes"), "clothes", 1);
 		// TODO Auto-generated constructor stub
 	}
 

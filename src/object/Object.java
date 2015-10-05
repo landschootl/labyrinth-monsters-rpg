@@ -9,10 +9,21 @@ import org.jsfml.graphics.Sprite;
  */
 public abstract class Object {
 	protected Sprite sprite;
+	protected String name;
 	
-	public Object(Sprite sprite){
+	public Object(Sprite sprite, String name){
 		this.sprite = sprite;
+		this.name = name;
 	}
 	
 	public abstract void pickUp();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

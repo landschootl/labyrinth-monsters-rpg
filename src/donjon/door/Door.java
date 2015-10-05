@@ -22,7 +22,7 @@ public abstract class Door {
 	public Door(Room nextRoom, boolean locked){
 		this.nextRoom=nextRoom;
 		this.locked=locked;
-		if(locked)
+		if(!locked)
 			this.door = TilesetManager.getInstance().getSprite("doorOpen");
 		else
 			this.door = TilesetManager.getInstance().getSprite("doorClose");

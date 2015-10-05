@@ -26,12 +26,12 @@ public class LifeBar {
 		backgroundLife.setPosition(new Vector2f(290,650));
 	}
 	
-	public void update(int life, int MAX_LIFE){
+	public void update(float life, float MAX_LIFE){
 		float sizeBlood = (float) (160.0 * (life/MAX_LIFE));
 		blood = new RectangleShape(new Vector2f(60,sizeBlood));
 		blood.setFillColor(new Color(232,12,50));
 		blood.setPosition(new Vector2f(290,650+160-sizeBlood));
-		textLife = new Texte("Life\n"+life+"/"+(int)MAX_LIFE,30,new Vector2f(295,690),Color.BLACK,Text.BOLD);
+		textLife = new Texte("Life\n"+(int)life+"/"+(int)MAX_LIFE,30,new Vector2f(295,690),Color.BLACK,Text.BOLD);
 	}
 	
 	/**

@@ -5,7 +5,7 @@ import entitee.player.Player;
 public class MediumPotionLife extends PotionLife {
 
 	public MediumPotionLife() {
-		super(3);
+		super(3, "medium potion life");
 		// TODO Auto-generated constructor stub
 	}
 

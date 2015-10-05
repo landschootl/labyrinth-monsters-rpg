@@ -12,11 +12,11 @@ import org.jsfml.system.Vector2f;
 public abstract class Entitee {
 	protected int SIZE_WIDTH;
 	protected int SIZE_HEIGHT;
-	protected int life;
+	protected float life;
 	protected Sprite sprite = new Sprite(); // Le sprite du joueur.
 	protected IntRect[][] posSprites = new IntRect[4][3]; // Les différentes positions du découpage de la texture.
 	protected int directionSprite=0, animationSprite=0; // La direction du joueur, ce sont les positions pour le tableau posSprites.
-	protected float vitesseX=0, vitesseY=0; // La vitesse x et y du joueur. (-100, 0 ou +100).
+	protected float speedX=0, speedY=0; // La vitesse x et y du joueur. (-100, 0 ou +100).
 	protected Clock timerAnimation = new Clock();
 	protected int speed;
 	
@@ -49,7 +49,7 @@ public abstract class Entitee {
 	 * @param time : le temps pour la gestion des frames.
 	 */
 	public void move(Time time){
-		if(timerAnimation.getElapsedTime().asSeconds() > 0.3 && (vitesseX != 0 || vitesseY != 0)){
+		if(timerAnimation.getElapsedTime().asSeconds() > 0.3 && (speedX != 0 || speedY != 0)){
 			animationSprite++;
 			timerAnimation.restart();
 		}
@@ -104,19 +104,19 @@ public abstract class Entitee {
 	}
 
 	public float getVitesseX() {
-		return vitesseX;
+		return speedX;
 	}
 
 	public void setVitesseX(float vitesseX) {
-		this.vitesseX = vitesseX;
+		this.speedX = vitesseX;
 	}
 
 	public float getVitesseY() {
-		return vitesseY;
+		return speedY;
 	}
 
 	public void setVitesseY(float vitesseY) {
-		this.vitesseY = vitesseY;
+		this.speedY = vitesseY;
 	}
 	
 	public Vector2f getPosition(){
@@ -127,11 +127,15 @@ public abstract class Entitee {
 		sprite.setPosition(position);
 	}
 
-	public int getLife() {
+	public float getLife() {
 		return life;
 	}
 
-	public void setLife(int life) {
+	public void setLife(float life) {
 		this.life = life;
+	}
+	
+	public Sprite getSprite(){
+		return sprite;
 	}
 }

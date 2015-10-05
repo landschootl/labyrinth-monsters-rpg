@@ -37,4 +37,13 @@ public class Tile {
 	public void setChecked(boolean checked) {
 		this.checked = checked;
 	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
+	
 }

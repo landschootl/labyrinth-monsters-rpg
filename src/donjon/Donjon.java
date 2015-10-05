@@ -32,12 +32,17 @@ public class Donjon {
 	private Room room;
 	
 	public Donjon(){
+		createDonjon();
+	}
+	
+	public void createDonjon(){
 		RoomIntersect roomTmp = new RoomIntersect();
 		roomTmp.addMonster(new Zombie(new Vector2f(100,100)));
-		roomTmp.addDoor(new DoorWest(new RoomExit(), false));
-		roomTmp.addDoor(new DoorNorth(new RoomTrap(), true));
-		roomTmp.addDoor(new DoorEast(new RoomExit(), true));
-		roomTmp.addDoor(new DoorSouth(new RoomExit(), true));
+		roomTmp.addMonster(new Zombie(new Vector2f(150,150)));
+		roomTmp.addDoor(new DoorWest(new RoomExit(), true));
+		roomTmp.addDoor(new DoorNorth(new RoomTrap(), false));
+		roomTmp.addDoor(new DoorEast(new RoomExit(), false));
+		roomTmp.addDoor(new DoorSouth(new RoomExit(), false));
 		room = roomTmp;
 	}
 	
@@ -59,21 +64,29 @@ public class Donjon {
 		Vector2f lastPosition = Player.getInstance().getPosition();
 		Player.getInstance().move(time);
 		// Collision playerMur
-		if(CollisionManager.collisionPlayerWall(Player.getInstance().getPosition()))
+		if(CollisionManager.collisionPlayerMap(room.getMap().getMap()))
 			Player.getInstance().setPosition(lastPosition);
 		// Collision playerDoor
-		Door doorTmp = CollisionManager.collisionPlayerDoors(Player.getInstance().getPosition(), room.getDoors());
+		Door doorTmp = CollisionManager.collisionPlayerDoors(room.getDoors());
 		if(doorTmp!=null)
-			if(!doorTmp.isLocked()){
-				System.out.println(time.asSeconds());
-				if(time.asMicroseconds()%500==0)
-					Console.getInstance().addText("La porte est verrouillé !", Text.REGULAR, Color.RED);
+			if(doorTmp.isLocked()){
+				if(Player.getInstance().getInventory().useKey()){
+					doorTmp.setLocked(true);
+					Console.getInstance().addText("Porte dévérrouillé !", Text.REGULAR, Color.BLACK);
+					changedRoom(doorTmp.getNextRoom());
+				}
 			} else {
-				room=doorTmp.getNextRoom();
+				changedRoom(doorTmp.getNextRoom());
 			}
-		// Collision playerCoffre
+		// Collision playerMonstre
+		
 	}
 
+	public void changedRoom(Room room){
+		Console.getInstance().addText("Vous avez changé de salle !", Text.REGULAR, Color.GREEN);
+		this.room=room;
+	}
+	
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
 	 */

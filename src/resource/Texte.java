@@ -23,21 +23,6 @@ public class Texte {
 		text.setColor(color);
 		text.setStyle(style);
 	}
-	
-	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'event sur lequel on écoute.
-	 */
-	public void handleEvents(Event event) {
-
-	}
-
-	/**
-	 * Fonction qui permet de gérer les actions.
-	 */
-	public void update() {
-
-	}
 
 	/**
 	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
@@ -61,6 +46,10 @@ public class Texte {
 
 	public void setText(Text text) {
 		this.text = text;
+	}
+	
+	public void setString(String string){
+		text.setString(string);
 	}
 	
 }
