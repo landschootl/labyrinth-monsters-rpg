@@ -5,10 +5,13 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
 import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
+import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
+import resource.Texte;
 import console.Console;
 import donjon.Donjon;
+import entitee.player.Player;
 
 /**
  * Classe qui représente la scène du jeu en cours.
@@ -16,43 +19,63 @@ import donjon.Donjon;
  *
  */
 public class SceneGame {
+	/**
+	 * Pointeur sur la fenetre de l'application.
+	 */
 	private RenderWindow window;
-	private Clock timerFrame = new Clock(); // Permet la gestion des frames.
-	private Donjon donjon = new Donjon();
+	/**
+	 * Permet la gestion des Frames dans le jeu.
+	 */
+	private Clock timerFrame = new Clock();
+	/**
+	 * Le level de la partie.
+	 */
+	private int level = 1;
+	
+	private Donjon donjon = new Donjon(level);
 	
 	public SceneGame(RenderWindow window){
-		Console.getInstance().addText("Bienvenue dans le jeu Donjon.", Text.BOLD, Color.RED);
-		Console.getInstance().addText("Youpi la console marche parfaitement !", Text.REGULAR, Color.BLUE);
-		Console.getInstance().addText("Thibault est qu'un gland !", Text.REGULAR, Color.BLUE);
+		Console.getInstance().presentation();
 		this.window=window;
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'event sur lequel on écoute.
+	 * Augmente le level de la partie.
+	 */
+	public void upLevel(){
+		level+=1;
+		donjon = new Donjon(level);
+	}
+	
+	/**
+	 * Permet de gérer les événements de la scène.
+	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
-		donjon.handleEvents(event);
+		Player.getInstance().handleEvents(event);
 	}
 
 	/**
-	 * Fonction qui permet de gérer les actions.
+	 * Permet de gérer les actions de la scène.
 	 */
 	public void update() {
-		// Gestion des frames.
 	    Time time;
 	    time=timerFrame.getElapsedTime();
 	    timerFrame.restart();
 		
 	    donjon.update(time);
+	    Player.getInstance().update();
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Affiche les éléments graphiques dans la fenêtre de la scène.
 	 */
 	public void draw() {
 		Console.getInstance().draw(window);
 		donjon.draw(window);
+		Player.getInstance().draw(window);
+		Texte textLevel = new Texte("Level : "+level, 20, new Vector2f(5,3), Color.BLACK, Text.BOLD);
+		textLevel.draw(window);
 	}
 	
 }

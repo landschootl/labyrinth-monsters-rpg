@@ -14,8 +14,8 @@ import org.jsfml.graphics.Texture;
  *
  */
 public class ResourceManager {
-	private static Map fonts = new HashMap<>();
-	private static Map textures = new HashMap<>();
+	private static Map<String, Font> fonts = new HashMap<>();
+	private static Map<String, Texture> textures = new HashMap<>();
 	
 	/**
 	 * Fonction qui permet de vérifier si le Font souhaité existe, et de le créer ainsi que le charger si il n'éxiste pas.

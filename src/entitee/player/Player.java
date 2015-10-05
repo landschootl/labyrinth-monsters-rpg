@@ -13,31 +13,55 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 import application.Application;
+import application.Application.State;
 import console.Console;
 import entitee.Entitee;
 
 /**
- * Cette classe représente le joueur dans  le jeu.
+ * Classe singleton qui représente le joueur.
  * @author Ludov_000
  *
  */
 public class Player extends Entitee {
+	/**
+	 * Le maximum de sa vie.
+	 */
 	private final float MAX_LIFE = 3;
+	/**
+	 * Timer qui gère le temps entre deux tirs.
+	 */
 	private Clock intervalShoot = new Clock();
+	/**
+	 * Si le joueur exécute l'action pour ramasser un object.
+	 */
+	private boolean actionPickUp = false;
 	
+	/**
+	 * L'unique instance de la classe joueur.
+	 */
 	private static Player instance = null;
 	
 	private Inventory inventory = new Inventory();
+	/**
+	 * Les tirs du joueur.
+	 */
 	private ArrayList<Munition> munitions = new ArrayList<>();
 	private LifeBar lifeBar = new LifeBar();
 	private Viseur viseur = new Viseur();
 	
 	private Player(){
-		super(32, 32, 3, "resource/sprite/soldier.png", 100, new Vector2f(500, 500));
+		super(32, 32, 3, "resource/sprite/soldier.png", 100);
 	}
 	
 	/**
-	 * Fonction qui permet de créer la seule instance de Player si elle n'existe pas.
+	 * Initialise la position de départ du joueur.
+	 */
+	public void initPositionBegin(){
+		sprite.setPosition(new Vector2f(10*32,18*32));
+	}
+	
+	/**
+	 * Retourne et créer l'instance de la classe si elle n'éxiste pas.
 	 * @return la seule instance de la classe Player.
 	 */
 	public static Player getInstance(){
@@ -47,8 +71,8 @@ public class Player extends Entitee {
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'événement sur lequel on écoute.
+	 * Permet de gérer les événements de la scène.
+	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
 		viseur.handleEvents(event);
@@ -75,6 +99,9 @@ public class Player extends Entitee {
 	            case NUM3 :
 	            	inventory.useLargePotion();
 	            break;
+	            case TAB :
+	            	actionPickUp=true;
+	            break;
 	            default:
 	            break;
 	        }
@@ -93,6 +120,9 @@ public class Player extends Entitee {
 	            case S :
 	            	this.speedX=0;;
 	            break;
+	            case TAB :
+	            	actionPickUp=false;
+	            break;
 	            default:
 	            break;
 	        }
@@ -107,20 +137,21 @@ public class Player extends Entitee {
 
 	/**
 	 * Fonction qui permet de gérer les actions.
+	 * @param time : Timer pour la gestion des frames.
 	 */
 	public void update() {
 		super.update(viseur.getPosition());
 		//Si On perd une vie ! 
 		lifeBar.update(life, MAX_LIFE+inventory.getLifeBonusEquipment());
 		if(isDead()){
-			Console.getInstance().getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
-			Application.setStateOfApp("gameOver");
+			Console.getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
+			Application.setStateOfApp(State.GAMEOVER);
 		}
 	}
 	
 	/**
-	 * Fonction qui gère le déplacement du joueur ainsi que son animation.
-	 * @param time : le temps pour la gestion des frames.
+	 * Gère le déplacement du joueur ainsi que son animation.
+	 * @param time : Timer pour la gestion des frames.
 	 */
 	public void move(Time time){
 		super.move(time);
@@ -130,46 +161,59 @@ public class Player extends Entitee {
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		super.draw(window);
 		lifeBar.draw(window);
+		inventory.draw(window);
 		viseur.draw(window);
 		for(Munition munition : munitions)
 			munition.draw(window);
 	}
 	
+	/**
+	 * Execute un tir.
+	 */
 	public void shoot(){
 		munitions.add(new Munition(new Vector2f(getPosition().x+16,getPosition().y+16),viseur.getPosition(),inventory.getSpeedShootWeapon()));
 	}
 	
+	/**
+	 * Ajoute des points de vie au joueur.
+	 * @param nbLife : le nombre de point de vie à ajouter.
+	 * @return boolean
+	 */
 	public boolean addLife(float nbLife){
 		float maxLife = MAX_LIFE+inventory.getLifeBonusEquipment();
 		if(life==maxLife){
-			Console.getInstance().getInstance().addText("La jauge de vie est pleine !", Text.REGULAR, Color.RED);
+			Console.getInstance().addText("La jauge de vie est pleine !", Text.REGULAR, Color.RED);
 			return false;
 		}
 		float lifeGain=0;
 		if((life+nbLife)>maxLife){
-			life=MAX_LIFE;		
-			lifeGain=maxLife-(life+nbLife);
+			lifeGain=maxLife-life;
+			life=maxLife;		
 		} else {
-			life+=nbLife;
 			lifeGain=nbLife;
+			life+=nbLife;
 		}
-		Console.getInstance().getInstance().addText("+ "+(int)lifeGain+" point de vies !", Text.REGULAR, Color.BLACK);
+		Console.getInstance().addText("+ "+(int)lifeGain+" point de vies !", Text.REGULAR, Color.BLACK);
 		return true;
 	}
 	
+	/**
+	 * Enleve des points de vie au joueur.
+	 * @param degat : le nombre de point de vie perdu.
+	 */
 	public void loseLife(int degat) {
 		// TODO Auto-generated method stub
 		float lifeBefore = life;
 		super.loseLife(degat);
 		float lifeAfter = life;
 		float looseLife = lifeBefore-lifeAfter;
-		Console.getInstance().getInstance().addText("- "+(int)looseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
+		Console.getInstance().addText("- "+(int)looseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
 	}
 	
 	public float getMAX_LIFE() {
@@ -190,6 +234,10 @@ public class Player extends Entitee {
 
 	public void setMunitions(ArrayList<Munition> munitions) {
 		this.munitions = munitions;
+	}
+	
+	public boolean isActionPickUp(){
+		return actionPickUp;
 	}
 
 }

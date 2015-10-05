@@ -3,6 +3,7 @@ package management;
 import java.util.ArrayList;
 
 import map.Tile;
+import object.Object;
 import object.weapon.Munition;
 
 import org.jsfml.graphics.Color;
@@ -16,6 +17,7 @@ import org.jsfml.system.Vector2f;
 import console.Console;
 import donjon.door.Door;
 import donjon.room.Room;
+import donjon.room.RoomInteractif;
 import entitee.monster.Monster;
 import entitee.player.Player;
 
@@ -83,6 +85,15 @@ public class CollisionManager {
 			}
 		} else {
 			monster.move(time, positionCible);
+		}
+	}
+	
+	public static void collisionPlayerObjects(ArrayList<Object> objects, RoomInteractif room) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<objects.size(); i++){
+			if(!collisionRectRect(objects.get(i).getSprite().getGlobalBounds(), Player.getInstance().getSprite().getGlobalBounds()))
+				if(Player.getInstance().isActionPickUp())
+					room.pickUpObject(objects.get(i));
 		}
 	}
 	

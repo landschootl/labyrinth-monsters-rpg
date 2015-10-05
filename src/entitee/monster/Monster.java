@@ -10,42 +10,68 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 
 import resource.Texte;
-import console.Console;
 import entitee.Entitee;
-import entitee.player.Player;
 
+/**
+ * Classe qui représente un monstre dans le donjon.
+ * @author Ludov_000
+ *
+ */
 public abstract class Monster extends Entitee {
+	/**
+	 * Le nom du monstre.
+	 */
 	private String name;
+	/**
+	 * Le timer qui gère le temps entre deux coups.
+	 */
 	private Clock timerAttack = new Clock();
+	/**
+	 * Le nombre de dégat effectué par le monstre.
+	 */
 	private int degat;
-	private Texte lifeBar = new Texte("life="+life, 15, getPosition(), Color.BLACK, Text.ITALIC);
 	
-	public Monster(String name, int SIZE_WIDTH, int SIZE_HEIGHT, int life, String pathSprite, int speed, int degat, Vector2f posBegin){
-		super(SIZE_WIDTH, SIZE_HEIGHT, life, pathSprite, speed, posBegin);
+	public Monster(String name, int SIZE_WIDTH, int SIZE_HEIGHT, int life, String pathSprite, int speed, int degat){
+		super(SIZE_WIDTH, SIZE_HEIGHT, life, pathSprite, speed);
 		this.name=name;
 		this.degat=degat;
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les actions.
-	 * @param time 
+	 * Initialise la position du monstre aléatoirement.
+	 */
+	public void initPositionBegin(){
+		int x=(int) (6+(Math.random()*8));
+		int y=(int) (6+(Math.random()*8));
+		sprite.setPosition(new Vector2f(x*32,y*32));
+	}
+	
+	/**
+	 * Permet de gérer les actions du monstre.
+	 * @param positionCible : La position de la cible du monstre.
+	 * @param time : Timer pour la gestion des frames.
 	 */
 	public void update(Vector2f positionCible, Time time) {
 		super.update(positionCible);
-		lifeBar.setString("life="+(int)life);
-		lifeBar.setPosition(new Vector2f(getPosition().x,getPosition().y-16));
+
 		CollisionManager.collisionMonsterPlayer(this, time, timerAttack, positionCible);
 		CollisionManager.collisionMonsterMunition(this);
 	}
 	
+	/**
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
+	 */
 	public void draw(RenderWindow window){
 		super.draw(window);
+		Texte lifeBar = new Texte("life="+(int)life, 15, new Vector2f(getPosition().x,getPosition().y-16), Color.BLACK, Text.ITALIC);
 		lifeBar.draw(window);
 	}
 	
 	/**
-	 * Fonction qui gère le déplacement du joueur ainsi que son animation.
-	 * @param time : le temps pour la gestion des frames.
+	 * Gère le déplacement du monstre ainsi que son animation.
+	 * @param positionCible : La position de la cible du monstre.
+	 * @param time : Timer pour la gestion des frames.
 	 */
 	public void move(Time time, Vector2f positionCible){
 		super.move(time);

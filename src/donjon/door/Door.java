@@ -2,26 +2,43 @@ package donjon.door;
 
 import management.TilesetManager;
 
+import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Vector2f;
 
+import console.Console;
 import donjon.room.Room;
 
 /**
- * Class qui reprèsente un porte dans une room.
+ * Classe qui reprèsente une porte permettant de changer de salle.
  * @author Ludov_000
  *
  */
 public abstract class Door {
-	protected Sprite door;
-	protected Sprite checkpoint;
+	// Logique
+	/**
+	 * La salle ou ammène la porte.
+	 */
 	protected Room nextRoom;
+	/**
+	 * La position du joueur après avoir passé la porte.
+	 */
+	protected Vector2f nextPositionPlayer;
+	/**
+	 * Si la porte est verrouillé ou non.
+	 */
 	protected boolean locked;
 	
-	public Door(Room nextRoom, boolean locked){
+	// Graphique
+	protected Sprite door;
+	protected Sprite checkpoint;
+	
+	public Door(Room nextRoom, boolean locked, Vector2f nextPositionPlayer){
 		this.nextRoom=nextRoom;
 		this.locked=locked;
+		this.nextPositionPlayer=nextPositionPlayer;
 		if(!locked)
 			this.door = TilesetManager.getInstance().getSprite("doorOpen");
 		else
@@ -30,11 +47,20 @@ public abstract class Door {
 	}
 	
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Affiche les éléments graphiques dans la fenêtre de la porte.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(door);
 		window.draw(checkpoint);
+	}
+	
+	/**
+	 * Dévérouille la porte.
+	 */
+	public void unlock(){
+		locked=false;
+		Console.getInstance().addText("Porte dévérrouillé !", Text.REGULAR, Color.BLACK);
 	}
 	
 	public Vector2f getPosition(){
@@ -55,5 +81,9 @@ public abstract class Door {
 
 	public void setLocked(boolean locked) {
 		this.locked = locked;
+	}
+	
+	public Vector2f getNextPositionPlayer(){
+		return nextPositionPlayer;
 	}
 }

@@ -7,11 +7,9 @@ import map.Map;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
-import org.jsfml.window.event.Event;
 
 import donjon.door.Door;
 import entitee.monster.Monster;
-import entitee.player.Player;
 
 /**
  * Classe qui représente une salle du donjon.
@@ -19,7 +17,13 @@ import entitee.player.Player;
  *
  */
 public abstract class Room {
+	/**
+	 * La map de la salle.
+	 */
 	protected Map map;
+	/**
+	 * Les portes présentent dans la salle.
+	 */
 	private ArrayList<Door> doors = new ArrayList<>();
 	
 	public Room(String[][] modeleMap){
@@ -27,7 +31,7 @@ public abstract class Room {
 	}
 	
 	/**
-	 * Fonction qui permet d'ajouter une porte dans la salle.
+	 * Permet d'ajouter une porte dans la salle.
 	 * @param door : La porte à ajouter.
 	 */
 	public void addDoor(Door door){
@@ -35,31 +39,29 @@ public abstract class Room {
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'event sur lequel on écoute.
-	 */
-	public void handleEvents(Event event) {
-
-	}
-
-	/**
-	 * Fonction qui permet de gérer les actions.
-	 * @param time 
-	 * @param player 
+	 * Permet de gérer les actions de la salle.
+	 * @param time : Timer pour la gestion des frames.
 	 */
 	public void update(Time time) {
 		CollisionManager.collisionPlayerMap(this, time);
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Affiche les éléments graphiques dans la fenêtre de la salle.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		map.draw(window);
 		for(Door door : doors)
 			door.draw(window);
 	}
-
+	
+	/**
+	 * Ajouter un monstre.
+	 * @param monster : monstre à ajouter.
+	 */
+	public void addMonster(Monster monster){};
+	
 	public Map getMap() {
 		return map;
 	}

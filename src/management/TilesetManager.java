@@ -68,7 +68,7 @@ public class TilesetManager {
 		lockedTile.put("waterLeft", true);
 		lockedTile.put("waterCenter", true);
 		lockedTile.put("waterRight", true);
-		lockedTile.put("timber", true);
+		lockedTile.put("timber", false);
 		lockedTile.put("checkpoint", false);
 		
 		lockedTile.put("beginnerBow", false);

@@ -5,35 +5,33 @@ import java.util.ArrayList;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RectangleShape;
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Vector2f;
-import org.jsfml.window.event.Event;
 
 import resource.Texte;
 
 /**
- * Classe qui simule une console pour l'intérieur du jeu.
+ * Classe Singleton qui gère une console interne dans l'application.
  * @author Ludov_000
  *
  */
 public class Console {
+	// Logique
 	/**
-	 * Design pattern Singleton, assure qu'il n'y est qu'une seule instance de la classe Console.
+	 * L'unique instance de la classe Console.
 	 */
 	private static Console instance = null;
 	
+	// Graphique
 	private RectangleShape background;
-	private ArrayList<Texte> texts;
+	private ArrayList<Texte> texts = new ArrayList<>();;
 	
-	/**
-	 * Constructeur en private pour éviter qu'on déclare une nouvelle instance de la classe.
-	 */
 	private Console(){
 		initBackground();
-		initTexts();
 	}
 	
 	/**
-	 * Fonction qui permet de créer la seule instance de Console si elle n'existe pas.
+	 * Retourne et créer l'instance de la classe si elle n'éxiste pas.
 	 * @return la seule instance de la classe Console.
 	 */
 	public static Console getInstance(){
@@ -41,28 +39,23 @@ public class Console {
 			instance = new Console();
 		return instance;
 	}
-	
-	/**
-	 * Fonction qui initialise les textes.
-	 */
-	public void initTexts() {
-		texts = new ArrayList<>();
-	}
 
 	/**
-	 * Fonction qui initialise le background de la console.
+	 * Initialise le background de la console.
 	 */
 	public void initBackground() {
 		background = new RectangleShape(new Vector2f(270,160));
 		background.setFillColor(new Color(Color.WHITE, 300));
 		background.setOutlineThickness(10);
-		background.setOutlineColor(Color.BLACK);
+		background.setOutlineColor(new Color(97,56,11));
 		background.setPosition(new Vector2f(10,650));
 	}
 	
 	/**
-	 * Fonction qui permet d'ajouter un message dans la console.
-	 * @param message : le message qu'on souhaite ajouter à la console.
+	 * Ajoute un message dans la console.
+	 * @param message : Le message à ajouter.
+	 * @param type : Le type du text (BOLD, REGULAR, ITALIC, ..).
+	 * @param color : La couleur du text.
 	 */
 	public void addText(String message, int type, Color color){
 		if(texts.size()>7)
@@ -71,37 +64,36 @@ public class Console {
 	}
 	
 	/**
-	 * Fonction qui permet de supprimer le message correspondant à l'id donné en paramètre.
-	 * @param id : l'idée du message à supprimer.
+	 * Supprime un message.
+	 * @param id : l'id du message à supprimer.
 	 */
 	public void removeText(int id){
 		texts.remove(id);
 		for(int i=id; i<texts.size(); i++)
 			texts.get(i).setPosition(new Vector2f(texts.get(i).getPosition().x,texts.get(i).getPosition().y-17));
 	}
-	
-	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'événement sur lequel on écoute.
-	 */
-	public void handleEvents(Event event) {
-		
-	}
 
 	/**
-	 * Fonction qui permet de gérer les actions.
-	 */
-	public void update() {
-
-	}
-
-	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(background);
 		for(Texte text : texts)
 			text.draw(window);
+	}
+	
+	/**
+	 * Affiche la présentation du jeu.
+	 */
+	public void presentation(){
+		addText("Bienvenue in the Donjon !", Text.BOLD, Color.RED);
+		addText("Les commandes :", Text.BOLD, Color.BLUE);
+		addText(" - 1 : utiliser small potion.", Text.REGULAR, Color.BLUE);
+		addText(" - 2 : utiliser medium potion.", Text.REGULAR, Color.BLUE);
+		addText(" - 3 : utiliser large potion.", Text.REGULAR, Color.BLUE);
+		addText(" - z,q,s,d : se deplacer.", Text.REGULAR, Color.BLUE);
+		addText(" - tab : ramasser un object.", Text.REGULAR, Color.BLUE);
+		addText(" - click right : tirer.", Text.REGULAR, Color.BLUE);
 	}
 }

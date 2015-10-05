@@ -9,6 +9,9 @@ import org.jsfml.window.event.Event;
  *
  */
 public class SceneMenu {
+	/**
+	 * Pointeur sur la fenetre de l'application.
+	 */
 	private RenderWindow window;
 
 	public SceneMenu(RenderWindow window) {
@@ -16,22 +19,22 @@ public class SceneMenu {
 	}
 
 	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'event sur lequel on écoute.
+	 * Permet de gérer les événements de la scène.
+	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
 
 	}
 
 	/**
-	 * Fonction qui permet de gérer les actions.
+	 * Permet de gérer les actions de la scène.
 	 */
 	public void update() {
 
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Affiche les éléments graphiques dans la fenêtre de la scène.
 	 */
 	public void draw() {
 		

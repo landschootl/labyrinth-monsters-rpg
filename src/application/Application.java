@@ -10,14 +10,32 @@ import scene.SceneMenu;
 import scene.ScenePause;
 
 /**
- * Classe permettant de gérer les différentes scènes du jeu.
+ * Classe qui gére les différentes scènes de l'application.
  * @author Ludov_000
  *
  */
 public class Application {
+	/**
+	 * La fenetre de l'application.
+	 */
 	public RenderWindow window = new RenderWindow();
 	
-	private static String stateOfApp = "Game"; // Propriété indiquant l'état de l'application.
+	/**
+	 * Les différentes étapes de l'application possible.
+	 * @author Ludov_000
+	 *
+	 */
+	public enum State {
+		GAME,
+		GAMEOVER,
+		MENU,
+		PAUSE
+	}
+	
+	/**
+	 * Indique l'état en cours de l'application.
+	 */
+	private static State stateOfApp = State.GAME;
 
 	SceneGame sceneGame = new SceneGame(window);
 	SceneMenu sceneMenu = new SceneMenu(window);
@@ -28,10 +46,9 @@ public class Application {
 		window.create(new VideoMode(640, 820), "Donjon");
 		window.setMouseCursorVisible(false);
 	}
-
+	
 	/**
-	 * Fonction principale qui éxécute une boucle déclenchant des événements
-	 * tant que la fenêtre est ouverte.
+	 * Boucle principale de l'application qui tourne tant que la fenetre est ouverte.
 	 */
 	public void run() {
 		while (window.isOpen()) {
@@ -42,7 +59,7 @@ public class Application {
 	}
 
 	/**
-	 * Fonction qui permet de gérer les événements.
+	 * Gère les événements de l'application.
 	 */
 	public void processEvents() {
 		for (Event event : window.pollEvents()) {
@@ -50,16 +67,16 @@ public class Application {
 				window.close();
 			}
 			switch (stateOfApp) {
-			case "Menu":
+			case MENU:
 				sceneMenu.handleEvents(event);
 				break;
-			case "Game":
+			case GAME:
 				sceneGame.handleEvents(event);
 				break;
-			case "GameOver":
+			case GAMEOVER:
 				sceneGameover.handleEvents(event);
 				break;
-			case "Pause":
+			case PAUSE:
 				scenePause.handleEvents(event);
 				break;
 			}
@@ -67,41 +84,41 @@ public class Application {
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les actions.
+	 * Gère les actions de l'application.
 	 */
 	public void update() {
 		switch (stateOfApp) {
-		case "Menu":
+		case MENU:
 			sceneMenu.update();
 			break;
-		case "Game":
+		case GAME:
 			sceneGame.update();
 			break;
-		case "GameOver":
+		case GAMEOVER:
 			sceneGameover.update();
 			break;
-		case "Pause":
+		case PAUSE:
 			scenePause.update();
 			break;
 		}
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Affiche les éléments graphiques dans la fenêtre de l'application.
 	 */
 	public void render() {
 		window.clear(Color.BLACK);
 		switch (stateOfApp) {
-		case "Menu":
+		case MENU:
 			sceneMenu.draw();
 			break;
-		case "Game":
+		case GAME:
 			sceneGame.draw();
 			break;
-		case "GameOver":
+		case GAMEOVER:
 			sceneGameover.draw();
 			break;
-		case "Pause":
+		case PAUSE:
 			sceneGame.draw();
 			scenePause.draw();
 			break;
@@ -110,11 +127,11 @@ public class Application {
 	}
 	
 	/**
-	 * Fonction qui permet de changer l'état de l'application.
-	 * @param stateOfApp : L'état de l'application.
+	 * Permet de changer l'état en cours de l'application.
+	 * @param stateOfApp : L'état de l'application attendu.
 	 */
-	public static void setStateOfApp(String stateOfApp) {
-		Application.stateOfApp = stateOfApp;
+	public static void setStateOfApp(State state) {
+		Application.stateOfApp = state;
 	}
 	
 }

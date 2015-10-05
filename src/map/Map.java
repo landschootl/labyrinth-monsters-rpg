@@ -73,9 +73,9 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "roof", "waterLeft", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "timber","timber", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterRight", "wall", "roof"}
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "roof", "waterLeft", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterRight", "roof", "roof"}
 	};
 	
 	public static String[][] modeleTrap = {
