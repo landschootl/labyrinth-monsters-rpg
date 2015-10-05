@@ -2,11 +2,15 @@ package donjon.room;
 
 import java.util.ArrayList;
 
+import management.CollisionManager;
 import map.Map;
 
+import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Time;
 
+import console.Console;
 import entitee.monster.Monster;
 import entitee.player.Player;
 
@@ -22,8 +26,16 @@ public class RoomIntersect extends Room {
 	}
 	
 	public void update(Time time){
-		for(Monster monster : monsters)
+		super.update(time);
+		for(int i=0; i<monsters.size(); i++){
+			Monster monster = monsters.get(i);
 			monster.update(Player.getInstance().getPosition(), time);
+			if(monster.isDead()){
+				Console.getInstance().addText(monster.getName()+" est mort !", Text.REGULAR, Color.CYAN);
+				monsters.remove(monster);
+			}
+		}
+		CollisionManager.collisionMunitionsMap(this.map.getMap());
 	}
 	
 	/**

@@ -32,4 +32,8 @@ public class Munition {
 	public void draw(RenderWindow window){
 		window.draw(shape);
 	}
+	
+	public CircleShape getShape(){
+		return shape;
+	}
 }

@@ -3,11 +3,20 @@ package management;
 import java.util.ArrayList;
 
 import map.Tile;
+import object.weapon.Munition;
 
+import org.jsfml.graphics.Color;
+import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Text;
+import org.jsfml.system.Clock;
+import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 
+import console.Console;
 import donjon.door.Door;
+import donjon.room.Room;
+import entitee.monster.Monster;
 import entitee.player.Player;
 
 /**
@@ -17,10 +26,27 @@ import entitee.player.Player;
  */
 public class CollisionManager {
 	
-	public static boolean collisionPlayerMap(Tile[][] map){
+	public static void collisionPlayerMap(Room room, Time time) {
+		// TODO Auto-generated method stub
+		Vector2f lastPosition = Player.getInstance().getPosition();
+		Player.getInstance().move(time);
+		if(collisionRectTiles(room.getMap().getMap(),Player.getInstance().getSprite().getGlobalBounds()))
+			Player.getInstance().setPosition(lastPosition);
+	}
+	
+	public static void collisionMunitionsMap(Tile[][] map){
+		for(int i=0; i<Player.getInstance().getMunitions().size(); i++){
+			Munition munition = Player.getInstance().getMunitions().get(i);
+			if(collisionRectTiles(map, munition.getShape().getGlobalBounds())){
+				Player.getInstance().getMunitions().remove(munition);
+			}
+		}
+	}
+	
+	public static boolean collisionRectTiles(Tile[][] map, FloatRect rect){
 		for(int i=0; i<map.length; i++)
 			for(int j=0; j<map[i].length; j++)
-				if(collisionSpriteSprite(map[i][j].getSprite(), Player.getInstance().getSprite()) && map[i][j].isChecked())
+				if(!collisionRectRect(map[i][j].getSprite().getGlobalBounds(), rect) && map[i][j].isChecked())
 					return true;
 		return false;
 	}
@@ -35,12 +61,37 @@ public class CollisionManager {
 		}
 		return null;
 	}
-
-	public static boolean collisionMonsterPlayer(Sprite monster, Sprite player){
-		return false;
+	
+	public static void collisionMonsterMunition(Monster monster) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<Player.getInstance().getMunitions().size(); i++){
+			Munition munition = Player.getInstance().getMunitions().get(i);
+			if(!collisionRectRect(munition.getShape().getGlobalBounds(), monster.getSprite().getGlobalBounds())){
+				monster.loseLife(Player.getInstance().getInventory().getDamageShootWeapon());
+				Player.getInstance().getMunitions().remove(munition);
+			}
+		}
+	}
+	
+	public static void collisionMonsterPlayer(Monster monster, Time time, Clock timerAttack, Vector2f positionCible) {
+		// TODO Auto-generated method stub
+		if(collisionSpriteSprite(monster.getSprite(), Player.getInstance().getSprite())){
+			if(timerAttack.getElapsedTime().asSeconds() > 1){
+				Console.getInstance().addText("Vous vous êtes touchés par un monstre !", Text.REGULAR, Color.MAGENTA);
+				Player.getInstance().loseLife(monster.getDegat());
+				timerAttack.restart();
+			}
+		} else {
+			monster.move(time, positionCible);
+		}
 	}
 	
 	public static boolean collisionSpriteSprite(Sprite sprite, Sprite sprite2){
 		return sprite.getGlobalBounds().intersection(sprite2.getGlobalBounds()) != null;
 	}
+	
+	public static boolean collisionRectRect(FloatRect rect, FloatRect rect2){
+		return rect.intersection(rect2) == null;
+	}
+
 }

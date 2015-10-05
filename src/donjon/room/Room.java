@@ -2,6 +2,7 @@ package donjon.room;
 
 import java.util.ArrayList;
 
+import management.CollisionManager;
 import map.Map;
 
 import org.jsfml.graphics.RenderWindow;
@@ -47,7 +48,7 @@ public abstract class Room {
 	 * @param player 
 	 */
 	public void update(Time time) {
-
+		CollisionManager.collisionPlayerMap(this, time);
 	}
 
 	/**

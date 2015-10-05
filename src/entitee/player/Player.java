@@ -112,6 +112,10 @@ public class Player extends Entitee {
 		super.update(viseur.getPosition());
 		//Si On perd une vie ! 
 		lifeBar.update(life, MAX_LIFE+inventory.getLifeBonusEquipment());
+		if(isDead()){
+			Console.getInstance().getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
+			Application.setStateOfApp("gameOver");
+		}
 	}
 	
 	/**
@@ -138,7 +142,7 @@ public class Player extends Entitee {
 	}
 	
 	public void shoot(){
-		munitions.add(new Munition(getPosition(),viseur.getPosition(),inventory.getSpeedShootWeapon()));
+		munitions.add(new Munition(new Vector2f(getPosition().x+16,getPosition().y+16),viseur.getPosition(),inventory.getSpeedShootWeapon()));
 	}
 	
 	public boolean addLife(float nbLife){
@@ -161,24 +165,13 @@ public class Player extends Entitee {
 	
 	public void loseLife(int degat) {
 		// TODO Auto-generated method stub
-		float loseLife = 0;
-		if((life-degat)<0){
-			life=0;
-			loseLife=(life-degat);
-		} else {
-			life-=degat;
-			loseLife=degat;
-		}
-		Console.getInstance().getInstance().addText("- "+(int)loseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
-		if(life==0)
-			isDead();
+		float lifeBefore = life;
+		super.loseLife(degat);
+		float lifeAfter = life;
+		float looseLife = lifeBefore-lifeAfter;
+		Console.getInstance().getInstance().addText("- "+(int)looseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
 	}
 	
-	public void isDead(){
-		Console.getInstance().getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
-		Application.setStateOfApp("gameOver");
-	}
-
 	public float getMAX_LIFE() {
 		return MAX_LIFE;
 	}
@@ -190,5 +183,13 @@ public class Player extends Entitee {
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
+
+	public ArrayList<Munition> getMunitions() {
+		return munitions;
+	}
+
+	public void setMunitions(ArrayList<Munition> munitions) {
+		this.munitions = munitions;
+	}
+
 }

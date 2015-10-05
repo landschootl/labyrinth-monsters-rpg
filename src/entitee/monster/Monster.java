@@ -15,12 +15,14 @@ import entitee.Entitee;
 import entitee.player.Player;
 
 public abstract class Monster extends Entitee {
+	private String name;
 	private Clock timerAttack = new Clock();
 	private int degat;
 	private Texte lifeBar = new Texte("life="+life, 15, getPosition(), Color.BLACK, Text.ITALIC);
 	
-	public Monster(int SIZE_WIDTH, int SIZE_HEIGHT, int life, String pathSprite, int speed, int degat, Vector2f posBegin){
+	public Monster(String name, int SIZE_WIDTH, int SIZE_HEIGHT, int life, String pathSprite, int speed, int degat, Vector2f posBegin){
 		super(SIZE_WIDTH, SIZE_HEIGHT, life, pathSprite, speed, posBegin);
+		this.name=name;
 		this.degat=degat;
 	}
 	
@@ -29,19 +31,11 @@ public abstract class Monster extends Entitee {
 	 * @param time 
 	 */
 	public void update(Vector2f positionCible, Time time) {
+		super.update(positionCible);
 		lifeBar.setString("life="+(int)life);
 		lifeBar.setPosition(new Vector2f(getPosition().x,getPosition().y-16));
-		sprite.setTextureRect(posSprites[directionSprite][animationSprite%3]);
-		updateDirectionSprite(positionCible);
-		if(CollisionManager.collisionSpriteSprite(sprite, Player.getInstance().getSprite())){
-			if(timerAttack.getElapsedTime().asSeconds() > 1){
-				Console.getInstance().addText("Vous vous êtes touchés par un monstre !", Text.REGULAR, Color.MAGENTA);
-				Player.getInstance().loseLife(degat);
-				timerAttack.restart();
-			}
-		} else {
-			move(time, positionCible);
-		}
+		CollisionManager.collisionMonsterPlayer(this, time, timerAttack, positionCible);
+		CollisionManager.collisionMonsterMunition(this);
 	}
 	
 	public void draw(RenderWindow window){
@@ -59,5 +53,13 @@ public abstract class Monster extends Entitee {
 	    speedX=(float)(((positionCible.x-sprite.getPosition().x)/distance)*speed)*time.asSeconds();
 	    speedY=(float)(((positionCible.y-sprite.getPosition().y)/distance)*speed)*time.asSeconds();
 		sprite.move(new Vector2f(speedX, speedY));
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public int getDegat(){
+		return degat;
 	}
 }

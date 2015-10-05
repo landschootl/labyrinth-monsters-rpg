@@ -2,12 +2,16 @@ package entitee;
 
 import management.ResourceManager;
 
+import org.jsfml.graphics.Color;
 import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Text;
 import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
+
+import console.Console;
 
 public abstract class Entitee {
 	protected int SIZE_WIDTH;
@@ -85,6 +89,18 @@ public abstract class Entitee {
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(sprite);
+	}
+	
+	public void loseLife(int degat) {
+		// TODO Auto-generated method stub
+		if((life-degat)<0)
+			life=0;
+		else 
+			life-=degat;
+	}
+	
+	public boolean isDead(){
+		return life<=0;
 	}
 	
 	public int getDirectionX() {

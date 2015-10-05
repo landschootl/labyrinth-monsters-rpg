@@ -1,6 +1,7 @@
 package object;
 
 import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Vector2f;
 
 /**
  * Cette class reprèsente les objets du jeu.
@@ -24,6 +25,10 @@ public abstract class Object {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void setPosition(Vector2f position){
+		sprite.setPosition(position);
 	}
 	
 }

@@ -61,12 +61,6 @@ public class Donjon {
 		Player.getInstance().update();
 		room.update(time);
 		
-		Vector2f lastPosition = Player.getInstance().getPosition();
-		Player.getInstance().move(time);
-		// Collision playerMur
-		if(CollisionManager.collisionPlayerMap(room.getMap().getMap()))
-			Player.getInstance().setPosition(lastPosition);
-		// Collision playerDoor
 		Door doorTmp = CollisionManager.collisionPlayerDoors(room.getDoors());
 		if(doorTmp!=null)
 			if(doorTmp.isLocked()){
@@ -78,8 +72,6 @@ public class Donjon {
 			} else {
 				changedRoom(doorTmp.getNextRoom());
 			}
-		// Collision playerMonstre
-		
 	}
 
 	public void changedRoom(Room room){
