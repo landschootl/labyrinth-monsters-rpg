@@ -9,24 +9,24 @@ import org.jsfml.graphics.Font;
 import org.jsfml.graphics.Texture;
 
 /**
- * Classe permettant de stocker et renvoyer toutes les ressources (Fonts et Textures) utiles pour l'application en s'asurant qu'elles seront chargé qu'une seule fois.
+ * This class enable to stock and send every  for the application and check if the resources will be load only one time .
  * @author Ludov_000
  *
  */
 public class ResourceManager {
 	/**
-	 * Liste des fonts utiles dans l'application.
+	 *Fonts list.
 	 */
 	private static Map<String, Font> fonts = new HashMap<>();
 	/**
-	 * Liste des textures utiles dans l'application.
+	 * Tectures list.
 	 */
 	private static Map<String, Texture> textures = new HashMap<>();
 	
 	/**
-	 * Permet de retourner le font souhaité en vérifiant si le Font souhaité existe, et de le charger si il n'éxiste pas.
-	 * @param url : l'url du font souhaité.
-	 * @return le font
+	 * Enable to return the font and check if it exist, and load it if dosen't exist .
+	 * @param url : font url.
+	 * @return font
 	 */
 	public static Font getFont(String url){
 		if(!fonts.containsKey(url)){
@@ -42,9 +42,9 @@ public class ResourceManager {
 	}
 	
 	/**
-	 * Permet de retourner la texture souhaité en vérifiant si le Font souhaité existe, et de le charger si il n'éxiste pas.
-	 * @param url : l'url de la texture souhaité.
-	 * @return la texture demandé.
+	 * enable to return the texture and check if it exist, and load it if dosen't exist.
+	 * @param url : texture url.
+	 * @return texture.
 	 */
 	public static Texture getTexture(String url){
 		if(!textures.containsKey(url)){

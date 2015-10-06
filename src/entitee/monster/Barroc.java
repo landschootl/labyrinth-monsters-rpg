@@ -1,8 +1,8 @@
 package entitee.monster;
 
 /**
- * Classe qui représente le monstre "Barroc".
- * Il inflige d'énorme dégat.
+ *  "Barroc" Monster.
+ * he deals a lot of damage.
  * @author Ludov_000
  *
  */

@@ -3,8 +3,9 @@ package object.potion;
 import entitee.player.Player;
 
 /**
- * Classe qui représente une moyenne potion de vie.
- * Elle redonne 3 point de vie à l'utilisateur.
+ * 
+ *This class represent medium potion.
+ *It add three life point to player.
  * @author Ludov_000
  *
  */

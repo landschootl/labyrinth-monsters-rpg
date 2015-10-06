@@ -8,7 +8,7 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 /**
- * Classe qui correspond au viseur du joueur.
+ * Player target.
  * @author Ludov_000
  *
  */
@@ -21,8 +21,8 @@ public class Viseur {
 	}
 	
 	/**
-	 * Permet de gérer les événements de la scène.
-	 * @param event : l'événement de l'application.
+	 * Enable to manage scene events.
+	 * @param event : Application events.
 	 */
 	public void handleEvents(Event event) {
 		if (event.type == Event.Type.MOUSE_MOVED) {
@@ -31,8 +31,8 @@ public class Viseur {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show graphics elements in the window of the console.
+	 * @param window : pointer on the window of application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(sprite);

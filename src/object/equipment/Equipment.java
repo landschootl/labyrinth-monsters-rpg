@@ -3,8 +3,8 @@ package object.equipment;
 import org.jsfml.graphics.Sprite;
 
 /**
- * Classe qui représente un object équipement.
- * Elle ajoute des points de vie ou de vitesse de déplacement au joueur.
+ * This class represent object equipment.
+ * It add life points or moving speed to player.
  * @author Ludov_000
  *
  */

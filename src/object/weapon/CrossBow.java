@@ -3,7 +3,8 @@ package object.weapon;
 import management.TilesetManager;
 
 /**
- * Classe qui represente l'arme CrossBow.
+ * 
+ *This class represent the arm :Crossbow.
  * @author Ludov_000
  *
  */

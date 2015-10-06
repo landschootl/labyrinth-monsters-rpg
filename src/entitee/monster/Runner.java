@@ -1,8 +1,8 @@
 package entitee.monster;
 
 /**
- * Classe qui représente le monstre "Runner".
- * Il se déplace rapidement.
+ * "Runner" moster.
+ * he's very fast.
  * @author Ludov_000
  *
  */

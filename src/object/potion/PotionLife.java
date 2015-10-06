@@ -4,8 +4,9 @@ import entitee.player.Player;
 import management.TilesetManager;
 
 /**
- * Classe qui représente un objet potion de vie.
- * Elle redonne des points de vie à l'utilisateur.
+ * 
+ *This class represent potion.
+ *It give life points to player.
  * @author Ludov_000
  *
  */

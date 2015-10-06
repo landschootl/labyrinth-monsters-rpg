@@ -3,7 +3,8 @@ package object.weapon;
 import management.TilesetManager;
 
 /**
- * Classe qui represente l'arme Gun.
+ * 
+ *This class represent the arm :Gun.
  * @author Ludov_000
  *
  */

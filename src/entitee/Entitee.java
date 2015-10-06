@@ -10,46 +10,47 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe qui représente un individu en mouvement.
+ * 
+ * The class represent an individual moving.
  * @author Ludov_000
  *
  */
 public abstract class Entitee {
 	// Logique
 	/**
-	 * Taille en largeur de l'individu.
+	 * width of the character.
 	 */
 	protected int SIZE_WIDTH;
 	/**
-	 * Taille en longueur de l'individu.
+	 * height of the character.
 	 */
 	protected int SIZE_HEIGHT;
 	/**
-	 * Nombre de vie.
+	 * number of life.
 	 */
 	protected float life;
 	/**
-	 * Les différentes positions du sprite dans la texture.
+	 * The differents position of the sprite in the texture.
 	 */
 	protected IntRect[][] positionSprite = new IntRect[4][3];
 	/**
-	 * Les positions dans le tableau de posSprites celon la direction et l'état de l'animation de l'individu.
+	 * The position in the posSprites board according to the direction and the state of the individual animation.
 	 */
 	protected int direction=0, animationSprite=0;
 	/**
-	 * La vitesse de l'individu sur l'axe x et y de la fenetre.
+	 * velocity.
 	 */
 	protected float speedX=0, speedY=0;
 	/**
-	 * Timer qui gère l'animation du sprite.
+	 * Timer which manage the animation.
 	 */
 	protected Clock timerAnimation = new Clock();
 	/**
-	 * La vitesse de l'individu.
+	 * character velocity.
 	 */
 	protected int speed;
 	
-	// Graphique
+	
 	protected Sprite sprite = new Sprite();
 	
 	public Entitee(int SIZE_WIDTH, int SIZE_HEIGHT, int life, String pathSprite, int speed){
@@ -68,13 +69,13 @@ public abstract class Entitee {
 	}
 	
 	/**
-	 * Initialise la position de départ de l'individu.
+	 * Initialize the start position of the individual.
 	 */
 	public abstract void initPositionBegin();
 	
 	/**
-	 * Fonction qui permet de gérer les actions.
-	 * @param time : Timer pour la gestion des frames.
+	 * This function manage the actions
+	 * @param time : Timer for the frames manages.
 	 */
 	public void update(Vector2f positionCible) {
 		sprite.setTextureRect(positionSprite[direction][animationSprite%3]);
@@ -82,8 +83,8 @@ public abstract class Entitee {
 	}
 	
 	/**
-	 * Gère le déplacement du joueur ainsi que son animation.
-	 * @param time : Timer pour la gestion des frames.
+	 * Manage the movments of the player as wall as his animation.
+	 * @param time : Timer for the frames gestion.
 	 */
 	public void move(Time time){
 		if(timerAnimation.getElapsedTime().asSeconds() > 0.3 && (speedX != 0 || speedY != 0)){
@@ -93,8 +94,8 @@ public abstract class Entitee {
 	}
 	
 	/**
-	 * Fonction qui gère la direction de l'individu.
-	 * @param positionCible : La position de repère.
+	 * This function manage the direction of the character.
+	 * @param positionCible : landmark position.
 	 */
 	public void updateDirectionSprite(Vector2f positionCible){
 		if(positionCible.y>sprite.getPosition().y){
@@ -118,16 +119,16 @@ public abstract class Entitee {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show graphics elements in the window of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(sprite);
 	}
 	
 	/**
-	 * Enleve des points de vie à l'individu.
-	 * @param degat : Le nombre de point de vie à enlever.
+	 * remove life points to the character.
+	 * @param degat : number of points.
 	 */
 	public void loseLife(int degat) {
 		// TODO Auto-generated method stub
@@ -138,7 +139,7 @@ public abstract class Entitee {
 	}
 	
 	/**
-	 * Indique si l'invidu est mort.
+	 * said id the character is dead.
 	 * @return boolean.
 	 */
 	public boolean isDead(){

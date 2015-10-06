@@ -1,7 +1,12 @@
 package scene;
 
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.window.Keyboard;
+import org.jsfml.window.Keyboard.Key;
 import org.jsfml.window.event.Event;
+
+import application.Application;
+import application.Application.State;
 
 /**
  * Classe qui représente la scène lorsque la partie est perdu.
@@ -23,7 +28,11 @@ public class SceneGameover {
 	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
-
+		if(event.type == event.type.KEY_PRESSED){
+			event.asKeyEvent();
+			if(Keyboard.isKeyPressed(Key.A))
+				Application.setStateOfApp(State.GAME);
+		}
 	}
 
 	/**

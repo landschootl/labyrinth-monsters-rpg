@@ -3,7 +3,8 @@ package donjon.room;
 import map.Map;
 
 /**
- * Classe qui reprèsente la salle de transition entre les différentes salles du labyrinthe.
+ * 
+ * Class which represent a transition room between the differents rooms of the labyrinth.
  * @author Ludov_000
  *
  */

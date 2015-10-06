@@ -9,7 +9,7 @@ import org.jsfml.system.Vector2f;
 
 
 /**
- * Classe qui permet de créer et afficher un text.
+ * This class enable to create and show a text.
  * @author Ludov_000
  *
  */
@@ -24,8 +24,8 @@ public class Texte {
 	}
 
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(text);

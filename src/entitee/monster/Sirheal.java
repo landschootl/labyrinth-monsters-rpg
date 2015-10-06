@@ -5,18 +5,18 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe qui représente le monstre "Sirheal".
- * Il regénère tout seul sa vie.
+ * "Sirheal" monster.
+ * it regenerates
  * @author Ludov_000
  *
  */
 public class Sirheal extends Monster{
 	/**
-	 * Le maximum de sa vie.
+	 * max life.
 	 */
 	private int MAX_LIFE = 8;
 	/**
-	 * Timer qui gère le temps entre deux guérisons.
+	 * this timer manage the time between two healing.
 	 */
 	private Clock timerHeal = new Clock();
 		
@@ -26,9 +26,9 @@ public class Sirheal extends Monster{
 	}
 	
 	/**
-	 * Permet de gérer les actions du monstre.
-	 * @param positionCible : La position de la cible du monstre.
-	 * @param time : Timer pour la gestion des frames.
+	 * enable to manage monster actions.
+	 * @param positionCible : monster target position.
+	 * @param time : Timer for frames manage.
 	 */
 	public void update(Vector2f positionCible, Time time){
 		super.update(positionCible, time);

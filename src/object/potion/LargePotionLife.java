@@ -3,8 +3,9 @@ package object.potion;
 import entitee.player.Player;
 
 /**
- * Classe qui représente une large potion de vie.
- * Elle redonne 5 point de vie à l'utilisateur.
+ * 
+ *This class represent large potion.
+ *It add five life point to player.
  * @author Ludov_000
  *
  */

@@ -22,16 +22,16 @@ import entitee.monster.Monster;
 import entitee.player.Player;
 
 /**
- * Classe qui permet de gérer les collisions dans le jeu.
+ * This class enable to manage the collisions during the game.
  * @author Ludov_000
  *
  */
 public class CollisionManager {
 	
 	/**
-	 * Gère la collision entre le joueur et la map dans la salle ou il se trouve.
-	 * @param room : la salle ou la map se trouve.
-	 * @param time : timer qui permet de gérer les frames.
+	 * Manage the collision between the player and the map in the current romm.
+	 * @param room : current room.
+	 * @param time : timer for frames manage.
 	 */
 	public static void collisionPlayerMap(Room room, Time time) {
 		// TODO Auto-generated method stub
@@ -42,8 +42,8 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre les munitions du joueur et la map dans la salle ou il se trouve.
-	 * @param map : la map à gérer.
+	 * manage the collision between the player bullets and the map.
+	 * @param map : map to manage.
 	 */
 	public static void collisionMunitionsMap(Tile[][] map){
 		for(int i=0; i<Player.getInstance().getMunitions().size(); i++){
@@ -55,9 +55,9 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre les un rectangle et un tableau de Tiles d'une map.
-	 * @param map : la map qui possède le tableau de tiles.
-	 * @param rect : le rectangle.
+	 * manage the collision between a rectangle and a tiles of a array of a map.
+	 * @param map : the map which possesses the tiles array.
+	 * @param rect : the rectangle.
 	 * @return boolean
 	 */
 	public static boolean collisionRectTiles(Tile[][] map, FloatRect rect){
@@ -69,8 +69,8 @@ public class CollisionManager {
 	}
 
 	/**
-	 * Gère la collision entre le joueur et les portes.
-	 * @param doors : les portes.
+	 * manage the collision between a player and the doors.
+	 * @param doors : the doors.
 	 * @return boolean
 	 */
 	public static Door collisionPlayerDoors(ArrayList<Door> doors) {
@@ -85,8 +85,8 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre un monstre et une munition d'un joueur.
-	 * @param monster : le monstre.
+	 * manage the collision between a monster and a bullet.
+	 * @param monster : The monster.
 	 */
 	public static void collisionMonsterMunition(Monster monster) {
 		// TODO Auto-generated method stub
@@ -100,11 +100,11 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre un monstre et un joueur.
-	 * @param monster : le monstre.
-	 * @param time : timer qui gère les frames.
-	 * @param timerAttack : le temps entre deux attaques.
-	 * @param positionPlayer : la position du joueur.
+	 * Manage the collision between a monster and a player.
+	 * @param monster : The monster.
+	 * @param time : timer for frames manage.
+	 * @param timerAttack : time between two attacks.
+	 * @param positionPlayer : player position.
 	 */
 	public static void collisionMonsterPlayer(Monster monster, Time time, Clock timerAttack, Vector2f positionPlayer) {
 		// TODO Auto-generated method stub
@@ -120,9 +120,9 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre le joueur et les objects présent dans une salle.
-	 * @param objects : la liste des objets.
-	 * @param room : la salle qui possède les objets.
+	 * manage the collision between the player and the objects in the room.
+	 * @param objects : objects list.
+	 * @param room : room which possesses the objects.
 	 */
 	public static void collisionPlayerObjects(ArrayList<Object> objects, RoomInteractif room) {
 		// TODO Auto-generated method stub
@@ -134,7 +134,7 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre deux Sprites.
+	 * manage the collison between two sprite.
 	 * @param sprite : sprite1.
 	 * @param sprite2 : sprite2.
 	 * @return boolean
@@ -144,7 +144,7 @@ public class CollisionManager {
 	}
 	
 	/**
-	 * Gère la collision entre deux rectangles.
+	 * manage the collision between two rectangles.
 	 * @param rect : rectangle1.
 	 * @param rect2 : rectangle2.
 	 * @return boolean

@@ -2,7 +2,7 @@ import application.Application;
 
 
 /**
- * La classe éxécuter lors du lancement du jeu.
+ * Class exucute at the launch of the game.
  * @author Ludov_000
  *
  */

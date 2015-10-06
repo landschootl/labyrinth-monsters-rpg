@@ -9,7 +9,7 @@ import org.jsfml.system.Vector2f;
 import resource.Texte;
 
 /**
- * Classe qui correspond à la jauge de vie du joueur.
+ * Life bar.
  * @author Ludov_000
  *
  */
@@ -24,7 +24,7 @@ public class LifeBar {
 	}
 	
 	/**
-	 * Initialise le background de la jauge de vie.
+	 * Initialize life bar background.
 	 */
 	public void initBackground(){
 		background = new RectangleShape(new Vector2f(60,160));
@@ -35,9 +35,9 @@ public class LifeBar {
 	}
 	
 	/**
-	 * Permet de gérer les événements du viseur.
-	 * @param life : la vie actuelle du joueur.
-	 * @param MAX_LIFE : la vie max du joueur.
+	 * enable to manage the target events.
+	 * @param life : current life.
+	 * @param MAX_LIFE : maximum life.
 	 */
 	public void update(float life, float MAX_LIFE){
 		float sizeBlood = (float) (160.0 * (life/MAX_LIFE));
@@ -54,8 +54,8 @@ public class LifeBar {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * shows graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(background);

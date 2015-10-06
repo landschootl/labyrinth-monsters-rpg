@@ -3,7 +3,8 @@ package object.weapon;
 import management.TilesetManager;
 
 /**
- * Classe qui represente l'arme SlingShot.
+ * 
+ *This class represent the arm :SlingShot.
  * @author Ludov_000
  *
  */

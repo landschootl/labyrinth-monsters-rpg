@@ -3,8 +3,9 @@ package object.potion;
 import entitee.player.Player;
 
 /**
- * Classe qui représente une petite potion de vie.
- * Elle redonne 1 point de vie à l'utilisateur.
+ * 
+ *This class represent small potion.
+ *It add one life point to player.
  * @author Ludov_000
  *
  */

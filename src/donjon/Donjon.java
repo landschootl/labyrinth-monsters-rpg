@@ -1,6 +1,9 @@
 package donjon;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import management.CollisionManager;
 
@@ -16,79 +19,84 @@ import donjon.door.DoorNorth;
 import donjon.door.DoorSouth;
 import donjon.door.DoorWest;
 import donjon.room.Room;
-import donjon.room.RoomBegin;
-import donjon.room.RoomExit;
-import donjon.room.RoomIntersect;
-import donjon.room.RoomTrap;
-import entitee.monster.Barroc;
-import entitee.monster.Malloc;
-import entitee.monster.Rodeur;
-import entitee.monster.Runner;
-import entitee.monster.Sirheal;
+import entitee.monster.Monster;
 import entitee.player.Player;
 
 /**
- * Classe qui représente le donjon de la partie.
+ * the class represent the game dungeon.
  * @author Ludov_000
  *
  */
 public class Donjon {
 	/**
-	 * Toutes les salles du donjon.
+	 * all dungeon rooms.
 	 */
-	private HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
+	private HashMap<String, Room> rooms = new HashMap<String, Room>();
 	/**
-	 * La room de départ.
+	 * start map.
 	 */
 	private Room roomBegin;
 	/**
-	 * La salle courrante sur laquel on se trouve.
+	 * current room.
 	 */
 	private Room room;
 	
 	public Donjon(int level){
-		createDonjon(level);
+		generateDonjon(level);
 	}
 	
 	/**
-	 * Créer les différentes salles du donjon.
-	 * @param level : Le level de la partie.
+	 * Create the differents rooms of the dungeon.
+	 * @param level :level of the game.
 	 */
-	public void createDonjon(int level){
-		Room room1 = new RoomBegin();
-//		room1.addMonster(new Rodeur());
-//		room1.addMonster(new Rodeur());
-		room1.addMonster(new Malloc());
-		room1.addMonster(new Barroc());
-		room1.addMonster(new Runner());
-		room1.addMonster(new Barroc());
-		room1.addMonster(new Sirheal());
-		rooms.put(1, room1);
+	public void generateDonjon(int level) {
+		File file = new File("resource/level/level"+level+".txt");
+		Scanner sc = null;
+		try {
+			sc = new Scanner(file);
+		} catch (IOException e) {
+			System.err.println("Impossible d'ouvrir le fichier du niveau");
+			e.printStackTrace();
+		}
+		String idRoom;
+		sc.next();
+		// Create rooms
+		while(sc.hasNextInt()) { // On vérifie si c'est bien un un nombre qui suit
+			idRoom = sc.next(); // Mais on le récupère en string (plus facile pour la hashmap)
+			rooms.put(idRoom,Room.generateRoomById(sc.next()));
+		}
+		sc.next();
+		// Create doors
+		while(sc.hasNextInt()) {
+			idRoom = sc.next();
+			String idNextRoom = sc.next();
+			if(!idNextRoom.equals("0"))
+				rooms.get(idRoom).addDoor(new DoorWest(rooms.get(idNextRoom),sc.nextBoolean()));
+			idNextRoom = sc.next();
+			if(!idNextRoom.equals("0"))
+				rooms.get(idRoom).addDoor(new DoorNorth(rooms.get(idNextRoom),sc.nextBoolean()));
+			idNextRoom = sc.next();
+			if(!idNextRoom.equals("0"))
+				rooms.get(idRoom).addDoor(new DoorEast(rooms.get(idNextRoom),sc.nextBoolean()));
+			idNextRoom = sc.next();
+			if(!idNextRoom.equals("0"))
+				rooms.get(idRoom).addDoor(new DoorSouth(rooms.get(idNextRoom),sc.nextBoolean()));
+		}
+		sc.next();
+		sc.nextLine();
+		// Create monster
+		while(sc.hasNextLine()) {
+			String[] str =  sc.nextLine().split(" ");
+			idRoom = str[0];
+			for(int i=1; i<str.length; i++)
+				rooms.get(idRoom+"").addMonster(Monster.generateMonsterById(str[i]));
+		}
 		
-		Room room2 = new RoomIntersect();
-		room2.addMonster(new Rodeur());
-		room2.addMonster(new Rodeur());
-		room2.addMonster(new Runner());
-		room2.addMonster(new Runner ());
-		room2.addMonster(new Rodeur());
-		room2.addMonster(new Rodeur());
-		room2.addMonster(new Rodeur());
-		rooms.put(2, room2);
-		
-		room1.addDoor(new DoorWest(room2, false));
-		room1.addDoor(new DoorNorth(new RoomTrap(), false));
-		room1.addDoor(new DoorEast(new RoomExit(), true));
-		
-		room2.addDoor(new DoorWest(new RoomTrap(), false));
-		room2.addDoor(new DoorNorth(new RoomTrap(), false));
-		room2.addDoor(new DoorEast(room1, false));
-		room2.addDoor(new DoorSouth(new RoomTrap(), false));
-		roomBegin = room1;
+		roomBegin = rooms.get("1");
 		room = roomBegin;
 	}
-
 	/**
-	 * Permet de gérer les actions de la scène.
+	 * enable to manage the actions of the scene.
 	 */
 	public void update(Time time){
 		room.update(time);
@@ -105,19 +113,27 @@ public class Donjon {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la scène.
+	 * Shows the graphics elements in the window of the scene.
 	 */
 	public void draw(RenderWindow window) {
 		room.draw(window);
 	}
 	
 	/**
-	 * Change la room courante.
-	 * @param door : la porte empruntée pour changer de salle.
+	 * Change the current room.
+	 * @param door : the door that allows changing romm.
 	 */
 	public void changedRoom(Door door){
-		Console.getInstance().addText("Vous avez changé de salle !", Text.REGULAR, Color.GREEN);
+		Console.getInstance().addText("Vous avez changé de salle !", Text.REGULAR, Color.BLACK);
 		this.room=door.getNextRoom();
 		Player.getInstance().setPosition(door.getNextPositionPlayer());
+	}
+
+	/**
+	 * Return in the begin room of the dungeon.
+	 */
+	public void returnBeginRoom() {
+		// TODO Auto-generated method stub
+		room = roomBegin;
 	}
 }

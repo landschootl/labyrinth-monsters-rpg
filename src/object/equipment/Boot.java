@@ -4,8 +4,9 @@ import entitee.player.Player;
 import management.TilesetManager;
 
 /**
- * Classe qui représente l'equipement Boot.
- * Elle accèlére la vitesse de déplacement du joueur.
+ * 
+ * This class represent boot equipment.
+ * they accelerate the moving speed.
  * @author Ludov_000
  *
  */

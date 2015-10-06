@@ -12,25 +12,25 @@ import scene.SceneMenu;
 import scene.ScenePause;
 
 /**
- * Classe qui gére les différentes scènes de l'application.
+ * 
+ * This class manage the differents scenes when the player playing.
  * @author Ludov_000
  *
  */
 public class Application {
 	/**
-	 * La fenetre de l'application.
+	 * application window.
 	 */
 	public RenderWindow window = new RenderWindow();
 	
 	/**
-	 * Permet la gestion des Frames dans le jeu.
+	 * Enable frames management in the game.
 	 */
 	private Clock timerFrame = new Clock();
 	
 	/**
-	 * Les différentes étapes de l'application possible.
+	 * The differents steps of the application.
 	 * @author Ludov_000
-	 *
 	 */
 	public enum State {
 		GAME,
@@ -40,7 +40,7 @@ public class Application {
 	}
 	
 	/**
-	 * Indique l'état en cours de l'application.
+	 * Indicates the current state of the application.
 	 */
 	private static State stateOfApp = State.GAME;
 
@@ -51,11 +51,11 @@ public class Application {
 
 	public Application() {
 		window.create(new VideoMode(640, 820), "Donjon");
-		window.setMouseCursorVisible(false);
 	}
 	
 	/**
-	 * Boucle principale de l'application qui tourne tant que la fenetre est ouverte.
+	 * Main loop of the application. 
+	 * The loop executes as long as the window is open.
 	 */
 	public void run() {
 		while (window.isOpen()) {
@@ -66,7 +66,7 @@ public class Application {
 	}
 
 	/**
-	 * Gère les événements de l'application.
+	 * Manage events of the application.
 	 */
 	public void processEvents() {
 		for (Event event : window.pollEvents()) {
@@ -86,12 +86,14 @@ public class Application {
 			case PAUSE:
 				scenePause.handleEvents(event);
 				break;
+			default:
+				break;
 			}
 		}
 	}
 	
 	/**
-	 * Gère les actions de l'application.
+	 * Manage actions of the application.
 	 */
 	public void update() {
 		Time time;
@@ -114,7 +116,7 @@ public class Application {
 	}
 
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de l'application.
+	 * Show graphics elements in the window of the application.
 	 */
 	public void render() {
 		window.clear(Color.BLACK);
@@ -132,13 +134,15 @@ public class Application {
 			sceneGame.draw();
 			scenePause.draw();
 			break;
+		default:
+			break;
 		}
 		window.display();
 	}
 	
 	/**
-	 * Permet de changer l'état en cours de l'application.
-	 * @param stateOfApp : L'état de l'application attendu.
+	 * Enable to change the current state of the application.
+	 * @param stateOfApp : The state of the application is expect.
 	 */
 	public static void setStateOfApp(State state) {
 		Application.stateOfApp = state;

@@ -30,7 +30,7 @@ import entitee.monster.Monster;
 import entitee.player.Player;
 
 /**
- * Classe qui reprèsente une salle sur laquel on peut jouer.
+ * Class which represent a room where we can play.
  * @author Ludov_000
  *
  */
@@ -92,7 +92,7 @@ public class RoomInteractif extends Room {
 	
 	public void pickUpObject(Object object){
 		object.pickUp();
-		Console.getInstance().addText(object.getName()+" ramassé !", Text.REGULAR, Color.BLACK);
+		Console.getInstance().addText(object.getName()+" ramassé !", Text.REGULAR, new Color(71, 184, 236));
 		objects.remove(object);
 	}
 	
@@ -110,7 +110,7 @@ public class RoomInteractif extends Room {
 	}
 	
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
+	 * Function which enable to show the graphic in the window.
 	 */
 	public void draw(RenderWindow window) {
 		super.draw(window);

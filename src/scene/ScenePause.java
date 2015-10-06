@@ -30,7 +30,7 @@ public class ScenePause {
 	public void handleEvents(Event event) {
 		if(event.type == event.type.KEY_PRESSED){
 			event.asKeyEvent();
-			if(Keyboard.isKeyPressed(Key.A))
+			if(Keyboard.isKeyPressed(Key.ESCAPE))
 				Application.setStateOfApp(State.GAME);
 		}
 	}

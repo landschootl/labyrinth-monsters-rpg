@@ -3,7 +3,7 @@ package donjon.room;
 import map.Map;
 
 /**
- * Classe qui reprèsente la salle de départ du labyrinthe.
+ * Departure room.
  * @author Ludov_000
  *
  */

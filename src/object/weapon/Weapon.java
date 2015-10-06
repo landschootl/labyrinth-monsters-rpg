@@ -5,21 +5,22 @@ import org.jsfml.graphics.Sprite;
 import entitee.player.Player;
 
 /**
- * Classe qui represente un objet arme.
+ * 
+ *This class represent an arm object.
  * @author Ludov_000
  *
  */
 public abstract class Weapon extends object.Object{
 	/**
-	 * Le point de degat causé par l'arme. 
+	 * arm damage. 
 	 */
 	private int damage;
 	/**
-	 * La vitesse des munitions de l'arme.
+	 * ammunition velocity.
 	 */
 	private int speed;
 	/**
-	 * L'intervalle de temps entre deux attaques de l'arme.
+	 * interval between two shoots.
 	 */
 	private float intervalShoot;
 	

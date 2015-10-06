@@ -11,14 +11,15 @@ import org.jsfml.system.Vector2f;
 import resource.Texte;
 
 /**
- * Classe Singleton qui gère une console interne dans l'application.
+ * Singleton class that handles internal console in the application.
+ * 
  * @author Ludov_000
  *
  */
 public class Console {
 	// Logique
 	/**
-	 * L'unique instance de la classe Console.
+	 * Unique instance of console class
 	 */
 	private static Console instance = null;
 	
@@ -28,16 +29,24 @@ public class Console {
 	
 	private Console(){
 		initBackground();
+		presentation();
 	}
 	
 	/**
-	 * Retourne et créer l'instance de la classe si elle n'éxiste pas.
-	 * @return la seule instance de la classe Console.
+	 * Return and create the instance of the class if she dosen't exist.
+	 * @return the only one instance of console class.
 	 */
 	public static Console getInstance(){
 		if(instance==null)
 			instance = new Console();
 		return instance;
+	}
+	
+	/**
+	 * init the instance of class.
+	 */
+	 public static void init(){
+		instance = new Console();
 	}
 
 	/**
@@ -52,10 +61,10 @@ public class Console {
 	}
 	
 	/**
-	 * Ajoute un message dans la console.
-	 * @param message : Le message à ajouter.
-	 * @param type : Le type du text (BOLD, REGULAR, ITALIC, ..).
-	 * @param color : La couleur du text.
+	 * Add message in the console.
+	 * @param message : message to add.
+	 * @param type : text type (BOLD, REGULAR, ITALIC, ..).
+	 * @param color : text color.
 	 */
 	public void addText(String message, int type, Color color){
 		if(texts.size()>7)
@@ -64,8 +73,8 @@ public class Console {
 	}
 	
 	/**
-	 * Supprime un message.
-	 * @param id : l'id du message à supprimer.
+	 * remove a message.
+	 * @param id : message id to remove.
 	 */
 	public void removeText(int id){
 		texts.remove(id);
@@ -74,8 +83,8 @@ public class Console {
 	}
 
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Shows graphics elements in the window of the console.
+	 * @param window : pointer to the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(background);
@@ -84,7 +93,7 @@ public class Console {
 	}
 	
 	/**
-	 * Affiche la présentation du jeu.
+	 * shows the game presentation
 	 */
 	public void presentation(){
 		addText("Bienvenue in the Donjon !", Text.BOLD, Color.RED);

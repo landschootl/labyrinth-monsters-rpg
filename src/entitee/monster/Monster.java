@@ -13,21 +13,21 @@ import resource.Texte;
 import entitee.Entitee;
 
 /**
- * Classe qui représente un monstre dans le donjon.
+ * this class represent a monster in the dungeon.
  * @author Ludov_000
  *
  */
 public abstract class Monster extends Entitee {
 	/**
-	 * Le nom du monstre.
+	 * Name monster.
 	 */
 	private String name;
 	/**
-	 * Le timer qui gère le temps entre deux coups.
+	 * the timer manage the time between two shoots.
 	 */
 	private Clock timerAttack = new Clock();
 	/**
-	 * Le nombre de dégat effectué par le monstre.
+	 * Monster damage.
 	 */
 	private int degat;
 	
@@ -38,7 +38,7 @@ public abstract class Monster extends Entitee {
 	}
 	
 	/**
-	 * Initialise la position du monstre aléatoirement.
+	 * Initialize random monster position.
 	 */
 	public void initPositionBegin(){
 		int x=(int) (6+(Math.random()*8));
@@ -47,9 +47,9 @@ public abstract class Monster extends Entitee {
 	}
 	
 	/**
-	 * Permet de gérer les actions du monstre.
-	 * @param positionCible : La position de la cible du monstre.
-	 * @param time : Timer pour la gestion des frames.
+	 * Manage monster actions
+	 * @param positionCible : Monster target position.
+	 * @param time : Timer for frames gestions.
 	 */
 	public void update(Vector2f positionCible, Time time) {
 		super.update(positionCible);
@@ -59,8 +59,8 @@ public abstract class Monster extends Entitee {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the window of the console.
+	 * @param window : Pointer on the window of the application..
 	 */
 	public void draw(RenderWindow window){
 		super.draw(window);
@@ -69,9 +69,9 @@ public abstract class Monster extends Entitee {
 	}
 	
 	/**
-	 * Gère le déplacement du monstre ainsi que son animation.
-	 * @param positionCible : La position de la cible du monstre.
-	 * @param time : Timer pour la gestion des frames.
+	 * Manage the monster movements as well as his animation
+	 * @param positionCible : Monster target position.
+	 * @param time : Timer for frames manage.
 	 */
 	public void move(Time time, Vector2f positionCible){
 		super.move(time);
@@ -79,6 +79,28 @@ public abstract class Monster extends Entitee {
 	    speedX=(float)(((positionCible.x-sprite.getPosition().x)/distance)*speed)*time.asSeconds();
 	    speedY=(float)(((positionCible.y-sprite.getPosition().y)/distance)*speed)*time.asSeconds();
 		sprite.move(new Vector2f(speedX, speedY));
+	}
+	
+	/**
+	 * Return a monster identified by an id.
+	 * @param id : id of the monster.
+	 * @return monster
+	 */
+	public static Monster generateMonsterById(String id) {
+		switch(id) {
+		case "1":
+			return new Rodeur();
+		case "2":
+			return new Runner();
+		case "3":
+			return new Barroc();
+		case "4":
+			return new Malloc();
+		case "5":
+			return new Sirheal();
+		default:
+			return null;
+		}
 	}
 	
 	public String getName(){

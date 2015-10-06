@@ -7,30 +7,31 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe qui représente une munition utilisé par les armes.
+ * 
+ *This class represent the ammunitions used by the player.
  * @author Ludov_000
  *
  */
 public class Munition {
-	// Logique
+	
 	/**
-	 * La vitesse de déplacement.
+	 * moving speed.
 	 */
 	private int speed;
 	/**
-	 * Le déplacement sur les axes x et y.
+	 *moving on axes x and y.
 	 */
 	private float speedX=0, speedY=0;
 	/**
-	 * La position de départ de la munition.
+	 * ammunition start position.
 	 */
 	private Vector2f posBegin;
 	/**
-	 * La direction de la cible.
+	 * target direction.
 	 */
 	private Vector2f posDirection;
 	
-	// Graphique
+	
 	private CircleShape shape;
 	
 	
@@ -42,7 +43,7 @@ public class Munition {
 	}
 	
 	/**
-	 * Initialise le graphique du shape.
+	 * initialize shape graphic.
 	 */
 	public void initShape(){
 		shape = new CircleShape(2, 5);
@@ -51,8 +52,8 @@ public class Munition {
 	}
 	
 	/**
-	 * Gère le déplacement de la munition.
-	 * @param time : timer pour la gestion de frames.
+	 * manage the movement of the ammunition.
+	 * @param time : timer for frames manage.
 	 */
 	public void move(Time time){
 		double distance = (float)Math.sqrt((Math.abs(((posBegin.x-posDirection.x)*(posBegin.x-posDirection.x))+((posBegin.y-posDirection.y)*(posBegin.y-posDirection.y)))));
@@ -62,8 +63,8 @@ public class Munition {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window){
 		window.draw(shape);

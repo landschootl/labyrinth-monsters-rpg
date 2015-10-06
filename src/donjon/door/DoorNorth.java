@@ -5,7 +5,7 @@ import org.jsfml.system.Vector2f;
 import donjon.room.Room;
 
 /**
- * Classe qui reprèsente une porte situé au nord.
+ * North door.
  * @author Ludov_000
  *
  */

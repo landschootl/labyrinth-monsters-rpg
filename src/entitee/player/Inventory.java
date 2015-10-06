@@ -24,54 +24,54 @@ import resource.Texte;
 import console.Console;
 
 /**
- * Classe qui reprèsente l'inventaire du joueur.
+ * Inventory of the player.
  * @author Ludov_000
  *
  */
 public class Inventory {
 	// Logique
 	/**
-	 * Les petites potions de vies que possède le joueur.
+	 * Small potions.
 	 */
 	private ArrayList<PotionLife> smallPotionLifes = new ArrayList<>();
 	/**
-	 * Les moyennes potions de vies que possède le joueur.
+	 * Middle potions.
 	 */
 	private ArrayList<PotionLife> mediumPotionLifes = new ArrayList<>();
 	/**
-	 * Les grandes potions de vies que possède le joueur.
+	 * Big potions.
 	 */
 	private ArrayList<PotionLife> largePotionLifes = new ArrayList<>();
 	/**
-	 * Les clés que possède le joueur.
+	 * Keys.
 	 */
 	private ArrayList<Object> keys = new ArrayList<>();
 	/**
-	 * L'arme que possède le joueur.
+	 * Weapon.
 	 */
 	private Weapon weapon;
 	/**
-	 * Les bottes que possède le joueur.
+	 * Boots.
 	 */
 	private Equipment boot = null;
 	/**
-	 * L'armure que possède le joueur.
+	 * Armor.
 	 */
 	private Equipment clothes = null;
 	/**
-	 * Les gants que possède le joueur.
+	 * Gloves.
 	 */
 	private Equipment glove = null;
 	/**
-	 * Le casque que possède le joueur.
+	 * helmets.
 	 */
 	private Equipment helmet = null;
 	/**
-	 * Le bouclier que possède le joueur.
+	 * shield.
 	 */
 	private Equipment shield = null;
 	
-	// Graphique
+	
 	private RectangleShape backgroundContour;
 	private RectangleShape[][] backgroundCase = new RectangleShape[5][3];
 	
@@ -81,7 +81,7 @@ public class Inventory {
 	}
 	
 	/**
-	 * Initialise le background de l'inventaire.
+	 * initialize inventory background.
 	 */
 	public void initBackground(){
 		backgroundContour = new RectangleShape(new Vector2f(270,160));
@@ -100,8 +100,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the window of the console.
+	 * @param window : poiter on the window of the application.
 	 */
 	public void draw(RenderWindow window){
 		window.draw(backgroundContour);
@@ -123,9 +123,9 @@ public class Inventory {
 	}
 
 	/**
-	 * Affiche un object de l'inventaire en vérifiant si il n'est pas null.
-	 * @param window : pointeur sur la fenetre de l'application.
-	 * @param object ; l'object à afficher.
+	 * Show an inventory object and check if he's not null.
+	 * @param window : pointer on the window of the console.
+	 * @param object ; object to show.
 	 */
 	public void drawObject(RenderWindow window, Object object){
 		if(object!=null)
@@ -133,10 +133,10 @@ public class Inventory {
 	}
 	
 	/**
-	 * Affiche une liste d'objets de l'inventaire.
-	 * @param window : pointeur sur la fenetre de l'application.
-	 * @param object : un objet de la liste.
-	 * @param size : la taille de la liste.
+	 * add an object list to the inventory.
+	 * @param window : pointer on the window of the console.
+	 * @param object : an object of the list .
+	 * @param size : Liste size.
 	 */
 	public void drawObjectList(RenderWindow window, Object object, int size){
 		object.draw(window);
@@ -145,8 +145,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Ajoute un object clé dans l'inventaire.
-	 * @param key : la clé à ajouter.
+	 * Add an object to the inventory.
+	 * @param key : keys to add.
 	 */
 	public void addKey(Key key){
 		key.setPosition(new Vector2f(370+1*54,660+0*54));
@@ -154,22 +154,22 @@ public class Inventory {
 	}
 	
 	/**
-	 * Utilise une clé de l'inventaire et la supprime.
+	 * using a key from the inventory and remove it.
 	 * @return boolean
 	 */
 	public boolean useKey(){
 		if(keys.isEmpty()){
 			return false;
 		} else {
-			Console.getInstance().addText(keys.get(0).getName()+" utilisé !", Text.REGULAR, Color.BLACK);
+			Console.getInstance().addText(keys.get(0).getName()+" utilisï¿½ !", Text.REGULAR, Color.BLACK);
 			keys.remove(0);
 			return true;
 		}
 	}
 	
 	/**
-	 * Ajoute une petite potion de vie l'inventaire et initialise sa position dans l'inventaire.
-	 * @param potionLife : la petite potion de vie à ajouter.
+	 * Add a little life potion to the inventory and initialize his position in the inventory.
+	 * @param potionLife : added little potion.
 	 */
 	public void addSmallPotionLife(PotionLife potionLife){
 		potionLife.setPosition(new Vector2f(370+0*54,660+0*54));
@@ -177,8 +177,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Ajoute une moyenne potion de vie l'inventaire et initialise sa position dans l'inventaire.
-	 * @param potionLife : la moyenne potion de vie à ajouter.
+	 * Add a middle life potion to the inventory and initialize his position in the inventory.
+	 * @param potionLife : added middle potion.
 	 */
 	public void addMediumPotionLife(PotionLife potionLife){
 		potionLife.setPosition(new Vector2f(370+0*54,660+1*54));
@@ -186,8 +186,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Ajoute une grande potion de vie l'inventaire et initialise sa position dans l'inventaire.
-	 * @param potionLife : la grande potion de vie à ajouter.
+	 * Add a bgig life potion to the inventory and initialize his position in the inventory.
+	 * @param potionLife : added big potion.
 	 */
 	public void addLargePotionLife(PotionLife potionLife){
 		potionLife.setPosition(new Vector2f(370+0*54,660+2*54));
@@ -195,8 +195,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Retourne le bonus de vie de chaque equipment accumulé présent dans l'inventaire.
-	 * @return le bonus de vie
+	 * Return life bonus for all equipment in the inventory.
+	 * @return bonus life.
 	 */
 	public int getLifeBonusEquipment(){
 		int bonus = 0;
@@ -212,8 +212,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Retourne le bonus de vitesse des bottes présentent dans l'inventaire.
-	 * @return le bonus de vitesse
+	 * Return bonus life for each all boots in the inventory.
+	 * @return Velocity bonus.
 	 */
 	public int getSpeedBonusEquipment(){
 		if(boot==null)
@@ -223,43 +223,43 @@ public class Inventory {
 	}
 	
 	/**
-	 * Utilise une petite potion de vie dans l'inventaire.
+	 * Use a little potion in the inventory.
 	 */
 	public void useSmallPotion() {
 		usePotion(smallPotionLifes);
 	}
 	
 	/**
-	 * Utilise une moyenne potion de vie dans l'inventaire.
+	 * Use a middle potion in the inventory.
 	 */
 	public void useMediumPotion() {
 		usePotion(mediumPotionLifes);
 	}
 	
 	/**
-	 * Utilise une grande potion de vie dans l'inventaire.
+	 * Use a big potion in the inventory.
 	 */
 	public void useLargePotion() {
 		usePotion(largePotionLifes);
 	}
 	
 	/**
-	 * Utilise une potion présente dans l'inventaire en vérifiant si il y en a bien une.
-	 * @param array : le tableau de potion à utiliser.
+	 * Use a potion from the inventory and check if there are at least one potion in the inventory.
+	 * @param array : potion array to use.
 	 */
 	public void usePotion(ArrayList<PotionLife> array) {
 		if(array.isEmpty()){
-			Console.getInstance().addText("Vous ne possédez pas de potion !", Text.REGULAR, Color.RED);
+			Console.getInstance().addText("You don't have potion !", Text.REGULAR, Color.RED);
 		} else {
 			if(array.get(0).action()){
-				Console.getInstance().addText(array.get(0).getName()+" utilisé !", Text.REGULAR, Color.BLACK);
+				Console.getInstance().addText(array.get(0).getName()+" used !", Text.REGULAR, Color.BLACK);
 				array.remove(0);
 			}
 		}
 	}
 	
 	/**
-	 * Retourne la caractéristique de temps entre deux intervalles d'attaque de l'arme.
+	 * Return the time characteristic between two arm attack interval
 	 * @return
 	 */
 	public float getIntervalShootWeapon(){
@@ -269,7 +269,7 @@ public class Inventory {
 	}
 	
 	/**
-	 * Retourne la caractéristique de vitesse de la munition de l'arme.
+	 * Return the shoot velocity characteristic.
 	 * @return
 	 */
 	public int getSpeedShootWeapon(){
@@ -279,7 +279,7 @@ public class Inventory {
 	}
 	
 	/**
-	 * Retourne la caractéristique de puissance de l'arme.
+	 *Return arm power characteristic
 	 * @return
 	 */
 	public int getDamageShootWeapon(){

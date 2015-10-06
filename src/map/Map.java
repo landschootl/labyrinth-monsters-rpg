@@ -6,24 +6,24 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe qui correspond à une map dans une salle du donjon.
+ *class that corresponds to a map in a dungeon room.
  * @author Ludov_000
  *
  */
 public class Map {
 	/**
-	 * Les tiles qui composent la map.
+	 * The Tiles that make up the map
 	 */
 	private Tile[][] tiles;
 	/**
-	 * La taille d'une map.
+	 * size of map.
 	 */
 	private final int SIZE_MAP = 20;
 	
 	/**
-	 * Un modele de map.
+	 * map model.
 	 */
-	public static String[][] modeleIntersection = {
+	public static String[][] modeleIntersection = 	{
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
@@ -45,9 +45,10 @@ public class Map {
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
+		
 	
 	/**
-	 * Un modele de map.
+	 * map model.
 	 */
 	public static String[][] modeleExit = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
@@ -73,7 +74,7 @@ public class Map {
 	};
 	
 	/**
-	 * Un modele de map.
+	 * map model.
 	 */
 	public static String[][] modeleBegin = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
@@ -93,13 +94,13 @@ public class Map {
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "timber", "timber", "timber", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 		{"roof", "roof", "waterLeft", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterRight", "roof", "roof"}
 	};
 	
 	/**
-	 * Un modele de map.
+	 * map model.
 	 */
 	public static String[][] modeleTrap = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
@@ -133,8 +134,8 @@ public class Map {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window){
 		for(int i=0;i<SIZE_MAP;i++)

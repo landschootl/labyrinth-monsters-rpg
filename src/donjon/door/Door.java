@@ -12,22 +12,23 @@ import console.Console;
 import donjon.room.Room;
 
 /**
- * Classe qui reprèsente une porte permettant de changer de salle.
+ * 
+ * Class that represents a door for changing room.
  * @author Ludov_000
  *
  */
 public abstract class Door {
 	// Logique
 	/**
-	 * La salle ou ammène la porte.
+	 * the room where the door leads
 	 */
 	protected Room nextRoom;
 	/**
-	 * La position du joueur après avoir passé la porte.
+	 * The position of the player when he passed a door.
 	 */
 	protected Vector2f nextPositionPlayer;
 	/**
-	 * Si la porte est verrouillé ou non.
+	 * if the door is locked or not.
 	 */
 	protected boolean locked;
 	
@@ -47,8 +48,8 @@ public abstract class Door {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la porte.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Shows graphics elements in the window of the door
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(door);
@@ -56,11 +57,11 @@ public abstract class Door {
 	}
 	
 	/**
-	 * Dévérouille la porte.
+	 * Unlock the door.
 	 */
 	public void unlock(){
 		locked=false;
-		Console.getInstance().addText("Porte dévérrouillé !", Text.REGULAR, Color.BLACK);
+		Console.getInstance().addText("Porte dï¿½vï¿½rrouillï¿½ !", Text.REGULAR, Color.BLACK);
 	}
 	
 	public Vector2f getPosition(){

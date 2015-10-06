@@ -4,11 +4,11 @@ import map.Map;
 
 import org.jsfml.system.Time;
 
-import application.Application;
-import application.Application.State;
+import scene.SceneGame;
+import scene.SceneGame.EventGame;
 
 /**
- * Classe qui reprèsente la salle de fin du labyrinthe.
+ * Room end.
  * @author Ludov_000
  *
  */
@@ -20,8 +20,7 @@ public class RoomExit extends Room {
 	
 	public void update(Time time){
 		super.update(time);
-		System.out.println("perdu");
-		Application.setStateOfApp(State.GAMEOVER);	
+		SceneGame.setEventOfGame(EventGame.WIN_LEVEL);	
 	}
 
 }

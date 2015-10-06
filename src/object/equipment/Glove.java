@@ -4,8 +4,9 @@ import management.TilesetManager;
 import entitee.player.Player;
 
 /**
- * Classe qui représente l'equipement Glove.
- * Elle ajoute un point de vie au joueur.
+ * 
+ *This class represent glove equipment.
+ *It add one life point to player.
  * @author Ludov_000
  *
  */

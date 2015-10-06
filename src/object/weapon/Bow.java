@@ -3,7 +3,8 @@ package object.weapon;
 import management.TilesetManager;
 
 /**
- * Classe qui represente l'arme Bow.
+ * 
+ *This class represent the arm :bow.
  * @author Ludov_000
  *
  */

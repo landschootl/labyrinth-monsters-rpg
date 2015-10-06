@@ -10,13 +10,13 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe singleton permettant de retourner un Tile ou un sprite depuis un tileset.
+ * Singleton class enable to return a tile or a sprite since a tileset.
  * @author Ludov_000
  *
  */
 public class TilesetManager {
 	/**
-	 * L'unique instance de la classe TilesetManager.
+	 * unique instance from TilesetManager class.
 	 */
 	private static TilesetManager instance = null;
 	
@@ -89,8 +89,8 @@ public class TilesetManager {
 	}
 	
 	/**
-	 * Fonction qui permet de créer la seule instance de TilesetManager si elle n'existe pas.
-	 * @return la seule instance de la classe TilesetManager.
+	 * This function enable to create the only tilesetManager instance if it dosen't exist.
+	 * @return only instance from TilesetManager class.
 	 */
 	public static TilesetManager getInstance(){
 		if(instance==null)
@@ -99,10 +99,10 @@ public class TilesetManager {
 	}
 	
 	/**
-	 * Retourne un Tile identifié par son nom, en définissant la position du sprite.
-	 * @param name : le nom du Tile souhaité.
-	 * @param positionSprite : la position du Sprite.
-	 * @return le Tile correspond au nom défini.
+	 * Return a Tile identify by his name, defining the sprite position.
+	 * @param name : name of the desired Tile.
+	 * @param positionSprite : Sprite position.
+	 * @return Tile corresponding to the defined name.
 	 */
 	public Tile getTile(String name, Vector2f positionSprite){
 		Sprite sprite = new Sprite();
@@ -115,9 +115,9 @@ public class TilesetManager {
 	}
 	
 	/**
-	 * Retourne le sprite correspondant au nom passé en argument.
-	 * @param name : le nom du Tile souhaité.
-	 * @return le Sprite correspond au nom défini.
+	 * Return the sprite matches the name passed as argument.
+	 * @param name : name of the desired Tile.
+	 * @return Tile corresponding to the defined name..
 	 */
 	public Sprite getSprite(String name){
 		Sprite sprite = new Sprite();
@@ -129,10 +129,10 @@ public class TilesetManager {
 	}
 	
 	/**
-	 * Retourne le sprite correspondant au nom passé en argument avec une position attribué.
-	 * @param name : le nom du Tile souhaité.
-	 * @param positionSprite : la position du Sprite.
-	 * @return le Sprite correspond au nom défini.
+	 * Return the sprite matches the name passes as argument with a attribute position.
+	 * @param name : name of the desired Tile.
+	 * @param positionSprite : Sprite position.
+	 * @return Tile corresponding to the defined name.
 	 */
 	public Sprite getSpriteWhithPosition(String name, Vector2f positionSprite){
 		Sprite sprite = getSprite(name);

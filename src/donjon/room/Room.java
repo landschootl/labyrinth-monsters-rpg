@@ -12,17 +12,17 @@ import donjon.door.Door;
 import entitee.monster.Monster;
 
 /**
- * Classe qui représente une salle du donjon.
+ * Class which represent a room of the dungeon.
  * @author Ludov_000
  *
  */
 public abstract class Room {
 	/**
-	 * La map de la salle.
+	 * map of the room.
 	 */
 	protected Map map;
 	/**
-	 * Les portes présentent dans la salle.
+	 * The doors in the room.
 	 */
 	private ArrayList<Door> doors = new ArrayList<>();
 	
@@ -31,24 +31,24 @@ public abstract class Room {
 	}
 	
 	/**
-	 * Permet d'ajouter une porte dans la salle.
-	 * @param door : La porte à ajouter.
+	 * Enable to add a door in the room.
+	 * @param door : added door.
 	 */
 	public void addDoor(Door door){
 		doors.add(door);
 	}
 	
 	/**
-	 * Permet de gérer les actions de la salle.
-	 * @param time : Timer pour la gestion des frames.
+	 * enable to manage the actions of the room.
+	 * @param time : Timer for the manage of the frames.
 	 */
 	public void update(Time time) {
 		CollisionManager.collisionPlayerMap(this, time);
 	}
 
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la salle.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Shows the graphics elements in the window of the room
+	 * @param window : Pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window) {
 		map.draw(window);
@@ -57,10 +57,30 @@ public abstract class Room {
 	}
 	
 	/**
-	 * Ajouter un monstre.
-	 * @param monster : monstre à ajouter.
+	 * Add a monster.
+	 * @param monster : added monster.
 	 */
 	public void addMonster(Monster monster){};
+	
+	/**
+	 * Return a room identified by an id.
+	 * @param id : id of the room.
+	 * @return room
+	 */
+	public static Room generateRoomById(String id) {
+		switch(id) {
+		case "1":
+			return new RoomBegin();
+		case "2":
+			return new RoomIntersect();
+		case "3":
+			return new RoomTrap();
+		case "4":
+			return new RoomExit();
+		default:
+			return null;
+		}
+	}
 	
 	public Map getMap() {
 		return map;

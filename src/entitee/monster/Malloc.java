@@ -1,8 +1,8 @@
 package entitee.monster;
 
 /**
- * Classe qui représente le monstre "Malloc".
- * Il possède beaucoup de point de vie.
+ * "Malloc" monster.
+ * He have a lot of life points.
  * @author Ludov_000
  *
  */

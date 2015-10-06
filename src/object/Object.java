@@ -9,7 +9,7 @@ import org.jsfml.system.Vector2f;
 import resource.Texte;
 
 /**
- * Classe qui reprèsente les objets du jeu.
+ * this class represent game objects.
  * @author Ludov_000
  *
  */
@@ -31,13 +31,13 @@ public abstract class Object {
 	}
 	
 	/**
-	 * L'object est ramassé.
+	 * L'object est ramassï¿½.
 	 */
 	public abstract void pickUp();
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console avec le nom au dessus de l'object.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void drawWithName(RenderWindow window){
 		draw(window);
@@ -45,8 +45,8 @@ public abstract class Object {
 	}
 	
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
 	 */
 	public void draw(RenderWindow window){
 		window.draw(sprite);

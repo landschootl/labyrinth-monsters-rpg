@@ -4,7 +4,7 @@ import entitee.player.Player;
 import management.TilesetManager;
 
 /**
- * Classe qui représente un objet clé.
+ * The class represent a key.
  * @author Ludov_000
  *
  */

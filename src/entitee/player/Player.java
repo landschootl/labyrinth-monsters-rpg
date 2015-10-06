@@ -12,32 +12,34 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
+import scene.SceneGame;
+import scene.SceneGame.EventGame;
 import application.Application;
 import application.Application.State;
 import console.Console;
 import entitee.Entitee;
 
 /**
- * Classe singleton qui représente le joueur.
+ * Player singleton class.
  * @author Ludov_000
  *
  */
 public class Player extends Entitee {
 	/**
-	 * Le maximum de sa vie.
+	 * Maximum life.
 	 */
 	private final float MAX_LIFE = 3;
 	/**
-	 * Timer qui gère le temps entre deux tirs.
+	 * This timer manage the interval between two shoot.
 	 */
 	private Clock intervalShoot = new Clock();
 	/**
-	 * Si le joueur exécute l'action pour ramasser un object.
+	 * if the player execute an action pick up an object.
 	 */
 	private boolean actionPickUp = false;
 	
 	/**
-	 * L'unique instance de la classe joueur.
+	 * the only instance from player class.
 	 */
 	private static Player instance = null;
 	
@@ -54,32 +56,34 @@ public class Player extends Entitee {
 	}
 	
 	/**
-	 * Initialise la position de départ du joueur.
+	 * Return and create the class instance if it dosen't exist.
+	 * @return The only instance from player class.
+	 */
+	public static Player getInstance(){
+		if(instance==null)
+			instance = new Player();
+		return instance;
+	}
+	
+	/**
+	 * Reinitialize the instance.
+	 */
+	public void init(){
+		life = MAX_LIFE;
+		inventory = new Inventory();
+		initPositionBegin();
+	}
+	
+	/**
+	 * initialize start depart position.
 	 */
 	public void initPositionBegin(){
 		sprite.setPosition(new Vector2f(10*32,18*32));
 	}
 	
 	/**
-	 * Retourne et créer l'instance de la classe si elle n'éxiste pas.
-	 * @return la seule instance de la classe Player.
-	 */
-	public static Player getInstance(){
-		if(instance==null)
-			init();
-		return instance;
-	}
-	
-	/**
-	 * Reinitialise l'instance.
-	 */
-	public static void init(){
-		instance = new Player();
-	}
-	
-	/**
-	 * Permet de gérer les événements de la scène.
-	 * @param event : l'événement de l'application.
+	 *Enable to mange scene events.
+	 * @param event : application event.
 	 */
 	public void handleEvents(Event event) {
 		viseur.handleEvents(event);
@@ -146,22 +150,20 @@ public class Player extends Entitee {
 	}
 
 	/**
-	 * Fonction qui permet de gérer les actions.
-	 * @param time : Timer pour la gestion des frames.
+	 * This function enable to manage the actions.
+	 * @param time : Timer for frames manage.
 	 */
 	public void update() {
 		super.update(viseur.getPosition());
-		//Si On perd une vie ! 
 		lifeBar.update(life, MAX_LIFE+inventory.getLifeBonusEquipment());
 		if(isDead()){
-			Console.getInstance().addText("Vous êtes mort !", Text.BOLD, Color.RED);
-			Application.setStateOfApp(State.GAMEOVER);
+			SceneGame.setEventOfGame(EventGame.PLAYER_IS_DEAD);
 		}
 	}
 	
 	/**
-	 * Gère le déplacement du joueur ainsi que son animation.
-	 * @param time : Timer pour la gestion des frames.
+	 * manage the player movements as well as his animation.
+	 * @param time : Timer for frames manage.
 	 */
 	public void move(Time time){
 		super.move(time);
@@ -171,8 +173,8 @@ public class Player extends Entitee {
 	}
 
 	/**
-	 * Affiche les éléments graphiques dans la fenêtre de la console.
-	 * @param window : pointeur sur la fenetre de l'application.
+	 * Show graphics elements in the window of the console.
+	 * @param window : pointer on the windows of the application.
 	 */
 	public void draw(RenderWindow window) {
 		super.draw(window);
@@ -184,15 +186,15 @@ public class Player extends Entitee {
 	}
 	
 	/**
-	 * Execute un tir.
+	 * execute a shoot.
 	 */
 	public void shoot(){
 		munitions.add(new Munition(new Vector2f(getPosition().x+16,getPosition().y+16),viseur.getPosition(),inventory.getSpeedShootWeapon()));
 	}
 	
 	/**
-	 * Ajoute des points de vie au joueur.
-	 * @param nbLife : le nombre de point de vie à ajouter.
+	 * Add life points to player.
+	 * @param nbLife : added points life.
 	 * @return boolean
 	 */
 	public boolean addLife(float nbLife){
@@ -214,8 +216,8 @@ public class Player extends Entitee {
 	}
 	
 	/**
-	 * Enleve des points de vie au joueur.
-	 * @param degat : le nombre de point de vie perdu.
+	 * remove points life to player.
+	 * @param degat : lost points life.
 	 */
 	public void loseLife(int degat) {
 		// TODO Auto-generated method stub
@@ -223,7 +225,7 @@ public class Player extends Entitee {
 		super.loseLife(degat);
 		float lifeAfter = life;
 		float looseLife = lifeBefore-lifeAfter;
-		Console.getInstance().addText("- "+(int)looseLife+" point de vies !", Text.REGULAR, Color.MAGENTA);
+		Console.getInstance().addText("- "+(int)looseLife+" point de vies !", Text.REGULAR, Color.RED);
 	}
 	
 	public float getMAX_LIFE() {

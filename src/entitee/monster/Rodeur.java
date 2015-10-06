@@ -1,8 +1,8 @@
 package entitee.monster;
 
 /**
- * Classe qui représente le monstre "Rodeur".
- * Il est simple.
+ * "Rodeur Monster.
+ * He's easy
  * @author Ludov_000
  *
  */
