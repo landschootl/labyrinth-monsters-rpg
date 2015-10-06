@@ -5,12 +5,18 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe définissant un tile présent dans les tileset.
+ * Classe définissant un tile présent dans une map.
  * @author Ludov_000
  *
  */
 public class Tile {
-	private boolean checked; // Défini si on peut marcher dessus ou pas.
+	// Logique
+	/**
+	 * Définiti si on peut marcher sur le tile.
+	 */
+	private boolean checked;
+	
+	// Graphique
 	private Sprite sprite;
 	
 	public Tile(boolean checked, Sprite sprite){
@@ -19,8 +25,8 @@ public class Tile {
 	}
 	
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window){
 		window.draw(sprite);

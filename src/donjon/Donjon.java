@@ -8,7 +8,6 @@ import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
 import org.jsfml.system.Time;
-import org.jsfml.window.event.Event;
 
 import console.Console;
 import donjon.door.Door;
@@ -21,6 +20,8 @@ import donjon.room.RoomBegin;
 import donjon.room.RoomExit;
 import donjon.room.RoomIntersect;
 import donjon.room.RoomTrap;
+import entitee.monster.Barroc;
+import entitee.monster.Malloc;
 import entitee.monster.Rodeur;
 import entitee.monster.Runner;
 import entitee.monster.Sirheal;
@@ -36,6 +37,10 @@ public class Donjon {
 	 * Toutes les salles du donjon.
 	 */
 	private HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
+	/**
+	 * La room de départ.
+	 */
+	private Room roomBegin;
 	/**
 	 * La salle courrante sur laquel on se trouve.
 	 */
@@ -53,10 +58,10 @@ public class Donjon {
 		Room room1 = new RoomBegin();
 //		room1.addMonster(new Rodeur());
 //		room1.addMonster(new Rodeur());
-//		room1.addMonster(new Malloc());
-//		room1.addMonster(new Barroc());
-//		room1.addMonster(new Runner());
-//		room1.addMonster(new Barroc());
+		room1.addMonster(new Malloc());
+		room1.addMonster(new Barroc());
+		room1.addMonster(new Runner());
+		room1.addMonster(new Barroc());
 		room1.addMonster(new Sirheal());
 		rooms.put(1, room1);
 		
@@ -78,7 +83,8 @@ public class Donjon {
 		room2.addDoor(new DoorNorth(new RoomTrap(), false));
 		room2.addDoor(new DoorEast(room1, false));
 		room2.addDoor(new DoorSouth(new RoomTrap(), false));
-		room = room1;
+		roomBegin = room1;
+		room = roomBegin;
 	}
 
 	/**

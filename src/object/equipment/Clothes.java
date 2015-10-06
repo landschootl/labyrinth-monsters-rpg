@@ -3,6 +3,12 @@ package object.equipment;
 import management.TilesetManager;
 import entitee.player.Player;
 
+/**
+ * Classe qui représente l'equipement Clothes.
+ * Elle ajoute un point de vie au joueur.
+ * @author Ludov_000
+ *
+ */
 public class Clothes extends Equipment{
 	
 	public Clothes() {

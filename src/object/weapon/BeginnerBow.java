@@ -2,6 +2,11 @@ package object.weapon;
 
 import management.TilesetManager;
 
+/**
+ * Classe qui represente l'arme BeginnerBow.
+ * @author Ludov_000
+ *
+ */
 public class BeginnerBow extends Weapon {
 
 	public BeginnerBow() {

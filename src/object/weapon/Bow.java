@@ -2,6 +2,11 @@ package object.weapon;
 
 import management.TilesetManager;
 
+/**
+ * Classe qui represente l'arme Bow.
+ * @author Ludov_000
+ *
+ */
 public class Bow extends Weapon {
 
 	public Bow() {

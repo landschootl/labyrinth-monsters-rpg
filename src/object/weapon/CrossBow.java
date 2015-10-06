@@ -2,6 +2,11 @@ package object.weapon;
 
 import management.TilesetManager;
 
+/**
+ * Classe qui represente l'arme CrossBow.
+ * @author Ludov_000
+ *
+ */
 public class CrossBow extends Weapon {
 
 	public CrossBow() {

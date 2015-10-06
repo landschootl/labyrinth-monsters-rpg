@@ -9,7 +9,7 @@ import org.jsfml.system.Vector2f;
 
 
 /**
- * Classe permettant de générer un texte.
+ * Classe qui permet de créer et afficher un text.
  * @author Ludov_000
  *
  */
@@ -24,8 +24,8 @@ public class Texte {
 	}
 
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : la fenêtre sur lequel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(text);

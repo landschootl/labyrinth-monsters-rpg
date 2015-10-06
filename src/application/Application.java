@@ -1,6 +1,8 @@
 package application;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.system.Clock;
+import org.jsfml.system.Time;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
@@ -19,6 +21,11 @@ public class Application {
 	 * La fenetre de l'application.
 	 */
 	public RenderWindow window = new RenderWindow();
+	
+	/**
+	 * Permet la gestion des Frames dans le jeu.
+	 */
+	private Clock timerFrame = new Clock();
 	
 	/**
 	 * Les différentes étapes de l'application possible.
@@ -87,12 +94,15 @@ public class Application {
 	 * Gère les actions de l'application.
 	 */
 	public void update() {
+		Time time;
+	    time=timerFrame.getElapsedTime();
+	    timerFrame.restart();
 		switch (stateOfApp) {
 		case MENU:
 			sceneMenu.update();
 			break;
 		case GAME:
-			sceneGame.update();
+			sceneGame.update(time);;
 			break;
 		case GAMEOVER:
 			sceneGameover.update();

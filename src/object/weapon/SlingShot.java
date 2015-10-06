@@ -2,6 +2,11 @@ package object.weapon;
 
 import management.TilesetManager;
 
+/**
+ * Classe qui represente l'arme SlingShot.
+ * @author Ludov_000
+ *
+ */
 public class SlingShot extends Weapon {
 
 	public SlingShot() {

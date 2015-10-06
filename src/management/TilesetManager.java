@@ -10,15 +10,16 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 /**
- * Classe permettant de retourner un Tile depuis un tileset.
+ * Classe singleton permettant de retourner un Tile ou un sprite depuis un tileset.
  * @author Ludov_000
  *
  */
 public class TilesetManager {
 	/**
-	 * Design pattern Singleton, assure qu'il n'y est qu'une seule instance de la classe Console.
+	 * L'unique instance de la classe TilesetManager.
 	 */
 	private static TilesetManager instance = null;
+	
 	
 	private final int SIZE_SPRITE = 32;
 	

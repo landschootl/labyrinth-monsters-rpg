@@ -2,6 +2,12 @@ package object.equipment;
 
 import org.jsfml.graphics.Sprite;
 
+/**
+ * Classe qui représente un object équipement.
+ * Elle ajoute des points de vie ou de vitesse de déplacement au joueur.
+ * @author Ludov_000
+ *
+ */
 public abstract class Equipment extends object.Object{
 	private int bonus;
 	

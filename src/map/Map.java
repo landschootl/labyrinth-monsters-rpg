@@ -5,10 +5,24 @@ import management.TilesetManager;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Vector2f;
 
+/**
+ * Classe qui correspond à une map dans une salle du donjon.
+ * @author Ludov_000
+ *
+ */
 public class Map {
-	private Tile[][] map;
+	/**
+	 * Les tiles qui composent la map.
+	 */
+	private Tile[][] tiles;
+	/**
+	 * La taille d'une map.
+	 */
 	private final int SIZE_MAP = 20;
 	
+	/**
+	 * Un modele de map.
+	 */
 	public static String[][] modeleIntersection = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
@@ -32,6 +46,9 @@ public class Map {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
 	
+	/**
+	 * Un modele de map.
+	 */
 	public static String[][] modeleExit = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
@@ -55,6 +72,9 @@ public class Map {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
 	
+	/**
+	 * Un modele de map.
+	 */
 	public static String[][] modeleBegin = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
@@ -78,6 +98,9 @@ public class Map {
 		{"roof", "roof", "waterLeft", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterCenter", "waterCenter", "waterCenter","waterCenter", "waterCenter", "waterRight", "roof", "roof"}
 	};
 	
+	/**
+	 * Un modele de map.
+	 */
 	public static String[][] modeleTrap = {
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
@@ -102,29 +125,29 @@ public class Map {
 	};
 	
 	public Map(String[][] modeleMap){
-		map = new Tile[SIZE_MAP][SIZE_MAP];
+		tiles = new Tile[SIZE_MAP][SIZE_MAP];
 		for(int i=0;i<SIZE_MAP;i++)
 			for(int j=0; j<SIZE_MAP;j++){
-				map[i][j]=TilesetManager.getInstance().getTile(modeleMap[i][j], new Vector2f(j*32,i*32));
+				tiles[i][j]=TilesetManager.getInstance().getTile(modeleMap[i][j], new Vector2f(j*32,i*32));
 			}
 	}
 	
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window){
 		for(int i=0;i<SIZE_MAP;i++)
 			for(int j=0; j<SIZE_MAP;j++)
-				map[j][i].draw(window);
+				tiles[j][i].draw(window);
 	}
 
-	public Tile[][] getMap() {
-		return map;
+	public Tile[][] getTiles() {
+		return tiles;
 	}
 
-	public void setMap(Tile[][] map) {
-		this.map = map;
+	public void setTiles(Tile[][] map) {
+		this.tiles = map;
 	}
 	
 	

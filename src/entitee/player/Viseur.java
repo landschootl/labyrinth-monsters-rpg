@@ -8,11 +8,12 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
 /**
- * Class qui correspond au viseur du joueur.
+ * Classe qui correspond au viseur du joueur.
  * @author Ludov_000
  *
  */
 public class Viseur {
+	// Graphique
 	private Sprite sprite = new Sprite();
 	
 	public Viseur(){
@@ -20,8 +21,8 @@ public class Viseur {
 	}
 	
 	/**
-	 * Fonction qui permet de gérer les événements.
-	 * @param event : l'événement sur lequel on écoute.
+	 * Permet de gérer les événements de la scène.
+	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
 		if (event.type == Event.Type.MOUSE_MOVED) {
@@ -30,8 +31,8 @@ public class Viseur {
 	}
 	
 	/**
-	 * Fonction qui permet d'afficher le rendu graphique dans la fenetre.
-	 * @param window : La fenetre sur laquel on souhaite afficher les éléments.
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
 	 */
 	public void draw(RenderWindow window) {
 		window.draw(sprite);

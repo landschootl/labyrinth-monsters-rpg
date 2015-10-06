@@ -3,7 +3,6 @@ package scene;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Text;
-import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
@@ -24,10 +23,6 @@ public class SceneGame {
 	 */
 	private RenderWindow window;
 	/**
-	 * Permet la gestion des Frames dans le jeu.
-	 */
-	private Clock timerFrame = new Clock();
-	/**
 	 * Le level de la partie.
 	 */
 	private int level = 1;
@@ -45,6 +40,16 @@ public class SceneGame {
 	public void upLevel(){
 		level+=1;
 		donjon = new Donjon(level);
+		Player.getInstance().initPositionBegin();
+	}
+	
+	/**
+	 * Recommence la partie.
+	 */
+	public void restart(){
+		level=1;
+		donjon = new Donjon(level);
+		//Player.init();
 	}
 	
 	/**
@@ -58,11 +63,7 @@ public class SceneGame {
 	/**
 	 * Permet de gérer les actions de la scène.
 	 */
-	public void update() {
-	    Time time;
-	    time=timerFrame.getElapsedTime();
-	    timerFrame.restart();
-		
+	public void update(Time time) {
 	    donjon.update(time);
 	    Player.getInstance().update();
 	}

@@ -66,8 +66,15 @@ public class Player extends Entitee {
 	 */
 	public static Player getInstance(){
 		if(instance==null)
-			instance = new Player();
+			init();
 		return instance;
+	}
+	
+	/**
+	 * Reinitialise l'instance.
+	 */
+	public static void init(){
+		instance = new Player();
 	}
 	
 	/**
@@ -102,6 +109,9 @@ public class Player extends Entitee {
 	            case TAB :
 	            	actionPickUp=true;
 	            break;
+	            case ESCAPE :
+	            	Application.setStateOfApp(State.PAUSE);
+	           	break;
 	            default:
 	            break;
 	        }

@@ -1,7 +1,12 @@
 package scene;
 
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.window.Keyboard;
+import org.jsfml.window.Keyboard.Key;
 import org.jsfml.window.event.Event;
+
+import application.Application;
+import application.Application.State;
 
 /**
  * Classe qui reprèsente la scène lorsque le joueur est sur le menu.
@@ -23,7 +28,7 @@ public class SceneMenu {
 	 * @param event : l'événement de l'application.
 	 */
 	public void handleEvents(Event event) {
-
+			
 	}
 
 	/**

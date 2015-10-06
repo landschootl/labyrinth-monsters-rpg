@@ -9,18 +9,24 @@ import org.jsfml.graphics.Font;
 import org.jsfml.graphics.Texture;
 
 /**
- * Classe permettant de stocker toutes les ressources utiles pour le jeu en s'asurant qu'elles seront chargé qu'une seule fois.
+ * Classe permettant de stocker et renvoyer toutes les ressources (Fonts et Textures) utiles pour l'application en s'asurant qu'elles seront chargé qu'une seule fois.
  * @author Ludov_000
  *
  */
 public class ResourceManager {
+	/**
+	 * Liste des fonts utiles dans l'application.
+	 */
 	private static Map<String, Font> fonts = new HashMap<>();
+	/**
+	 * Liste des textures utiles dans l'application.
+	 */
 	private static Map<String, Texture> textures = new HashMap<>();
 	
 	/**
-	 * Fonction qui permet de vérifier si le Font souhaité existe, et de le créer ainsi que le charger si il n'éxiste pas.
-	 * @param url : l'url absolue du font souhaité.
-	 * @return le font demandé.
+	 * Permet de retourner le font souhaité en vérifiant si le Font souhaité existe, et de le charger si il n'éxiste pas.
+	 * @param url : l'url du font souhaité.
+	 * @return le font
 	 */
 	public static Font getFont(String url){
 		if(!fonts.containsKey(url)){
@@ -36,8 +42,8 @@ public class ResourceManager {
 	}
 	
 	/**
-	 * Fonction qui permet de vérifier si la texture souhaité existe, et de la créer ainsi que la charger si elle n'éxiste pas.
-	 * @param url : l'url absolue de la texture souhaité.
+	 * Permet de retourner la texture souhaité en vérifiant si le Font souhaité existe, et de le charger si il n'éxiste pas.
+	 * @param url : l'url de la texture souhaité.
 	 * @return la texture demandé.
 	 */
 	public static Texture getTexture(String url){

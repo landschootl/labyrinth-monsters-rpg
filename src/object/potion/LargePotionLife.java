@@ -2,6 +2,12 @@ package object.potion;
 
 import entitee.player.Player;
 
+/**
+ * Classe qui représente une large potion de vie.
+ * Elle redonne 5 point de vie à l'utilisateur.
+ * @author Ludov_000
+ *
+ */
 public class LargePotionLife extends PotionLife {
 
 	public LargePotionLife() {

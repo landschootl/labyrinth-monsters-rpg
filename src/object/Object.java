@@ -9,13 +9,19 @@ import org.jsfml.system.Vector2f;
 import resource.Texte;
 
 /**
- * Cette class reprèsente les objets du jeu.
+ * Classe qui reprèsente les objets du jeu.
  * @author Ludov_000
  *
  */
 public abstract class Object {
-	protected Sprite sprite;
+	// Logique
+	/**
+	 * Le nom de l'object.
+	 */
 	protected String name;
+	
+	// Graphique
+	protected Sprite sprite;
 	protected Texte textName;
 	
 	public Object(Sprite sprite, String name){
@@ -24,13 +30,24 @@ public abstract class Object {
 		textName = new Texte(name, 15, sprite.getPosition(), Color.BLACK, Text.ITALIC);
 	}
 	
+	/**
+	 * L'object est ramassé.
+	 */
 	public abstract void pickUp();
 	
+	/**
+	 * Affiche les éléments graphiques dans la fenêtre de la console avec le nom au dessus de l'object.
+	 * @param window : pointeur sur la fenetre de l'application.
+	 */
 	public void drawWithName(RenderWindow window){
-		window.draw(sprite);
+		draw(window);
 		textName.draw(window);
 	}
 	
+	/**
+	 * Affiche les éléments graphiques dans la fenêtre de la console.
+	 * @param window : pointeur sur la fenetre de l'application.
+	 */
 	public void draw(RenderWindow window){
 		window.draw(sprite);
 	}

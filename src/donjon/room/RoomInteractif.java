@@ -105,7 +105,7 @@ public class RoomInteractif extends Room {
 				removeMonster(monster);
 			}
 		}
-		CollisionManager.collisionMunitionsMap(this.map.getMap());
+		CollisionManager.collisionMunitionsMap(this.map.getTiles());
 		CollisionManager.collisionPlayerObjects(this.objects, this);
 	}
 	

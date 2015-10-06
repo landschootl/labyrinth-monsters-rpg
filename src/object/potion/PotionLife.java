@@ -3,6 +3,12 @@ package object.potion;
 import entitee.player.Player;
 import management.TilesetManager;
 
+/**
+ * Classe qui représente un objet potion de vie.
+ * Elle redonne des points de vie à l'utilisateur.
+ * @author Ludov_000
+ *
+ */
 public abstract class PotionLife extends object.Object{
 	protected int regenereLife;
 	

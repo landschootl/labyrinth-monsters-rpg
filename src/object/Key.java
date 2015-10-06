@@ -3,6 +3,11 @@ package object;
 import entitee.player.Player;
 import management.TilesetManager;
 
+/**
+ * Classe qui représente un objet clé.
+ * @author Ludov_000
+ *
+ */
 public class Key extends Object{
 
 	public Key() {
