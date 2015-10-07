@@ -75,8 +75,8 @@ public class Map {
 		{
 			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
 			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
-			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
 			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},

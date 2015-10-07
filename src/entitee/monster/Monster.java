@@ -64,7 +64,8 @@ public abstract class Monster extends Entitee {
 	 */
 	public void draw(RenderWindow window){
 		super.draw(window);
-		Texte lifeBar = new Texte("life="+(int)life, 15, new Vector2f(getPosition().x,getPosition().y-16), Color.BLACK, Text.ITALIC);
+		Texte lifeBar = new Texte((int)life+" pdv", 15, new Vector2f(getPosition().x,getPosition().y-16), Color.BLACK, Text.ITALIC);
+		lifeBar.setPosition(new Vector2f(getPosition().x+(sprite.getLocalBounds().width-lifeBar.getText().getGlobalBounds().width)/2,getPosition().y-16));
 		lifeBar.draw(window);
 	}
 	

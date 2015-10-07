@@ -95,6 +95,7 @@ public class Donjon {
 		roomBegin = rooms.get("1");
 		room = roomBegin;
 	}
+	
 	/**
 	 * enable to manage the actions of the scene.
 	 */

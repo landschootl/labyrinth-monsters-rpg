@@ -63,6 +63,7 @@ public abstract class Object {
 	public void setPosition(Vector2f position){
 		sprite.setPosition(position);
 		textName.setPosition(new Vector2f(position.x+6,position.y-10));
+		textName.setPosition(new Vector2f(getPosition().x+(sprite.getLocalBounds().width-textName.getText().getGlobalBounds().width)/2,getPosition().y-16));
 	}
 	
 	public Vector2f getPosition(){

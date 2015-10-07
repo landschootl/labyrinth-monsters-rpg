@@ -7,9 +7,6 @@ import org.jsfml.graphics.Text;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
-import application.Application;
-import application.Application.State;
-
 public class Button {
 	
 	private boolean click = false;
