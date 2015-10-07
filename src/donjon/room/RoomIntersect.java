@@ -11,7 +11,7 @@ import map.Map;
 public class RoomIntersect extends RoomInteractif {
 	
 	public RoomIntersect(){
-		super(Map.modeleIntersection);
+		super(Map.modeleIntersection[(int)(Math.random()*9)]);
 	}
 	
 }

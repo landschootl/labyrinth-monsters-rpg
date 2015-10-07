@@ -11,7 +11,7 @@ import management.TilesetManager;
 public class CrossBow extends Weapon {
 
 	public CrossBow() {
-		super(TilesetManager.getInstance().getSprite("crossbow"), "crossBow", 3, 150, 0.60f);
+		super(TilesetManager.getInstance().getSprite("crossbow"), "crossBow", 3, 200, 0.60f);
 		// TODO Auto-generated constructor stub
 	}
 	

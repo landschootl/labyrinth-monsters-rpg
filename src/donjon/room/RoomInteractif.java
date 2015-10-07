@@ -92,7 +92,7 @@ public class RoomInteractif extends Room {
 	
 	public void pickUpObject(Object object){
 		object.pickUp();
-		Console.getInstance().addText(object.getName()+" ramassé !", Text.REGULAR, new Color(71, 184, 236));
+		Console.getInstance().addText(object.getName()+" ramassé !", Text.REGULAR, Color.BLUE);
 		objects.remove(object);
 	}
 	

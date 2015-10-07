@@ -42,7 +42,7 @@ public class Application {
 	/**
 	 * Indicates the current state of the application.
 	 */
-	private static State stateOfApp = State.GAME;
+	private static State stateOfApp = State.MENU;
 
 	SceneGame sceneGame = new SceneGame(window);
 	SceneMenu sceneMenu = new SceneMenu(window);
@@ -122,12 +122,15 @@ public class Application {
 		window.clear(Color.BLACK);
 		switch (stateOfApp) {
 		case MENU:
+			window.setMouseCursorVisible(true);
 			sceneMenu.draw();
 			break;
 		case GAME:
+			window.setMouseCursorVisible(false);
 			sceneGame.draw();
 			break;
 		case GAMEOVER:
+			sceneGame.draw();
 			sceneGameover.draw();
 			break;
 		case PAUSE:

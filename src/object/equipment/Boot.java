@@ -13,7 +13,7 @@ import management.TilesetManager;
 public class Boot extends Equipment {
 
 	public Boot() {
-		super(TilesetManager.getInstance().getSprite("boot"), "boot", 20);
+		super(TilesetManager.getInstance().getSprite("boot"), "boot", 40);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -98,6 +98,8 @@ public abstract class Monster extends Entitee {
 			return new Malloc();
 		case "5":
 			return new Sirheal();
+		case "6":
+			return new Dragon();
 		default:
 			return null;
 		}

@@ -110,7 +110,7 @@ public class Player extends Entitee {
 	            case NUM3 :
 	            	inventory.useLargePotion();
 	            break;
-	            case TAB :
+	            case SPACE :
 	            	actionPickUp=true;
 	            break;
 	            case ESCAPE :
@@ -134,7 +134,7 @@ public class Player extends Entitee {
 	            case S :
 	            	this.speedX=0;;
 	            break;
-	            case TAB :
+	            case SPACE :
 	            	actionPickUp=false;
 	            break;
 	            default:

@@ -11,7 +11,7 @@ import management.TilesetManager;
 public class BeginnerBow extends Weapon {
 
 	public BeginnerBow() {
-		super(TilesetManager.getInstance().getSprite("beginnerBow"), "beginner bow", 1, 120, 1f);
+		super(TilesetManager.getInstance().getSprite("beginnerBow"), "beginner bow", 1, 150, 1f);
 		// TODO Auto-generated constructor stub
 	}
 	

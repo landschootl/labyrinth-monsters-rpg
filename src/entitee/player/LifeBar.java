@@ -15,9 +15,9 @@ import resource.Texte;
  */
 public class LifeBar {
 	// Graphique
-	private RectangleShape background;
-	private RectangleShape blood;
-	private Texte textLife;
+	private RectangleShape background = new RectangleShape(new Vector2f(60,160));
+	private RectangleShape blood = new RectangleShape();
+	private Texte textLife = new Texte("",25,new Vector2f(293,690),Color.BLACK,Text.BOLD);
 	
 	public LifeBar(){
 		initBackground();
@@ -27,7 +27,6 @@ public class LifeBar {
 	 * Initialize life bar background.
 	 */
 	public void initBackground(){
-		background = new RectangleShape(new Vector2f(60,160));
 		background.setFillColor(Color.WHITE);
 		background.setOutlineThickness(10);
 		background.setOutlineColor(new Color(97,56,11));

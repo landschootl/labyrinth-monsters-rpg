@@ -20,30 +20,234 @@ public class Map {
 	 */
 	private final int SIZE_MAP = 20;
 	
+	public Map(String[][] modeleMap){
+		tiles = new Tile[SIZE_MAP][SIZE_MAP];
+		for(int i=0;i<SIZE_MAP;i++)
+			for(int j=0; j<SIZE_MAP;j++){
+				tiles[i][j]=TilesetManager.getInstance().getTile(modeleMap[i][j], new Vector2f(j*32,i*32));
+			}
+	}
+	
+	/**
+	 * Show the graphics elements in the windows of the console.
+	 * @param window : pointer on the window of the application.
+	 */
+	public void draw(RenderWindow window){
+		for(int i=0;i<SIZE_MAP;i++)
+			for(int j=0; j<SIZE_MAP;j++)
+				tiles[j][i].draw(window);
+	}
+
+	public Tile[][] getTiles() {
+		return tiles;
+	}
+
+	public void setTiles(Tile[][] map) {
+		this.tiles = map;
+	}
+	
 	/**
 	 * map model.
 	 */
-	public static String[][] modeleIntersection = 	{
-		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
-		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
-		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+	public static String[][][] modeleIntersection = 	{
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "wall", "wall", "grass", "grass", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "wall", "wall", "grass", "grass", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "wall", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "wall", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "grass", "grass", "grass", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "waterRight", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		},
+		{
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "grass", "wall", "roof"},
+			{"roof", "wall", "grass", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "grass", "wall", "roof"},
+			{"roof", "wall", "wall", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "wall", "wall", "roof"},
+			{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
+			{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
+		}
 	};
 		
 	
@@ -124,32 +328,4 @@ public class Map {
 		{"roof", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "wall", "roof"},
 		{"roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof","roof", "roof", "roof", "roof", "roof"}
 	};
-	
-	public Map(String[][] modeleMap){
-		tiles = new Tile[SIZE_MAP][SIZE_MAP];
-		for(int i=0;i<SIZE_MAP;i++)
-			for(int j=0; j<SIZE_MAP;j++){
-				tiles[i][j]=TilesetManager.getInstance().getTile(modeleMap[i][j], new Vector2f(j*32,i*32));
-			}
-	}
-	
-	/**
-	 * Show the graphics elements in the windows of the console.
-	 * @param window : pointer on the window of the application.
-	 */
-	public void draw(RenderWindow window){
-		for(int i=0;i<SIZE_MAP;i++)
-			for(int j=0; j<SIZE_MAP;j++)
-				tiles[j][i].draw(window);
-	}
-
-	public Tile[][] getTiles() {
-		return tiles;
-	}
-
-	public void setTiles(Tile[][] map) {
-		this.tiles = map;
-	}
-	
-	
 }

@@ -13,7 +13,7 @@ import entitee.player.Player;
 public class Shield extends Equipment{
 	
 	public Shield() {
-		super(TilesetManager.getInstance().getSprite("shield"), "shield", 1);
+		super(TilesetManager.getInstance().getSprite("shield"), "shield", 2);
 		// TODO Auto-generated constructor stub
 	}
 

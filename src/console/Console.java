@@ -102,7 +102,7 @@ public class Console {
 		addText(" - 2 : utiliser medium potion.", Text.REGULAR, Color.BLUE);
 		addText(" - 3 : utiliser large potion.", Text.REGULAR, Color.BLUE);
 		addText(" - z,q,s,d : se deplacer.", Text.REGULAR, Color.BLUE);
-		addText(" - tab : ramasser un object.", Text.REGULAR, Color.BLUE);
+		addText(" - space : ramasser un object.", Text.REGULAR, Color.BLUE);
 		addText(" - click right : tirer.", Text.REGULAR, Color.BLUE);
 	}
 }

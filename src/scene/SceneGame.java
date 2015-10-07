@@ -7,6 +7,8 @@ import org.jsfml.system.Time;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.event.Event;
 
+import application.Application;
+import application.Application.State;
 import resource.Texte;
 import console.Console;
 import donjon.Donjon;
@@ -27,6 +29,7 @@ public class SceneGame {
 	 */
 	private int level = 1;
 	private Donjon donjon = new Donjon(level);
+	private Player player = Player.getInstance();
 	/**
 	 * The events in the game.
 	 * @author Ludov_000
@@ -52,7 +55,7 @@ public class SceneGame {
 	 * @param event : application event.
 	 */
 	public void handleEvents(Event event) {
-		Player.getInstance().handleEvents(event);
+		player.handleEvents(event);
 	}
 
 	/**
@@ -61,7 +64,7 @@ public class SceneGame {
 	 */
 	public void update(Time time) {
 	    donjon.update(time);
-	    Player.getInstance().update();
+	    player.update();
 	    actionEventOfTheGame();
 	}
 
@@ -70,22 +73,23 @@ public class SceneGame {
 		case PLAYER_FALL_INTO_TRAP:
 			Console.getInstance().addText("Vous êtes tombé dans une trap !", Text.REGULAR, Color.RED);
 			donjon.returnBeginRoom();
-			Player.getInstance().loseLife((int)Player.getInstance().getLife()/3);
-			Player.getInstance().initPositionBegin();
+			player.loseLife((int)Player.getInstance().getLife()/3);
+			player.initPositionBegin();
 			break;
 		case WIN_LEVEL:
 			Console.getInstance().addText("Bien jouez, niveau terminé !", Text.REGULAR, new Color(49, 126 ,4));
 			level+=1;
 			Console.getInstance().addText("Vous êtes au niveau : "+level+" !", Text.REGULAR, new Color(49, 126 ,4));
 			donjon.generateDonjon(level);
-			Player.getInstance().initPositionBegin();
+			player.initPositionBegin();
 			break;
 		case PLAYER_IS_DEAD:
 			Console.getInstance().addText("Vous êtes mort !", Text.REGULAR, Color.RED);
 			level = 1;
-			Player.getInstance().init();
+			player.init();
 			Console.init();
 			donjon.generateDonjon(level);
+			Application.setStateOfApp(State.GAMEOVER);
 			break;
 		default:
 			break;
