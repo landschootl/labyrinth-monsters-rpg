@@ -94,8 +94,4 @@ public abstract class Room {
 		return doors;
 	}
 
-	public void setDoors(ArrayList<Door> doors) {
-		this.doors = doors;
-	}
-
 }

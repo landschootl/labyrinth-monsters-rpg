@@ -112,4 +112,8 @@ public class SceneGame {
 		eventOfGame = eventGame;
 	}
 	
+	public int getLevel() {
+		return level;
+	}
+	
 }

@@ -197,4 +197,17 @@ public abstract class Entitee {
 	public Sprite getSprite(){
 		return sprite;
 	}
+
+	public int getSIZE_WIDTH() {
+		return SIZE_WIDTH;
+	}
+
+	public int getSIZE_HEIGHT() {
+		return SIZE_HEIGHT;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+	
 }

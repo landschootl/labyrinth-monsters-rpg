@@ -113,4 +113,9 @@ public abstract class Monster extends Entitee {
 	public int getDegat(){
 		return degat;
 	}
+
+	public Clock getTimerAttack() {
+		return timerAttack;
+	}
+	
 }

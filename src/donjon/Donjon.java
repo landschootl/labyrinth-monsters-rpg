@@ -137,4 +137,17 @@ public class Donjon {
 		// TODO Auto-generated method stub
 		room = roomBegin;
 	}
+
+	public HashMap<String, Room> getRooms() {
+		return rooms;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+	
+	public Room getRoomBegin() {
+		return roomBegin;
+	}
+	
 }

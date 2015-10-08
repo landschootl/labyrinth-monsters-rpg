@@ -61,7 +61,7 @@ public abstract class Door {
 	 */
 	public void unlock(){
 		locked=false;
-		Console.getInstance().addText("Porte dï¿½vï¿½rrouillï¿½ !", Text.REGULAR, Color.BLACK);
+		Console.getInstance().addText("Porte dévérouillé !", Text.REGULAR, Color.BLACK);
 	}
 	
 	public Vector2f getPosition(){

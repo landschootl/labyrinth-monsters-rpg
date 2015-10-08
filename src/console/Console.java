@@ -25,7 +25,7 @@ public class Console {
 	
 	// Graphique
 	private RectangleShape background;
-	private ArrayList<Texte> texts = new ArrayList<>();;
+	private ArrayList<Texte> texts = new ArrayList<>();
 	
 	private Console(){
 		initBackground();
@@ -105,4 +105,9 @@ public class Console {
 		addText(" - space : ramasser un object.", Text.REGULAR, Color.BLUE);
 		addText(" - click right : tirer.", Text.REGULAR, Color.BLUE);
 	}
+
+	public ArrayList<Texte> getTexts() {
+		return texts;
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jsfml.audio.SoundBuffer;
 import org.jsfml.graphics.Font;
 import org.jsfml.graphics.Texture;
 
@@ -19,9 +20,13 @@ public class ResourceManager {
 	 */
 	private static Map<String, Font> fonts = new HashMap<>();
 	/**
-	 * Tectures list.
+	 * Textures list.
 	 */
 	private static Map<String, Texture> textures = new HashMap<>();
+	/**
+	 * SoundBuffer list.
+	 */
+	private static Map<String, SoundBuffer> soundBuffers = new HashMap<>();
 	
 	/**
 	 * Enable to return the font and check if it exist, and load it if dosen't exist .
@@ -57,5 +62,23 @@ public class ResourceManager {
 			}
 		}
 		return 	((Texture) textures.get(url));
+	}
+	
+	/**
+	 * enable to return the SoundBuffer and check if it exist, and load it if dosen't exist.
+	 * @param url : soundBuffer url.
+	 * @return soundBuffer.
+	 */
+	public static SoundBuffer getSoundBuffer(String url){
+		if(!soundBuffers.containsKey(url)){
+			soundBuffers.put(url, new SoundBuffer());
+			try {
+				((SoundBuffer) soundBuffers.get(url)).loadFromFile(Paths.get(url));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return 	((SoundBuffer) soundBuffers.get(url));
 	}
 }

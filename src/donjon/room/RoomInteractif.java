@@ -119,5 +119,13 @@ public class RoomInteractif extends Room {
 		for(Monster monster : monsters)
 			monster.draw(window);
 	}
+	
+	public ArrayList<Monster> getMonsters(){
+		return monsters;
+	}
+	
+	public ArrayList<Object> getObjects(){
+		return objects;
+	}
 
 }

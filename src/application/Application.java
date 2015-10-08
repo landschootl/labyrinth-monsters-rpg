@@ -1,4 +1,6 @@
 package application;
+import jukebox.Jukebox;
+
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Clock;
@@ -28,6 +30,8 @@ public class Application {
 	 */
 	private Clock timerFrame = new Clock();
 	
+	private Jukebox jukebox = Jukebox.getInstance();
+	
 	/**
 	 * The differents steps of the application.
 	 * @author Ludov_000
@@ -51,6 +55,7 @@ public class Application {
 
 	public Application() {
 		window.create(new VideoMode(640, 820), "Donjon");
+		jukebox.play();
 	}
 	
 	/**
@@ -89,6 +94,7 @@ public class Application {
 			default:
 				break;
 			}
+			jukebox.handleEvents(event);
 		}
 	}
 	
@@ -149,6 +155,14 @@ public class Application {
 	 */
 	public static void setStateOfApp(State state) {
 		Application.stateOfApp = state;
+	}
+	
+	/**
+	 * Return the current state of the application.
+	 * @return State
+	 */
+	public static State getStateOfApp() {
+		return stateOfApp;
 	}
 	
 }
