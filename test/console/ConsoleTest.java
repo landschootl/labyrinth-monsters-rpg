@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.Text;
-import org.jsfml.system.Vector2f;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import resource.Texte;
+import resources.Texte;
 
 public class ConsoleTest {
 	protected Console console;
